@@ -69,7 +69,7 @@
       <div class="col col-sm-6">
         
         <h1>
-          <a href="/" title="scroll down for your viewing pleasure">
+          <a href="/" title="Lua.Space">
             <img style='margin-right:10px' align='left' height='80px'src='/pub/img/lualogo.png'/>
             <%= page.title %>
          </a>

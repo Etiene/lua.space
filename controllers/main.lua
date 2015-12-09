@@ -58,7 +58,7 @@ function main.index(page)
 			local category = posts[min].category or 'general'
 			posts[min].body = read_md('posts/'..category..'/'..posts[min].short_url)
 			if posts[min].body then
-				posts[min].url = sailor.conf.app_url..page:make_url('main/post',{c=posts[min].category,t=posts[min].short_url})
+				posts[min].url = sailor.conf.app_url..posts[min].category.."/"..posts[min].short_url
 				page_posts[#page_posts+1] = posts[min]
 			end
 		end
@@ -82,7 +82,7 @@ function main.post(page)
 		end
 	end
 	if not post then return 404 end
-	post.url = sailor.conf.app_url..page:make_url('main/post',{c=post.category,t=post.short_url})
+	post.url = sailor.conf.app_url..post.category.."/"..post.short_url
 
 	page:render('post',{post = post, categories = categories})
 end

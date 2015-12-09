@@ -1,7 +1,7 @@
 local conf = {
 	sailor = {
 		app_name = 'Lua.Space',
-		app_url = 'http://localhost:8080/',
+		app_url = 'http://lua.space/',
 		default_static = nil, -- If defined, default page will be a rendered lp as defined. 
 							  -- Example: 'maintenance' will render /views/maintenance.lp
 		default_controller = 'main', 
@@ -11,7 +11,7 @@ local conf = {
 		route_parameter = 'r',
 		default_error404 = 'error/404',
 		enable_autogen = false, -- default is false, should be true only in development environment
-		friendly_urls = false,
+		friendly_urls = true,
 		max_upload = 1024 * 1024, 
 		environment = "development",  -- this will use db configuration named development
 		hide_stack_trace = false -- false recommended for development, true recommended for production

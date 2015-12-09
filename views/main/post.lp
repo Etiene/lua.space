@@ -1,7 +1,7 @@
 <br/>
 <div class="panel panel-danger" style='margin-top:5px'>	
-	<h1><a href="<%=page:make_url('main/post',{t=post.short_url})%>"><%=post.page_title%></a></h1>
-	<small>Category: <a href="<%=page:make_url('main',{c=post.category})%>"><%=(post.category:gsub("^%l", string.upper))%></a></small>
+	<h1><a href="<%=post.url%>"><%=post.page_title%></a></h1>
+	<small>Category: <a href=/"<%=post.category%>"><%=(post.category:gsub("^%l", string.upper))%></a></small>
 		<hr/>
 	<%=post.body%>
 	<hr/>

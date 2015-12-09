@@ -6,11 +6,11 @@
 		<title><%= page.title %></title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="themes/<%=page.theme%>/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/themes/<%=page.theme%>/css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link href="themes/<%=page.theme%>/css/styles.css" rel="stylesheet">
+		<link href="/themes/<%=page.theme%>/css/styles.css" rel="stylesheet">
 	</head>
 	<body>
 <nav class="navbar navbar-static">
@@ -20,15 +20,15 @@
       </a>
       <div class="nav-collapse collase">
         <ul class="nav navbar-right navbar-nav">  
-          <li><a href=".">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false" href="#">Categories</a>
             <ul class="dropdown-menu">
               <?lua for _,c in ipairs((categories or {})) do ?>
-                <li><a href="<%=page:make_url('main',{c=c})%>"><%=(c:gsub("^%l", string.upper))%></a></li>
+                <li><a href="/<%=c%>"><%=(c:gsub("^%l", string.upper))%></a></li>
               <?lua end ?>
             </ul>
           </li>
-          <li><a href="<%=page:make_url('main/about')%>">About</a></li>
+          <li><a href="/about">About</a></li>
         </ul>
         <!--
         <ul class="nav navbar-right navbar-nav">
@@ -65,8 +65,8 @@
       <div class="col col-sm-6">
         
         <h1>
-          <a href="." title="scroll down for your viewing pleasure">
-            <img style='margin-right:10px' align='left' height='80px'src='pub/img/lualogo.png'/>
+          <a href="/" title="scroll down for your viewing pleasure">
+            <img style='margin-right:10px' align='left' height='80px'src='/pub/img/lualogo.png'/>
             <%= page.title %>
          </a>
           <p class="lead">The unofficial Lua blog</p>
@@ -139,8 +139,8 @@
       		</div>  
       		<div class="col col-sm-9">
               <div class="panel">
-                <link rel="stylesheet" href="pub/highlight/styles/monokai-sublime.css">
-                <script src="pub/highlight/highlight.pack.js"></script>
+                <link rel="stylesheet" href="/pub/highlight/styles/monokai-sublime.css">
+                <script src="/pub/highlight/highlight.pack.js"></script>
 
                 <script>
                 hljs.configure({
@@ -157,7 +157,7 @@
                 </noscript>
                 {{content}}
               	<hr>
-              	<small> © <%= os.date('%Y') %> <a href=".">Lua Space</a>. Maintained by <a href="http://etiene.net">Etiene Dalcol</a>. Template by <a href="http://bootply.com/">Bootply</a>. Powered by <a href="http://sailorproject.org/">Sailor Framework</a> and <a href="http://lua.org/">Lua</a>.</small>
+              	<small> © <%= os.date('%Y') %> <a href="/">Lua Space</a>. Maintained by <a href="http://etiene.net">Etiene Dalcol</a>. Template by <a href="http://bootply.com/">Bootply</a>. Powered by <a href="http://sailorproject.org/">Sailor Framework</a> and <a href="http://lua.org/">Lua</a>.</small>
               	<hr>
              	</div>
       	</div> 
@@ -168,7 +168,7 @@
 
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="themes/flathood/js/bootstrap.min.js"></script>
-		<script src="themes/flathood/js/scripts.js"></script>
+		<script src="/themes/flathood/js/bootstrap.min.js"></script>
+		<script src="/themes/flathood/js/scripts.js"></script>
 	</body>
 </html>

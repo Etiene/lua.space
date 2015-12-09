@@ -25,7 +25,7 @@ return {
 		page_title = 'A test!', -- Post and page title
 		short_url = 'test', -- Short url and same as md file name
 		category = 'test', -- [string] category: folder of where it's in
-		date = 'sdfds', -- Just for printing, ordering is done by this table order
+		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
 		reblogged_from = 'http://etiene.net', -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
 	},

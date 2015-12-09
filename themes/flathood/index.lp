@@ -4,6 +4,10 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title><%= page.title %></title>
+    <?lua 
+      if post and post.url then ?>
+      <link rel="canonical" href="<%=post.url%>" />
+    <?lua end?>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="/themes/<%=page.theme%>/css/bootstrap.min.css" rel="stylesheet">
@@ -170,5 +174,6 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="/themes/flathood/js/bootstrap.min.js"></script>
 		<script src="/themes/flathood/js/scripts.js"></script>
+    <script id="dsq-count-scr" src="//luaspace.disqus.com/count.js" async></script>
 	</body>
 </html>

@@ -62,8 +62,8 @@
                 </div><!--//navbar-header-->            
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a class="scrollto" href="/">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="/about">About</a></li>
+                        <li class="nav-item"><a href="/">Home</a></li>
+                        <li class="nav-item"><a href="/about">About</a></li>
                         <li class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false" href="#">Categories</a>
                             <ul class="dropdown-menu">
                               <?lua for _,c in ipairs((categories or {})) do ?>

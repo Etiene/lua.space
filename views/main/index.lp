@@ -16,3 +16,14 @@
 		<br/>
 <?lua end
 ?>
+
+<nav>
+  <ul class="pager">
+  	 <?lua if max_page > page_counter then ?>
+    	<li class="previous"><a href="/<%=(page.GET.c and page.GET.c..'/'..(page_counter+1) or (page_counter+1))%>"><span aria-hidden="true">&larr;</span> Older</a></li>
+    <?lua end?>
+    <?lua if page_counter > 1 then ?>
+    	<li class="next"><a href="/<%=(page.GET.c and page.GET.c..'/'..(page_counter-1) or (page_counter-1))%>">Newer <span aria-hidden="true">&rarr;</span></a></li>
+    <?lua end?>
+  </ul>
+</nav>

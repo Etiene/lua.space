@@ -114,17 +114,28 @@ pre code {
 .header .logo {
   margin: 0;
   font-size: 26px;
-  padding-top: 10px;
+  padding-top: 4px;
 }
 .header .logo a {
   color: #fff;
 }
 
-.header .logo .logo-subtitle {
+.header .logo-subtitle{
+  padding-top: 5px;
+  width: 235px;
   color: #0a7396;
   font-weight: 100;
   font-size: 18pt;
 }
+
+.header .logo-subtitle a{
+  text-decoration: none;
+  color: #0a7396;
+  font-weight: 100;
+  font-size: 18pt;
+}
+
+
 
 .header .logo a:hover {
   text-decoration: none;

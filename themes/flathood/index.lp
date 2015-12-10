@@ -161,7 +161,7 @@
                 </noscript>
                 {{content}}
               	<hr>
-              	<small> © <%= os.date('%Y') %> <a href="/">Lua Space</a>. Maintained by <a href="http://etiene.net">Etiene Dalcol</a>. Template by <a href="http://bootply.com/">Bootply</a>. Powered by <a href="http://sailorproject.org/">Sailor Framework</a> and <a href="http://lua.org/">Lua</a>.</small>
+              	<small> © <%= os.date('%Y') %> <a href="/">Lua Space</a> by <a href="http://etiene.net">Etiene Dalcol</a>. Template by <a href="http://bootply.com/">Bootply</a>. Powered by <a href="http://sailorproject.org/">Sailor Framework</a> and <a href="http://lua.org/">Lua</a>.</small>
               	<hr>
              	</div>
       	</div> 

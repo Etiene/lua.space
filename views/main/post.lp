@@ -18,7 +18,7 @@
 
 <div class="panel panel-danger" style='margin-top:5px'>	
 	<h3>About <%= post.author.name %></h3>
-	<%= (post.author.picture and '<img height="64px" class="img-circle pull-right" src="'..post.author.picture..'"/>' or '') %>
+	<%= (post.author.picture and '<img height="82px" class="img-circle pull-right" src="'..post.author.picture..'"/>' or '') %>
 	<%= (post.author.description or '')%>
 	<small>
 		<%= (post.author.website and '<br/><a href="'..post.author.website..'">Website</a>' or '')%>

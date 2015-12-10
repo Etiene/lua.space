@@ -34,7 +34,7 @@ end
 
 
 function main.index(page)
-	local posts = require "posts.posts_meta"
+	local posts = assert(require "posts.posts_meta")
 	local total = #posts
 	local posts_per_page = sailor.conf.custom and sailor.conf.custom.posts_per_page or 3
 	local page_counter = page.GET.p or 1

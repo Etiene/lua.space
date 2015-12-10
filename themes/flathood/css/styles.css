@@ -1,7 +1,7 @@
 /* bootstrap 3 helpers */
 
 .navbar-form input, .form-inline input {
-	width:auto;
+  width:auto;
 }
 
 /* end */
@@ -9,8 +9,8 @@
 /* custom theme */
 
 header {
-	min-height:140px;
-  	margin-bottom:5px;
+  min-height:140px;
+    margin-bottom:5px;
 }
 
 @media (min-width: 979px) {
@@ -34,55 +34,68 @@ header {
 body {
   color:#828282;
   background-color:#eee;
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #009ec7 !important;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
 }
 
 a,a:hover {
-	color:#ff3333;
-  	text-decoration:none;
+  color:#000080;
+    text-decoration:none;
 }
 
 .highlight-bk {
-	background-color:#ff3333;
+  background-color:#000080;
     padding:1px;
     width:100%;
 }
 
 .highlight {
-	color:#ff3333;
+  color:#000080;
 }
   
 h3.highlight  {
-	padding-top:13px;
+  color: #009ec7;
+  padding-top:13px;
     padding-bottom:14px;
-  	border-bottom:2px solid #ff3333;
+    border-bottom:2px solid #009ec7;
 }
 
 .navbar {
-	background-color:#ff3333;
-  	color:#ffffff;
+  background-color:#009ec7;
+    color:#ffffff;
     border:0;
-  	border-radius:0;
+    border-radius:0;
 }
 .navbar-nav > li > a {
-  	color:#fff;
-  	padding-left:20px;
-  	padding-right:20px;
-  	border-left:1px solid #ee3333;
+    color:#fff;
+    padding-left:20px;
+    padding-right:20px;
+    //border-left:1px solid #000080;
 }
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
     color:#666666; 
 }
 .navbar-nav > li:last-child > a {
-  	border-right:1px solid #ee3333;
+    //border-right:1px solid #000080;
 }
 .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
     color: #ffffff;
-	background-color:transparent;
+  background-color:transparent;
 }
 .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
-	color: #f0f0f0;
-	background-color:transparent;
-  	opacity:.9;
+  color: #f0f0f0;
+  background-color:transparent;
+    opacity:.9;
     border-color:#ff3333;
 }
 
@@ -92,32 +105,32 @@ h3.highlight  {
 }
 
 .accordion-group {
-	border-width:0;
+  border-width:0;
 }
 
 .dropdown-menu {
-	min-width: 250px;
+  min-width: 250px;
 }
 
 .accordion-heading .accordion-toggle, .accordion-inner, .nav-stacked li > a {
-	padding-left:1px;
+  padding-left:1px;
 }
 
 .caret {
-	color:#fff;
+  color:#fff;
 }
 
 .navbar-toggle {
-	color:#fff;
+  color:#fff;
     border-width:0;
 }
   
 .navbar-toggle:hover {
-	background-color:#fff;
+  background-color:#fff;
 }
 
 .panel {
-	padding-left:27px;
+  padding-left:27px;
     padding-right:27px;
 }
 

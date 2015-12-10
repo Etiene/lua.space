@@ -1,8 +1,6 @@
-<br/>
 <?lua
 	for _,post in ipairs(posts) do
 ?>	
-	<div class="panel panel-danger" style='margin-top:5px'>	
 		<h1><a href="<%=post.url%>"><%=post.page_title%></a></h1>
 		<small>
 			By <%=post.author.name%> 
@@ -16,6 +14,5 @@
 		<%=post.body%>
 
 		<br/>
-	</div>
 <?lua end
 ?>

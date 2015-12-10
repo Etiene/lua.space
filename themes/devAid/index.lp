@@ -168,7 +168,8 @@
     <script type="text/javascript" src="/themes/devAid/assets/plugins/bootstrap/js/bootstrap.min.js"></script>     
     <script type="text/javascript" src="/themes/devAid/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
     <script type="text/javascript" src="/themes/devAid/assets/plugins/prism/prism.js"></script>    
-    <script type="text/javascript" src="/themes/devAid/assets/js/main.js"></script>       
+    <script type="text/javascript" src="/themes/devAid/assets/js/main.js"></script>
+    <script id="dsq-count-scr" src="//luaspace.disqus.com/count.js" async></script>       
 </body>
 </html> 
 

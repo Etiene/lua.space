@@ -101,6 +101,7 @@ function main.post(page)
 	end
 	if not post then return 404 end
 	post.url = sailor.conf.app_url..post.category.."/"..post.short_url
+	page.title = page.title.. ' | '..post.page_title
 
 	page:render('post',{post = post, categories = categories})
 end

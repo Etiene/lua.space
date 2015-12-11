@@ -26,7 +26,7 @@ return {
 		page_title = 'Blog opening and contribution guide!', -- Post and page title
 		short_url = 'blog-opening-and-contribution-guide', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in
-		date = 'Dec 11 2015 13:31', -- Just for printing, ordering is done by this table order
+		date = 'Dec 11 2015 18:17', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
 	}

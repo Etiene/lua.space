@@ -14,7 +14,7 @@
     <li>Commit and make a pull request</li>
     <li>By making a pull request you certify that you are sharing your post and allowing it to be published here</li>
     <li>We will never modify your original post unless for typo fixes or if you require to do so </li>
-    <li>You'll still own all the Intellectual Property rights of your post</li>
+    <li>You'll still own all the copyrights of your post</li>
 </ul>
 
 <h2>Maintainer</h2>

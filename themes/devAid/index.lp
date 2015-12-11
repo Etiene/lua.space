@@ -42,38 +42,46 @@
     
     <!-- ******HEADER****** --> 
     <header id="header" class="header">  
-        <div class="container">            
+        <div class="container"> 
+
             <h1 class="logo pull-left">
-
-                <a class="scrollto" href="/">
+                <img height='42px'style="margin-right: 7px" src='/pub/img/lualogo.png'/> 
+                <a href="/">
                     <span class="logo-title"><%= conf.sailor.app_name %></span>
-
-                </a>   <img height='32px'src='/pub/img/lualogo.png'/> <span class="logo-subtitle" href="/">The Unofficial Lua Blog</span>
-            </h1><!--//logo-->          
-             
-            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button><!--//nav-toggle-->
-                </div><!--//navbar-header-->            
-                <div class="navbar-collapse collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item"><a class="scrollto" href="/">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="/about">About</a></li>
-                        <li class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false" href="#">Categories</a>
-                            <ul class="dropdown-menu">
-                              <?lua for _,c in ipairs((categories or {})) do ?>
-                                <li><a href="/<%=c%>"><%=(c:gsub("^%l", string.upper))%></a></li>
-                              <?lua end ?>
-                            </ul>
-                          </li>
-                    </ul><!--//nav-->
-                </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->
+                </a>   
+            </h1><!--//logo--> 
+                 
+        
+            <div class="pull-right">
+                <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button><!--//nav-toggle-->
+                    </div><!--//navbar-header-->            
+                    <div class="navbar-collapse collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item"><a href="/">Home</a></li>
+                            <li class="nav-item"><a href="/about">About</a></li>
+                            <li class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false" href="#">Categories</a>
+                                <ul class="dropdown-menu">
+                                  <?lua for _,c in ipairs((categories or {})) do ?>
+                                    <li><a href="/<%=c%>"><%=(c:gsub("^%l", string.upper))%></a></li>
+                                  <?lua end ?>
+                                </ul>
+                              </li>
+                        </ul><!--//nav-->
+                    </div><!--//navabr-collapse-->
+                </nav><!--//main-nav-->
+            </div>
+            <div class="logo-subtitle center-block">
+                <a href="/">
+                    The Unofficial Lua Blog
+                </a>
+            </div>  
         </div>
     </header><!--//header-->
     

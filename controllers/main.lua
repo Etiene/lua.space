@@ -37,7 +37,8 @@ function main.index(page)
 	local posts = assert(require "posts.posts_meta")
 	local total = #posts
 	local posts_per_page = sailor.conf.custom and sailor.conf.custom.posts_per_page or 3
-	local page_counter = page.GET.p or 1
+	local page_counter = tonumber(page.GET.p) or 1
+	local max_page = page_counter + 1
 	local categories = get_categories()
 	local filter
 	if page.GET.c then
@@ -53,7 +54,9 @@ function main.index(page)
 
 	local page_posts = {}
 	while #page_posts < posts_per_page do
-		
+		if not posts[min] then
+			break 
+		end
 		if not filter or filter(posts[min]) then
 			local category = posts[min].category or 'general'
 			posts[min].body = read_md('posts/'..category..'/'..posts[min].short_url)
@@ -63,9 +66,24 @@ function main.index(page)
 			end
 		end
 		min = min + 1
-	end 
+	end
 
-    page:render('index',{posts = page_posts, categories = categories})
+	-- Disable see older pagination
+	if not posts[min] then
+		max_page = page_counter
+	elseif filter then
+		max_page = page_counter 
+		while min < #posts do
+			if filter(posts[min]) then
+				max_page = page_counter + 1
+				break
+			end
+			min = min + 1
+		end
+	end
+
+
+    page:render('index',{posts = page_posts, categories = categories, page_counter=page_counter, max_page = max_page})
 end
 
 function main.post(page)

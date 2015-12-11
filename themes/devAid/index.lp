@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="/themes/devAid/assets/plugins/prism/prism.css">
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="/themes/devAid/assets/css/styles.css">
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" href="http://lua.space/rss.xml">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

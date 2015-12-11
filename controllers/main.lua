@@ -12,11 +12,16 @@ local function read_md(path)
 	return false
 end
 
+local function is_directory(path)
+	local attr = lfs.attributes(path)
+	return attr and attr.mode == "directory"
+end
+
 local function get_categories()
 	local lfs = require "lfs"
 	local categories = {}
 	for file in lfs.dir(sailor.path..'/posts') do
-		if lfs.chdir(sailor.path..'/posts/'..file) and file ~= '.' and file ~= '..' then
+		if is_directory(sailor.path..'/posts/'..file) and file ~= '.' and file ~= '..' then
 	    	categories[#categories+1] = file
 	    end
 	end

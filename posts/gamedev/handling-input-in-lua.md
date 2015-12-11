@@ -155,7 +155,8 @@ function inputHandler( input )
 end
 
 function love.keypressed( k )
-	INPUTMETHOD = "keyboard" -- you might want to keep track of this to change display prompts
+	-- you might want to keep track of this to change display prompts
+	INPUTMETHOD = "keyboard"
 	local binding = state.keys[k]
 	return inputHandler( binding )
 end
@@ -164,7 +165,8 @@ function love.keyreleased( k )
 	return inputHandler( binding )
 end
 function love.gamepadpressed( gamepad, button )
-	INPUTMETHOD = "gamepad" -- you might want to keep track of this to change display prompts
+	-- you might want to keep track of this to change display prompts
+	INPUTMETHOD = "gamepad"
 	local binding = state.buttons[button]
 	return inputHandler( binding )
 end

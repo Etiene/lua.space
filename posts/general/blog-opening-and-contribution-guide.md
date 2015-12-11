@@ -3,7 +3,9 @@ It's always very difficult to write the opening post of a blog, but I guess I sh
 
 <center>
 ![you only have to pick one, not really](http://lua.space/pub/post_img/pick_one.png)
+</center>
 
+<center>
 ([image credit](http://www.devbattles.com/en/sand/post-1315-5+Myths+to+Know+Before+You+Learn+How+to+Become+a+Software+Developer))
 </center>
 

@@ -19,7 +19,7 @@ local function get_posts()
 
 	local rss_posts = {}
 	for i=1,AMOUNT do
-		posts[i].date = tostring(date(posts[i].date)).." GMT"
+		posts[i].date = date(posts[i].date):fmt("%a, %d %b %Y %T GMT")
 		local category = posts[i].category or 'general'
 		posts[i].body = read_md('posts/'..category..'/'..posts[i].short_url)
 		posts[i].url = "http://lua.space/"..category..'/'..posts[i].short_url
@@ -54,11 +54,11 @@ local function build_rss()
 		<pubDate>]],
 		"date",
 		[[</pubDate>
-		<description>]],
+		<description><![CDATA[]],
 		"content",
-		[[
-		</description>
-	</item>]]
+		[=[
+		]]></description>
+	</item>]=]
 	}
 
 	for _,p in ipairs(get_posts()) do

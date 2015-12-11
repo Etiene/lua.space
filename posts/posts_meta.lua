@@ -17,10 +17,27 @@ local authors = {
 		github = 'http://github.com/Etiene',
 		linkedin = nil,
 		facebook = nil,
-	}
+	},
+	undef = {
+		name = 'undef',
+		picture = 'http://www.quadrantgame.com/presskit/assets/images/icon.png', 
+		description = 'undef is an independent game developer from Berlin, Germany.',
+		website = 'http://quadrantgame.com/',
+		twitter = 'http://twitter.com/undefdev',
+		github = 'http://github.com/undefdev',
+		facebook = nil,
+	},
 }
 
 return {
+	{
+		page_title = 'Handling Input In Lua', -- Post and page title
+		short_url = 'handling-input-in-lua', -- Short url and same as md file name
+		category = 'gamedev', -- folder of where it's in
+		date = 'Dec 11 2015 23:42', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.undef
+	},
 	{
 	
 		page_title = 'Blog opening and contribution guide!', -- Post and page title

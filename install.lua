@@ -1,5 +1,9 @@
 local dependencies = {
+	"markdown",
 	"date"
 }
 
-os.execute("luarocks install "..table.concat(dependencies,' '))
+for _,d in ipairs(dependencies) do
+	os.execute("luarocks install "..d)
+end
+

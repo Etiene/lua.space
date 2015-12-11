@@ -144,6 +144,11 @@
     
     <!-- ******CONTACT****** --> 
     <section id="contact" class="contact section has-pattern">
+        <div class="center-block" style="text-align:center">
+            <p><a href="http://lua.space/rss.xml">RSS</a></p>
+            <p><a href="https://feedburner.google.com/fb/a/mailverify?uri=Luaspace&amp;loc=en_US">Subscribe to Lua.Space by Email</a></p>
+            <p><a href="http://feeds.feedburner.com/Luaspace" target="_blank"><img src="http://feeds.feedburner.com/~fc/Luaspace?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+        </div>
         <!--
         <div class="container">
             <div class="contact-inner">
@@ -166,7 +171,11 @@
     <footer class="footer">
         <div class="container text-center">
             <small class="copyright">© <%= os.date('%Y') %> <a href="/">Lua Space</a> by <a href="http://etiene.net">Etiene Dalcol</a>. Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers. <i class="fa fa-bolt"></i>  Powered by <i class="fa fa-moon-o"></i><a href="http://sailorproject.org/">Sailor Framework</a> and <a href="http://lua.org/">Lua</a>.</small>
+            <div class="pull-right">
+            <small><a href="https://github.com/Etiene/lua.space">Source</a></small>
+        </div>
         </div><!--//container-->
+
     </footer><!--//footer-->
      
     <!-- Javascript -->          

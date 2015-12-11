@@ -22,58 +22,11 @@ local authors = {
 
 return {
 	{
-		page_title = 'A test!', -- Post and page title
-		short_url = 'test6', -- Short url and same as md file name
-		category = 'test', -- [string] category: folder of where it's in
-		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
-		reblogged_from = 'http://etiene.net', -- [string] URL if this was posted somewhere else first
-		author = authors.etiene
-	},
-	{
-		page_title = 'A test!', -- Post and page title
-		short_url = 'test5', -- Short url and same as md file name
-		category = 'test', -- [string] category: folder of where it's in
-		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
-		reblogged_from = 'http://etiene.net', -- [string] URL if this was posted somewhere else first
-		author = authors.etiene
-	},
-	{
-		page_title = 'A test!', -- Post and page title
-		short_url = 'test4', -- Short url and same as md file name
-		category = 'test', -- [string] category: folder of where it's in
-		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
-		reblogged_from = 'http://etiene.net', -- [string] URL if this was posted somewhere else first
-		author = authors.etiene
-	},
-	{
-		page_title = 'A test!', -- Post and page title
-		short_url = 'test3', -- Short url and same as md file name
-		category = 'test', -- [string] category: folder of where it's in
-		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
-		reblogged_from = 'http://etiene.net', -- [string] URL if this was posted somewhere else first
-		author = authors.etiene
-	},
-	{
-		page_title = 'A test!', -- Post and page title
-		short_url = 'test2', -- Short url and same as md file name
-		category = 'test', -- [string] category: folder of where it's in
-		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
-		reblogged_from = 'http://etiene.net', -- [string] URL if this was posted somewhere else first
-		author = authors.etiene
-	},
-	{
-		page_title = 'A test!', -- Post and page title
-		short_url = 'test', -- Short url and same as md file name
-		category = 'test', -- [string] category: folder of where it's in
-		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
-		reblogged_from = 'http://etiene.net', -- [string] URL if this was posted somewhere else first
-		author = authors.etiene
-	},
-	{
+	
 		page_title = 'Blog opening and contribution guide!', -- Post and page title
 		short_url = 'blog-opening-and-contribution-guide', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in
-		date = 'Dec 08 2015', -- Just for printing, ordering is done by this table order
+		date = 'Dec 11 2015 13:31', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
 	}

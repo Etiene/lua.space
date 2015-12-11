@@ -122,7 +122,8 @@ pre code {
 
 .header .logo-subtitle{
   padding-top: 5px;
-  width: 235px;
+  width: 300px;
+  text-align: center;
   color: #0a7396;
   font-weight: 100;
   font-size: 18pt;
@@ -431,7 +432,7 @@ pre code {
 }
 /* ======= Contact Section ======= */
 .contact {
-  padding: 80px 0;
+  padding: 30px 0;
   background: #17baef;
   color: #fff;
 }

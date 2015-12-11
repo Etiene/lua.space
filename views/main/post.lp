@@ -13,17 +13,19 @@
 
 <?lua if post.author and post.author.name then ?>
 <hr/>
-<h3>About <%= post.author.name %></h3>
-<%= (post.author.picture and '<img height="82px" class="img-circle pull-right" src="'..post.author.picture..'"/>' or '') %>
+<%= (post.author.picture and '<img height="64px"  class="img-circle pull-right" src="'..post.author.picture..'"/>' or '') %>
+<h3> About <%= post.author.name %></h3>
+<h4>
+	<%= (post.author.website and ' <a href="'..post.author.website..'"><i class="fa fa-globe"></i></a> ' or '')%>
+	<%= (post.author.twitter and ' <a href="'..post.author.twitter..'"><i class="fa fa-twitter"></i></a> ' or '')%>
+	<%= (post.author.github and ' <a href="'..post.author.github..'"><i class="fa fa-github"></i></a> ' or '')%>
+	<%= (post.author.facebook and ' <a href="'..post.author.facebook..'"><i class="fa fa-facebook-official"></i></a> ' or '')%>
+	<%= (post.author.linkedin and ' <a href="'..post.author.linkedin..'"><i class="fa linkedin"></i></a> ' or '')%>
+</h4>
 <%= (post.author.description or '')%>
-<small>
-	<%= (post.author.website and '<br/><a href="'..post.author.website..'">Website</a>' or '')%>
-	<%= (post.author.twitter and '<br/><a href="'..post.author.twitter..'">Twitter</a>' or '')%>
-	<%= (post.author.github and '<br/><a href="'..post.author.github..'">Github</a>' or '')%>
-	<%= (post.author.facebook and '<br/><a href="'..post.author.facebook..'">Facebook</a>' or '')%>
-	<%= (post.author.linkedin and '<br/><a href="'..post.author.linkedin..'">Linkedin</a>' or '')%>
-</small>
+<hr/>
 <br/>
+
 
 <?lua end ?>
 

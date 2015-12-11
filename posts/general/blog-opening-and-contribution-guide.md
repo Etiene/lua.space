@@ -48,6 +48,5 @@ This blogs support syntax highlight provided by [highlight.js](http://highlightj
 	end
 
 ##Awesome people
-Special thanks go to [Pierre Chapuis](https://twitter.com/pchapuis) ([Lua Toolbox](https://lua-toolbox.com/)), for the domain name, [undef](https://twitter.com/undefdev) ([quadrant](http://quadrantgame.com/)) for the initial engagement and next contributions as a writer, [Bogdan Marinescu](https://twitter.com/bogdanm78) ([eLua](http://eluaproject.net)), [Mathäus Mendel](https://twitter.com/mathausmendel) ([OpenTibia](github.com/opentibia/ )) and [Elihu Garret](https://twitter.com/Mr_Auk) ([Moonlet](https://github.com/elihugarret/Moonlet)) for exchanging ideas and helping this come to reality, and every future writer of this blog!
+Special thanks go to [Pierre Chapuis](https://twitter.com/pchapuis) ([Lua Toolbox](https://lua-toolbox.com/)), for the domain name, [undef](https://twitter.com/undefdev) ([quadrant](http://quadrantgame.com/)) for the initial engagement and next contributions as a writer, [Bogdan Marinescu](https://twitter.com/bogdanm78) ([eLua](http://eluaproject.net)), [Mathäus Mendel](https://twitter.com/mathausmendel) ([OpenTibia](https://github.com/opentibia/ )) and [Elihu Garret](https://twitter.com/Mr_Auk) ([Moonlet](https://github.com/elihugarret/Moonlet)) for exchanging ideas and helping this come to reality, and every future writer of this blog!
 
-Cheers!

@@ -3,7 +3,9 @@ It's always very difficult to write the opening post of a blog, but I guess I sh
 
 <center>
 ![you only have to pick one, not really](http://lua.space/pub/post_img/pick_one.png)
+</center>
 
+<center>
 ([image credit](http://www.devbattles.com/en/sand/post-1315-5+Myths+to+Know+Before+You+Learn+How+to+Become+a+Software+Developer))
 </center>
 
@@ -46,6 +48,6 @@ This blogs support syntax highlight provided by [highlight.js](http://highlightj
 	end
 
 ##Awesome people
-Special thanks go to [Pierre Chapuis](https://twitter.com/pchapuis) ([Lua Toolbox](https://lua-toolbox.com/)), for the domain name, [undef](https://twitter.com/undefdev) ([quadrant](http://quadrantgame.com/)) for the initial engagement and next contributions as a writer, [Bogdan Marinescu](https://twitter.com/bogdanm78) ([eLua](http://eluaproject.net)), [Mathäus Mendel](https://twitter.com/mathausmendel) ([OpenTibia](github.com/opentibia/ )) and [Elihu Garret](https://twitter.com/Mr_Auk) ([Moonlet](https://github.com/elihugarret/Moonlet)) for exchanging ideas and helping this come to reality, and every future writer of this blog!
+Special thanks go to [Pierre Chapuis](https://twitter.com/pchapuis) ([Lua Toolbox](https://lua-toolbox.com/)), for the domain name, [undef](https://twitter.com/undefdev) ([quadrant](http://quadrantgame.com/)) for the initial engagement and next contributions as a writer, [Bogdan Marinescu](https://twitter.com/bogdanm78) ([eLua](http://eluaproject.net)), [Mathäus Mendel](https://twitter.com/mathausmendel) ([OpenTibia](https://github.com/opentibia/ )) and [Elihu Garret](https://twitter.com/Mr_Auk) ([Moonlet](https://github.com/elihugarret/Moonlet)) for exchanging ideas and helping this come to reality, and every future writer of this blog!
 
 Cheers!

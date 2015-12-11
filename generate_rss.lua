@@ -54,11 +54,11 @@ local function build_rss()
 		<pubDate>]],
 		"date",
 		[[</pubDate>
-		<description>]],
+		<description><![CDATA[]],
 		"content",
-		[[
-		</description>
-	</item>]]
+		[=[
+		]]></description>
+	</item>]=]
 	}
 
 	for _,p in ipairs(get_posts()) do

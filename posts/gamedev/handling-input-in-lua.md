@@ -8,6 +8,7 @@ Even in a small game you will already have to handle input differently when the 
 If you scale up your game without using a reasonable code structure things will get _really_ messy and work will get **a lot** harder.
 
 To avoid your code from getting to messy your input handler will have to be:
+
 * simple
 * easy to read
 * extensible

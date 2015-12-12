@@ -1,6 +1,3 @@
-
-##Handling Input In Lua
-
 In every interactive programm you make you will have to process user input.
 
 In bigger programs or games this can get quite confusing when you have many different states that require input to be handled differently.

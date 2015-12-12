@@ -1,5 +1,3 @@
-# Introducing Lua Templates
-
 Lua Templates is a multi-purpose templating engine used to create output in
 various formats, e.g. HTML pages, plain text, or, LaTeX source files.
 Lua Templates can contain Lua code or Lua expressions (whence the name), but

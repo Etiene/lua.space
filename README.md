@@ -6,7 +6,7 @@ More info:  [Opening Post](http://lua.space/general/blog-opening-and-contributio
 ##Yay, awesome, what is this blog for?
 Yes, that's an important question! Please notice that we don't have any affilitation with the official Lua team, but we intend to be a central hub for distributing news, technical posts and general discussions on everything related to Lua. Or, as the name says, a Lua space. Subscribe to our [RSS feed](http://feeds.feedburner.com/Luaspace) if you wish to be notified when there's new content.
 
-##Everyone can be a writer
+##Becoming a writer
 [![Issue Stats](http://issuestats.com/github/Etiene/lua.space/badge/pr)](http://issuestats.com/github/Etiene/lua.space)
 
 All posts are written in markdown and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. [This one](http://lua.space/general/blog-opening-and-contribution-guide), for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general).  

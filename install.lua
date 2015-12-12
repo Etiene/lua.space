@@ -1,4 +1,5 @@
 local dependencies = {
+	"sailor",
 	"markdown",
 	"date"
 }

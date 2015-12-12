@@ -9,7 +9,7 @@ Yes, that's an important question! Please notice that we don't have any affilita
 ##Everyone can be a writer
 [![Issue Stats](http://issuestats.com/github/Etiene/lua.space/badge/pr)](http://issuestats.com/github/Etiene/lua.space)
 
-All posts are written in markdown and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. This one, for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general).  
+All posts are written in markdown and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. [This one](http://lua.space/general/blog-opening-and-contribution-guide), for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general).  
 
 Steps to writing a blog post:
 

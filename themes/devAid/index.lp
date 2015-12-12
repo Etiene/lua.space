@@ -97,7 +97,7 @@
 
             <script>
             hljs.configure({
-              languages: ['lua','javascript']
+              languages: ['lua','javascript','html']
             });
             hljs.initHighlightingOnLoad();
             </script>

@@ -1,4 +1,4 @@
-In every interactive programm you make you will have to process user input.
+In every interactive program you make you will have to process user input.
 
 In bigger programs or games this can get quite confusing when you have many different states that require input to be handled differently.
 Even in a small game you will already have to handle input differently when the player is in a menu or on the title screen.

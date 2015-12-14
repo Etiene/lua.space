@@ -27,6 +27,6 @@
 	<li><a href="https://twitter.com/pchapuis">Pierre Chapuis</a> - <a href="https://lua-toolbox.com/">Lua Toolbox</a></li>
 	<li><a href="https://twitter.com/undefdev">undef</a> - <a href="http://quadrantgame.com/">quadrant</a></li>
 	<li><a href="https://twitter.com/bogdanm78">Bogdan Marinescu</a> - <a href="http://eluaproject.net">eLua</a></li>
-	<li><a href="https://twitter.com/mathausmendel">Mathäus Mendel</a> - <a href="github.com/opentibia/ ">OpenTibia</a></li>
+	<li><a href="https://twitter.com/mathausmendel">Mathäus Mendel</a> - <a href="https://github.com/opentibia">OpenTibia</a></li>
 	<li><a href="https://twitter.com/Mr_Auk">Elihu Garret</a> - <a href="https://github.com/elihugarret/Moonlet">Moonlet</a></li>
 </ul>

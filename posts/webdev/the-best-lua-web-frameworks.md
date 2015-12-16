@@ -25,9 +25,9 @@ PHP is pervasive and there are many tools and tutorials written for it, so the d
 However, the landscape for Lua is changing and now the ecosystem is growing rapidly (a feat I partially attritube to the merge of [LuaRocks](http://luarocks.org) and MoonRocks).
 We have been able to write in Lua for the web for years and now we can find a large number of tools available. 
 You can write in Lua for major webservers such as [Apache](http://modlua.org/) and [Nginx/OpenResty](https://openresty.org/) ([top 2 web servers used](http://w3techs.com/technologies/overview/web_server/all)), and also others such as [Lighttpd](https://www.lighttpd.net/) and pure Lua stand-alone servers like [Xavante](http://keplerproject.github.io/xavante/) or [Pegasus](https://github.com/EvandroLG/pegasus.lua).
-Highlights go to Nginx server, which allows to develop blazing fast non-blocking asynchronousapps written in a sequential fashion keeping the event-driven logic hidden inside Nginx. 
+Highlights go to Nginx server, which allows to develop blazing fast non-blocking asynchronous apps written in a sequential fashion keeping the event-driven logic hidden inside Nginx. 
 
-There are also many frameworks available, which this post aims to compare. I am myself the lead developer of one them (Sailor) and I haven't developed using all the options I'm listing, but I hope this is a fairly decent comparison. 
+There are also many frameworks available, which this post aims to compare. I am myself the lead developer of one of them (Sailor) and I haven't developed using all the options I'm listing, but I hope this is a fairly decent comparison. 
 You can make a [pull request to this article](https://github.com/Etiene/lua.space/blob/master/posts/webdev/the-best-lua-web-frameworks.md) to make it better.
 
 Something important to note, there is one advantage that is not listed because it applies to all of them, which is the good performance and small footprint. This is even more enhanced on tools that support LuaJIT.
@@ -107,11 +107,11 @@ Orbit is maybe the oldest and most stable framework written for Lua developed by
  - It's being used in production by a number of projects
  - Clear documentation
  - Well supported by the Lua community, questions about it on the Lua list will most likely be answered
+
 **Cons:**
 
  - Does not run on a big variety of web servers
  - The development seems fairly abandoned with no recent updates
- - Not known outside the Lua community
  - Compatible with Lua 5.1 only
 
 ##Event-driven frameworks
@@ -294,3 +294,6 @@ Sputnik is an extensible Wiki
   </tr>
 </table>
 </center>
+
+###Extra
+My talk on web development in Lua and a Sailor introduction during CodingSerbia 2015: [Link](https://www.youtube.com/watch?v=JGPvM-50bOk)

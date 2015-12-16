@@ -86,6 +86,14 @@
             </div>  
         </div>
     </header><!--//header-->
+
+    <section id="news" class="news section">
+        <div class="container">
+            <div class="news-inner">
+            <strong>Important News:</strong> 11/12/2015 - <a href="http://lua.space/general/blog-opening-and-contribution-guide">Blog opening and contribution guide</a>
+            </div>
+        </div>
+    </section>
     
 
     <!-- ******DOCS****** --> 

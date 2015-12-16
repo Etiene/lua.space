@@ -41,6 +41,14 @@ local authors = {
 
 return {
 	{
+		page_title = 'The Best Lua Web Frameworks', -- Post and page title
+		short_url = 'the-best-lua-web-frameworks', -- Short url and same as md file name
+		category = 'webdev', -- folder of where it's in
+		date = 'Dec 16 2015 15:49', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.etiene
+	},
+	{
 		page_title = 'Introducing Lua Templates', -- Post and page title
 		short_url = 'introducing-lua-templates', -- Short url and same as md file name
 		category = 'webdev', -- folder of where it's in

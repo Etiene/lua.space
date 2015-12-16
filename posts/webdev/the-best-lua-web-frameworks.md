@@ -12,10 +12,10 @@ This blog itself is also running on Lua.
   
 
 <center>
-<img src="/pub/img/taobao.png" height="100px"/>
-<img src="/pub/img/shopify.png" height="100px"/>
-<img src="/pub/img/mashape.png" height="100px"/>
-<img src="/pub/img/wikipedia.jpg" height="100px"/>
+<img src="http://lua.space/pub/img/taobao.png" height="100px"/>
+<img src="http://lua.space/pub/img/shopify.png" height="100px"/>
+<img src="http://lua.space/pub/img/mashape.png" height="100px"/>
+<img src="http://lua.space/pub/img/wikipedia.jpg" height="100px"/>
 </center>
   
 

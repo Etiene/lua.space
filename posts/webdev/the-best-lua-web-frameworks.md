@@ -1,9 +1,9 @@
-## Why using Lua in web development
+## Why use Lua in web development
 
 Lua is an easy and elegant programming language that is recorded as the fastest interpreted language on many benchmarks and proven success in other domains of development such as games and embedded systems. 
 It has good language semantics, awesome documentation, it is very readable and has very powerful mechanisms such as metatables, proper tail calls and many other features that are worth taking a look.
 It's a great technical candidate for being a PHP replacement. Lua is being used in production for web development for a long time with success by websites such as [TaoBao](https://en.wikipedia.org/wiki/Taobao), 
-a chinese online shopping website that [ranks 11 globally on Alexa](http://www.alexa.com/siteinfo/taobao.com) with over 760 million product listings, [Cloudfare](https://www.cloudflare.com/), 
+a chinese online shopping website that [ranks 11 globally on Alexa](http://www.alexa.com/siteinfo/taobao.com) with over 760 million product listings, [Cloudflare](https://www.cloudflare.com/), 
 [Rackspace](http://www.rackspace.com/), [itch.io](http://itch.io/), [mail.ru](http://mail.ru), 
 [Mashape/Kong](http://blog.mashape.com/kong-architectural-choices-the-api-layer-for-microservices/), 
 [Shopify](https://www.shopify.com/technology/17605604-announcing-go-lua) and others. 
@@ -25,7 +25,7 @@ PHP is pervasive and there are many tools and tutorials written for it, so the d
 However, the landscape for Lua is changing and now the ecosystem is growing rapidly (a feat I partially attritube to the merge of [LuaRocks](http://luarocks.org) and MoonRocks).
 We have been able to write in Lua for the web for years and now we can find a large number of tools available. 
 You can write in Lua for major webservers such as [Apache](http://modlua.org/) and [Nginx/OpenResty](https://openresty.org/) ([top 2 web servers used](http://w3techs.com/technologies/overview/web_server/all)), and also others such as [Lighttpd](https://www.lighttpd.net/) and pure Lua stand-alone servers like [Xavante](http://keplerproject.github.io/xavante/) or [Pegasus](https://github.com/EvandroLG/pegasus.lua).
-Highlights go to Nginx server, which allows to develop blazing fast non-blocking asynchronous apps written in a sequential fashion keeping the event-driven logic hidden inside Nginx. 
+Highlights go to Nginx server, which allows to develop blazing fast non-blocking asynchronous apps written in a sequential fashion keeping the event-driven logic hidden inside Nginx (no callback hell). 
 
 There are also many frameworks available, which this post aims to compare. I am myself the lead developer of one of them (Sailor) and I haven't developed using all the options I'm listing, but I hope this is a fairly decent comparison. 
 You can make a [pull request to this article](https://github.com/Etiene/lua.space/blob/master/posts/webdev/the-best-lua-web-frameworks.md) to make it better.
@@ -204,7 +204,7 @@ LuaPress is a static blog generator
 
  - LuaRocks install
  - Modern, fresh and in active development
- - Stable and version
+ - Stable and well tested version
  - Nice template system, supports mustache and markdown
  - Reasonable documentation
  - Seems to be compatible with all Lua verions >= 5.1

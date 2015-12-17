@@ -37,9 +37,27 @@ local authors = {
 		github = 'http://github.com/undefdev',
 		facebook = nil,
 	},
+	forkfork = {
+		name = 'forkfork',
+		picture = nil,
+		description = nil,
+		website = nil,
+		twitter = nil,
+		github = nil,
+		linkedin = nil,
+		facebook = nil,
+	},
 }
 
 return {
+  {
+		page_title = 'Lua in the Enterprise', -- Post and page title
+		short_url = 'lua-in-the-enterprise', -- Short url and same as md file name
+		category = 'luaenterprise', -- folder of where it's in
+		date = 'Dec 17 2015 18:00', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.forkfork
+	},
 	{
 		page_title = 'The Best Lua Web Frameworks', -- Post and page title
 		short_url = 'the-best-lua-web-frameworks', -- Short url and same as md file name

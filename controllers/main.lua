@@ -116,5 +116,16 @@ function main.about(page)
 	page:render('about',{categories = categories})
 end
 
+function main.archive(page)
+	local posts = require "posts.posts_meta"
+	local categories = get_categories()
+
+	for _,p in pairs(posts) do
+		p.url = sailor.conf.app_url..p.category.."/"..p.short_url
+		p.category = p.category:gsub("^%l", string.upper)
+	end
+
+	page:render('archive',{posts = posts, categories = categories})
+end
 
 return main

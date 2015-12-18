@@ -19,6 +19,9 @@ RewriteRule ^([^/]+)/([^./]+)/?$ /index.lua?r=main/post&c=$1&t=$2 [L]
 #ABOUT PAGE
 RewriteRule ^about[/]?$ /index.lua?r=main/about [L]
 
+#ARCHIVE PAGE
+RewriteRule ^archive[/]?$ /index.lua?r=main/archive [L]
+
 #MAIN PAGE WITH PAGINATION
 RewriteRule ^([0-9]+)/?$ /index.lua?r=main&p=$1 [L]
 

@@ -75,6 +75,7 @@
                                   <?lua end ?>
                                 </ul>
                               </li>
+                            <li class="nav-item"><a href="/archive">Archive</a></li>
                         </ul><!--//nav-->
                     </div><!--//navabr-collapse-->
                 </nav><!--//main-nav-->

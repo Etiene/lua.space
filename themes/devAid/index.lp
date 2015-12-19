@@ -80,7 +80,7 @@
                     </div><!--//navabr-collapse-->
                 </nav><!--//main-nav-->
             </div>
-            <div class="logo-subtitle center-block">
+            <div id="blog-subtitle" class="logo-subtitle center-block">
                 <a href="/">
                     The Lua Community Blog
                 </a>

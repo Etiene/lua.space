@@ -37,9 +37,26 @@ local authors = {
 		github = 'http://github.com/undefdev',
 		facebook = nil,
 	},
+	karai = {
+		name = 'Landon Manning',
+		picture = 'https://avatars2.githubusercontent.com/u/590332',
+		description = 'Landon "Karai" Manning is an independent game developer from Nova Scotia, Canada.',
+		website = 'http://landonmanning.com/',
+		twitter = 'http://twitter.com/landoonmanning',
+		github = 'http://github.com/karai17',
+		facebook = nil,
+	},
 }
 
 return {
+	{
+		page_title = 'Using Tiled Maps in LÖVE', -- Post and page title
+		short_url = 'using-tiled-maps-in-love', -- Short url and same as md file name
+		category = 'gamedev', -- folder of where it's in
+		date = 'Dec 21 2015 07:08', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.karai
+	},
 	{
 		page_title = 'The Best Lua Web Frameworks', -- Post and page title
 		short_url = 'the-best-lua-web-frameworks', -- Short url and same as md file name

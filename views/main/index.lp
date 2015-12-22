@@ -1,7 +1,7 @@
 <?lua
 	for _,post in ipairs(posts) do
 ?>	
-		<h1><a href="<%=post.url%>"><%=post.page_title%></a></h1>
+		<h1><a href="<%=post.url%>"><div class="post-title"><%=post.page_title%></div></a></h1>
 		<small>
 			By <%=post.author.name%> 
 			<i class="glyphicon glyphicon-dashboard" style="margin-left: 8px" ></i> <%=post.date%> 
@@ -27,3 +27,26 @@
     <?lua end?>
   </ul>
 </nav>
+
+<?lua@client
+local last_scroll_pos
+local subtitle = window.document:getElementById("blog-subtitle")
+
+window.onscroll = function (oEvent) 
+  local title_divs = window.document:getElementsByClassName("post-title")
+  local scroll_pos = window.document:getElementsByTagName("body")[0].scrollTop
+  if scroll_pos>last_scroll_pos then -- Going down
+  	
+  	for i=0,title_divs.length-1 do
+	    local post_position = title_divs[i].offsetTop
+	    if scroll_pos >= post_position then
+	    	subtitle.innerHTML = title_divs[i].innerHTML
+	    end
+	    	
+    end
+  else -- Going up
+  	subtitle.innerHTML = '<a href="/">The Lua Community Blog</a>';
+  end
+  last_scroll_pos = scroll_pos
+end
+?>

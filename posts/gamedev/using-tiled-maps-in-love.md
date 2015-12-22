@@ -72,12 +72,14 @@ It is worth noting here that Tiled supports adding custom properties to any obje
 		end
 
 		-- Create player object
-		layer.player        = {}
-		layer.player.sprite = love.graphics.newImage("sprite.png")
-		layer.player.x      = player.x
-		layer.player.y      = player.y
-		layer.player.ox     = layer.player.sprite:getWidth() / 2
-		layer.player.oy     = layer.player.sprite:getHeight() / 1.35
+		local sprite = love.graphics.newImage("sprite.png")
+		layer.player = {
+			sprite = sprite,
+			x      = player.x,
+			y      = player.y,
+			ox     = sprite:getWidth() / 2,
+			oy     = sprite:getHeight() / 1.35
+		}
 	end
 
 With our player object created, we want to draw it on screen. Every layer in STI has its own `update` and `draw` callback functions that can be overridden if necessary. Each layer type has a default callback that can be accessed through STI's API except `Custom Layers` which have empty callbacks. To get our player to draw, we are going to need to override our new layer's `draw` callback.
@@ -101,12 +103,14 @@ We are also going to want to remove our old `Object Layer` since we've extracted
 		end
 
 		-- Create player object
-		layer.player        = {}
-		layer.player.sprite = love.graphics.newImage("sprite.png")
-		layer.player.x      = player.x
-		layer.player.y      = player.y
-		layer.player.ox     = layer.player.sprite:getWidth() / 2
-		layer.player.oy     = layer.player.sprite:getHeight() / 1.35
+		local sprite = love.graphics.newImage("sprite.png")
+		layer.player = {
+			sprite = sprite,
+			x      = player.x,
+			y      = player.y,
+			ox     = sprite:getWidth() / 2,
+			oy     = sprite:getHeight() / 1.35
+		}
 
 		-- Draw player
 		layer.draw = function(self)
@@ -154,12 +158,14 @@ In our player controller, we will be overriding the `layer.update` callback to d
 		end
 
 		-- Create player object
-		layer.player        = {}
-		layer.player.sprite = love.graphics.newImage("sprite.png")
-		layer.player.x      = player.x
-		layer.player.y      = player.y
-		layer.player.ox     = layer.player.sprite:getWidth() / 2
-		layer.player.oy     = layer.player.sprite:getHeight() / 1.35
+		local sprite = love.graphics.newImage("sprite.png")
+		layer.player = {
+			sprite = sprite,
+			x      = player.x,
+			y      = player.y,
+			ox     = sprite:getWidth() / 2,
+			oy     = sprite:getHeight() / 1.35
+		}
 
 		-- Add controls to player
 		layer.update = function(self, dt)
@@ -229,7 +235,7 @@ And there we have it, our player can walk around the world and always remain in 
 
 	function love.draw()
 		-- Scale world
-		local scale = 1
+		local scale = 2
 		local screen_width = love.graphics.getWidth() / scale
 		local screen_height = love.graphics.getHeight() / scale
 
@@ -270,12 +276,14 @@ Alright, now let's put it all together and see what we've got!
 		end
 
 		-- Create player object
-		layer.player        = {}
-		layer.player.sprite = love.graphics.newImage("sprite.png")
-		layer.player.x      = player.x
-		layer.player.y      = player.y
-		layer.player.ox     = layer.player.sprite:getWidth() / 2
-		layer.player.oy     = layer.player.sprite:getHeight() / 1.35
+		local sprite = love.graphics.newImage("sprite.png")
+		layer.player = {
+			sprite = sprite,
+			x      = player.x,
+			y      = player.y,
+			ox     = sprite:getWidth() / 2,
+			oy     = sprite:getHeight() / 1.35
+		}
 
 		-- Add controls to player
 		layer.update = function(self, dt)
@@ -333,7 +341,7 @@ Alright, now let's put it all together and see what we've got!
 
 	function love.draw()
 		-- Scale world
-		local scale = 1
+		local scale = 2
 		local screen_width = love.graphics.getWidth() / scale
 		local screen_height = love.graphics.getHeight() / scale
 

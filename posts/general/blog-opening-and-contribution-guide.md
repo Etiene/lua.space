@@ -2,7 +2,7 @@
 It's always very difficult to write the opening post of a blog, but I guess I should start by how the idea of creating this blog came up. It all started after I read a blog post on [Model View Culture](https://modelviewculture.com) called [C is Manly, Python is for “n00bs”: How False Stereotypes Turn Into Technical “Truths”](https://modelviewculture.com/pieces/c-is-manly-python-is-for-n00bs-how-false-stereotypes-turn-into-technical-truths). It tells us how myths and stereotypes about programming languages damage our area as developers. Beliefs of what are "toy languages" as opposed to "real languages" are often nothing more than social constructs. This stops significant technology of getting widespread, demotivates excellent developers and proliferates cargo-cult programming. 
 
 <center>
-![you only have to pick one, not really](http://lua.space/pub/post_img/pick_one.png)
+<img class="img-responsive"  alt="you only have to pick one, not really" src="http://lua.space/pub/post_img/pick_one.png"/>
 </center>
 
 <center>

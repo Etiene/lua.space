@@ -2,7 +2,7 @@ This tutorial will show you how to set up your very own 2D world using only free
 
 To begin, we want to create a simple map using Tiled. You can create your own tile atlas using any image editor, or download a free one from [Open Game Art](http://opengameart.org/). In my example map, I have created a map with several tile layers and a single object layer with an object named "Player". This object will be used later on to spawn our player so make sure you create and name at least one object.
 
-![Tiled map editor](../../pub/img/using-tiled-maps-in-love/tiled-01.png)
+<img alt="Tiled map editor" class="img-responsive" src="../../pub/img/using-tiled-maps-in-love/tiled-01.png" />
 
 With our map created, we want to export it as a Lua file by clicking `File > Export` or by pressing `ctrl+E` and selecting `Lua files (*.lua)`. It is worth noting that Tiled's default compression method is `Base64`. If you are using a version of LÖVE prior to 0.10, you will need to make sure that the map compression is set to `CSV`. It is also worth noting that Tiled formats image paths relative to the map's location. You need to make sure that you save your map in the same directory structure that your game will be loading with, or else you might have trouble loading your map.
 
@@ -37,7 +37,7 @@ With our skeleton made, we want to import the STI module, load the map, and get 
 		map:draw()
 	end
 
-![STI rendering a map](../../pub/img/using-tiled-maps-in-love/tiled-02.png)
+<img class="img-responsive"  alt="STI rendering a map" src="../../pub/img/using-tiled-maps-in-love/tiled-02.png"/>
 
 Amazing! We added just four lines of code and now our map is being drawn! But hey, what is that ugly box? That is our `Player` object that we created. Obviously we don't want that to be a box so let's create a player object.
 
@@ -135,7 +135,7 @@ We are also going to want to remove our old `Object Layer` since we've extracted
 		map:removeLayer("Spawn Point")
 	end
 
-![Player sprite being rendered on map](../../pub/img/using-tiled-maps-in-love/tiled-03.png)
+<img class="img-responsive"  alt="Player sprite being rendered on map" src="../../pub/img/using-tiled-maps-in-love/tiled-03.png"/>
 
 Whoa, there it is! Our player sprite! "But wait!" you might be saying, "you said this data was dynamic! Our object is just sitting there!". Well, you're right. This is a player object and we need to give it some controls. I am going to ignore the great advice from a [previous](http://lua.space/gamedev/handling-input-in-lua) Lua Space article for the sake of simplicity, but I do not recommend writing player controller code like this. Definitely check that article out!
 
@@ -229,7 +229,7 @@ Cool, we can now move our player around the screen! But that's only half the bat
 		map:draw()
 	end
 
-![Player sprite always rendered in the centre of screen](../../pub/img/using-tiled-maps-in-love/tiled-04.png)
+<img class="img-responsive"  alt="Player sprite always rendered in the centre of screen" src="../../pub/img/using-tiled-maps-in-love/tiled-04.png"/>
 
 And there we have it, our player can walk around the world and always remain in the centre of our screen. We can also scale our world so that players using screens with different resolutions all see the same stuff instead of maybe having an advantage because your screen resolution is larger than someone else's, or having graphical glitches, or any other issue that could arise.
 
@@ -252,7 +252,7 @@ And there we have it, our player can walk around the world and always remain in 
 		map:draw()
 	end
 
-![World being rendered at 2x scale](../../pub/img/using-tiled-maps-in-love/tiled-05.png)
+<img class="img-responsive"  alt="World being rendered at 2x scale" src="../../pub/img/using-tiled-maps-in-love/tiled-05.png"/>
 
 Alright, now let's put it all together and see what we've got!
 

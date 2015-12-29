@@ -50,6 +50,14 @@ local authors = {
 
 return {
 	{
+		page_title = 'Community news #1 and meetup at FOSDEM', -- Post and page title
+		short_url = 'community-news-1-and-meetup-at-fosdem', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Dec 29 2015 13:29', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.etiene
+	},
+	{
 		page_title = 'Using Tiled Maps in LÖVE', -- Post and page title
 		short_url = 'using-tiled-maps-in-love', -- Short url and same as md file name
 		category = 'gamedev', -- folder of where it's in

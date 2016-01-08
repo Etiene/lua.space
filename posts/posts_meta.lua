@@ -42,7 +42,7 @@ local authors = {
 		picture = 'https://avatars2.githubusercontent.com/u/590332',
 		description = 'Landon "Karai" Manning is an independent game developer from Nova Scotia, Canada.',
 		website = 'http://landonmanning.com/',
-		twitter = 'http://twitter.com/landoonmanning',
+		twitter = 'http://twitter.com/landonmanning',
 		github = 'http://github.com/karai17',
 		facebook = nil,
 	},

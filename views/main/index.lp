@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<div class="read-more-div">
-			<a href="/<%=post.url%>" class="btn btn-info">Read more...</a>
+			<a href="<%=post.url%>" class="btn btn-info">Read more...</a>
 		</div>
 		<br/>
 <?lua end

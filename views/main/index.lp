@@ -1,3 +1,38 @@
+<style>
+.post-container{
+	height: 300px;
+	position: relative;
+}
+.post-body-index{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+	width: 100%;
+	height: 300px;
+	padding: 5px;
+}
+.post-body-index-shadow{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	top: 0px;
+	left: 0px;
+	background: linear-gradient(rgba(255,255,255,0.3) 50%, #dfdfdf 95%, #ddd 95%);
+	border-radius: 10px;
+	z-index: 10;
+	opacity: 0.5;
+}
+.read-more-div{
+	position: relative;
+	width: 125px;
+	margin: 0 auto;
+	top: 10px;
+}
+
+</style>
+
 <?lua
 	for _,post in ipairs(posts) do
 ?>	
@@ -11,8 +46,15 @@
 			<a href="<%=post.url%>#disqus_thread" data-disqus-identifier="<%=post.category%>/<%=post.short_url%>">Comments</a>
 		</small>
 		<hr/>
-		<%=post.body%>
-
+		<div class="post-container">
+			<div class="post-body-index-shadow"></div>
+			<div class="post-body-index">
+				<%=post.body%>
+			</div>
+		</div>
+		<div class="read-more-div">
+			<a href="/<%=post.url%>" class="btn btn-info">Read more...</a>
+		</div>
 		<br/>
 <?lua end
 ?>

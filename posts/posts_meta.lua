@@ -46,9 +46,26 @@ local authors = {
 		github = 'http://github.com/karai17',
 		facebook = nil,
 	},
+	israel = {
+		name = 'Israel Sotomayor',
+		picture = 'https://avatars2.githubusercontent.com/u/678498',
+		description = 'Software developer at Moltin',
+		website = 'zot24.com',
+		twitter = 'http://twitter.com/zot24',
+		github = 'http://github.com/zot24',
+		facebook = nil,
+	}
 }
 
 return {
+	{
+		page_title = 'OAuth2 Authentication with Lua', -- Post and page title
+		short_url = 'oauth2-authentication-with-lua', -- Short url and same as md file name
+		category = 'webdev', -- folder of where it's in
+		date = 'Jan 14 2016 14:50', -- Just for printing, ordering is done by this table order
+		reblogged_from = 'https://moltin.com/blog/2016/01/oauth2-authentication-with-lua', -- [string] URL if this was posted somewhere else first
+		author = authors.israel
+	},
 	{
 		page_title = 'Community news #1 and meetup at FOSDEM', -- Post and page title
 		short_url = 'community-news-1-and-meetup-at-fosdem', -- Short url and same as md file name
@@ -90,7 +107,6 @@ return {
 		author = authors.undef
 	},
 	{
-
 		page_title = 'Blog opening and contribution guide!', -- Post and page title
 		short_url = 'blog-opening-and-contribution-guide', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in

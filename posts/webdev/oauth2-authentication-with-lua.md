@@ -1,8 +1,8 @@
 Just to clarify, this won't be a detailed technical guide about how you can build your own authentication layer using [OpenResty](https://openresty.org) + [Lua](http://www.lua.org), rather it is a document explaining the process behind the solution.
 
-This is a real example of how our API has come to rely on OpenResty + Lua to handle our oauth2 authentication for all users.
+This is a real example of how [moltin](https://moltin.com)'s API has come to rely on OpenResty](https://openresty.org) + [Lua](http://www.lua.org) to handle our oauth2 authentication for all users.
 
-The logic used to authenticate a user was originally embedded into our API, built using the PHP Framework [Laravel](https://laravel.com/). This means a lot of code had to be booted before we could authenticate, reject or validate a user request resulting in a high latency.
+The logic used to authenticate a user was originally embedded into [moltin](https://moltin.com)'s API, built using the PHP Framework [Laravel](https://laravel.com/). This means a lot of code had to be booted before we could authenticate, reject or validate a user request resulting in a high latency.
 
 I'm not going to give details about how much time a PHP Framework could take to give a basic response, but if we compare it to other languages/frameworks, you can probably understand.
 
@@ -36,7 +36,7 @@ We followed the concept behind [Kong](https://github.com/Mashape/kong), who use 
 
 ### Infrastructure
 
-Below is how our infrastructure currently looks:
+Below is how [moltin](https://moltin.com)'s infrastructure currently looks:
 
 ![](https://moltin.com/files/large/67b084c60b6d0ff)
 

@@ -8,20 +8,20 @@ I'm not going to give details about how much time a PHP Framework could take to 
 
 This is roughly how it looked at that time:
 
-```php
-...
-public function filter($route, $request) {
-    try {
-        // Initiate the Request handler
-        $this->request = new OAuthRequest;
-        // Initiate the auth server with the models
-        $this->server  = new OAuthResource(new OAuthSession);
- 		// Is it a valid token?   
-        if ($this->accessTokenValid() == false) {
-            throw new InvalidAccessTokenException('Unable to validate access token');
-        }
-...
-```
+
+    ...
+    public function filter($route, $request) {
+        try {
+            // Initiate the Request handler
+            $this->request = new OAuthRequest;
+            // Initiate the auth server with the models
+            $this->server  = new OAuthResource(new OAuthSession);
+     		// Is it a valid token?   
+            if ($this->accessTokenValid() == false) {
+                throw new InvalidAccessTokenException('Unable to validate access token');
+            }
+    ...
+
 
 So we decided to move all logic one layer up to [OpenResty](https://openresty.org) + [Lua](http://www.lua.org) which achieved the following:
 
@@ -38,7 +38,9 @@ We followed the concept behind [Kong](https://github.com/Mashape/kong), who use 
 
 Below is how [moltin](https://moltin.com)'s infrastructure currently looks:
 
-![](https://moltin.com/files/large/67b084c60b6d0ff)
+<center>
+<img class="img-responsive" src="https://moltin.com/files/large/67b084c60b6d0ff"/>
+</center>
 
 * OpenResty (Nginx)
 * Lua scripts
@@ -48,27 +50,29 @@ Below is how [moltin](https://moltin.com)'s infrastructure currently looks:
 
 This is the bit that rules them all.
 
-![](https://moltin.com/files/large/8b359a7b2bad55a)
+<center>
+<img class="img-responsive" src="https://moltin.com/files/large/8b359a7b2bad55a"/>
+</center>
 
 We have routing in place to process each of the different user's requests as you can see below:
 
 **nginx.conf**
-```script
-location ~/oauth/access_token {
-	...
-}
-location /v1 {
-	...
-}
-```
+
+    location ~/oauth/access_token {
+    	...
+    }
+    location /v1 {
+    	...
+    }
+
 
 So for each of those endpoints we have to:
 
 * check the authentication access token
 * get the authentication access token
 
-```script
-...
+<pre>
+<code>...
 location ~/oauth/access_token {
     content_by_lua_file "/opt/openresty/nginx/conf/oauth/get_oauth_access.lua";
     ...
@@ -79,7 +83,8 @@ location /v1 {
    ...
 }
 ...
-```
+</code>
+</pre>
 
 We make use of the OpenResty directives [content_by_lua_file](https://github.com/openresty/lua-nginx-module#content_by_lua_file) and [access_by_lua_file](https://github.com/openresty/lua-nginx-module#access_by_lua_file).
 
@@ -87,57 +92,57 @@ We make use of the OpenResty directives [content_by_lua_file](https://github.com
 
 This is where all the magic happens. We have two scripts to do this:
 
-**get_oauth_access.lua**
-```lua
-...
-ngx.req.read_body()
-args, err = ngx.req.get_post_args()
+**get\_oauth\_access.lua**
 
--- If we don't get any post data fail with a bad request
-if not args then
-    return api:respondBadRequest()
-end
+    ...
+    ngx.req.read_body()
+    args, err = ngx.req.get_post_args()
 
--- Check the grant type and pass off to the correct function
--- Or fail with a bad request
-for key, val in pairs(args) do
-    if key == "grant_type" then
-        if val == "client_credentials" then
-            ClientCredentials.new(args)
-        elseif val == "password" then
-            Password.new(args)
-        elseif val == "implicit" then
-            Implicit.new(args)
-        elseif val == "refresh_token" then
-            RefreshToken.new(args)
-        else
-            return api:respondForbidden()
+    -- If we don't get any post data fail with a bad request
+    if not args then
+        return api:respondBadRequest()
+    end
+
+    -- Check the grant type and pass off to the correct function
+    -- Or fail with a bad request
+    for key, val in pairs(args) do
+        if key == "grant_type" then
+            if val == "client_credentials" then
+                ClientCredentials.new(args)
+            elseif val == "password" then
+                Password.new(args)
+            elseif val == "implicit" then
+                Implicit.new(args)
+            elseif val == "refresh_token" then
+                RefreshToken.new(args)
+            else
+                return api:respondForbidden()
+            end
         end
     end
-end
 
-return api:respondOk()
-...
-```
+    return api:respondOk()
+    ...
 
-**check_oauth_access.lua**
-```lua
-...
-local authorization, err = ngx.req.get_headers()["authorization"]
 
--- If we have no access token forbid the beasts
-if not authorization then
-    return api:respondUnauthorized()
-end
+**check\_oauth\_access.lua**
 
--- Check for the access token
-local result = oauth2.getStoredAccessToken(token)
+    ...
+    local authorization, err = ngx.req.get_headers()["authorization"]
 
-if result == false then
-    return api:respondUnauthorized()
-end
-...
-```
+    -- If we have no access token forbid the beasts
+    if not authorization then
+        return api:respondUnauthorized()
+    end
+
+    -- Check for the access token
+    local result = oauth2.getStoredAccessToken(token)
+
+    if result == false then
+        return api:respondUnauthorized()
+    end
+    ...
+
 
 #### Caching Layer
 

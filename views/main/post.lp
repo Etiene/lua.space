@@ -4,6 +4,9 @@
 	<i class="glyphicon glyphicon-dashboard" style="margin-left: 8px" ></i> <%=post.date%> 
 	<i class="glyphicon glyphicon-tag" style="margin-left: 8px" ></i> 
 	<a href="/<%=post.category%>"><%=(post.category:gsub("^%l", string.upper))%></a>
+	<?lua if post.reblogged_from ~= nil then ?>
+	 	<i class="fa fa-external-link" style="margin-left: 8px" ></i> <a href="<%=post.reblogged_from %>" target="_blank">Reblogged</a>
+	<?lua end ?> 
 	<i class="glyphicon glyphicon-comment" style="margin-left: 8px" ></i> 
 	<a href="<%=post.url%>#disqus_thread" data-disqus-identifier="<%=post.category%>/<%=post.short_url%>">Comments</a>
 </small>

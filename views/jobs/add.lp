@@ -7,6 +7,7 @@
 	<li>All job posts automatically expire after 3 months</li>
 	<li>You can manually remove it before 3 months if you wish</li>
 	<li>You may repost it</li>
+	<li>For the moment, submission is <strong>free</strong> of charge</li>
 </ul>
 
 <?lua if saved == false then ?>

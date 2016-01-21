@@ -1,6 +1,6 @@
 Just to clarify, this won't be a detailed technical guide about how you can build your own authentication layer using [OpenResty](https://openresty.org) + [Lua](http://www.lua.org), rather it is a document explaining the process behind the solution.
 
-This is a real example of how [moltin](https://moltin.com)'s API has come to rely on OpenResty](https://openresty.org) + [Lua](http://www.lua.org) to handle our oauth2 authentication for all users.
+This is a real example of how [moltin](https://moltin.com)'s API has come to rely on [OpenResty](https://openresty.org) + [Lua](http://www.lua.org) to handle our oauth2 authentication for all users.
 
 The logic used to authenticate a user was originally embedded into [moltin](https://moltin.com)'s API, built using the PHP Framework [Laravel](https://laravel.com/). This means a lot of code had to be booted before we could authenticate, reject or validate a user request resulting in a high latency.
 
@@ -86,7 +86,7 @@ location /v1 {
 </code>
 </pre>
 
-We make use of the OpenResty directives [content_by_lua_file](https://github.com/openresty/lua-nginx-module#content_by_lua_file) and [access_by_lua_file](https://github.com/openresty/lua-nginx-module#access_by_lua_file).
+We make use of the OpenResty directives [content\_by\_lua\_file](https://github.com/openresty/lua-nginx-module#content_by_lua_file) and [access\_by\_lua\_file](https://github.com/openresty/lua-nginx-module#access_by_lua_file).
 
 #### Lua Scripts
 

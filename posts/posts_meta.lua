@@ -15,7 +15,7 @@ local authors = {
 		website = 'http://etiene.net',
 		twitter = 'http://twitter.com/etiene_d',
 		github = 'http://github.com/Etiene',
-		linkedin = nil,
+		linkedin = 'https://linkedin.com/in/etienedalcol',
 		facebook = nil,
 	},
 	mbalmer = {
@@ -35,6 +35,7 @@ local authors = {
 		website = 'http://quadrantgame.com/',
 		twitter = 'http://twitter.com/undefdev',
 		github = 'http://github.com/undefdev',
+		linkedin = nil,
 		facebook = nil,
 	},
 	karai = {
@@ -44,6 +45,7 @@ local authors = {
 		website = 'http://landonmanning.com/',
 		twitter = 'http://twitter.com/landonmanning',
 		github = 'http://github.com/karai17',
+		linkedin = nil,
 		facebook = nil,
 	},
 	israel = {
@@ -53,11 +55,30 @@ local authors = {
 		website = 'zot24.com',
 		twitter = 'http://twitter.com/zot24',
 		github = 'http://github.com/zot24',
+		linkedin = nil,
 		facebook = nil,
+	},
+	alex = {
+		name = 'Alex Wiltschko',
+		picture = 'https://pbs.twimg.com/profile_images/1548646247/SkeleTON_200x200.png',
+		description = 'Neuroscience PhD student, Engineer at Twitter Cortex',
+		twitter = 'https://twitter.com/awiltsch',
+		github = 'https://github.com/alexbw',
+		website ='https://www.whetlab.com/',
+		linkedin = nil,
+		facebook = nil
 	}
 }
 
 return {
+	{
+		page_title = 'Autograd for Torch', -- Post and page title
+		short_url = 'autograd-for-torch', -- Short url and same as md file name
+		category = 'science', -- folder of where it's in
+		date = 'Jan 21 2016 19:58', -- Just for printing, ordering is done by this table order
+		reblogged_from = 'https://blog.twitter.com/2015/autograd-for-torch', -- [string] URL if this was posted somewhere else first
+		author = authors.alex
+	},
 	{
 		page_title = 'OAuth2 Authentication with Lua', -- Post and page title
 		short_url = 'oauth2-authentication-with-lua', -- Short url and same as md file name

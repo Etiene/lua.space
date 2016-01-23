@@ -27,7 +27,7 @@
 <span class="red">*</span> Required
 <br/>
 <br/>
-<form method="post">
+<form method="post" id="job_add">
 	<div class="form-group">
 		
 		<div class="form-group">
@@ -40,7 +40,7 @@
 		<span class="help-block"> <%= job.errors.title or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>Location: <span class="red">*</span></label>
+		<label>Location: </label>
 		<%= form.text(job,'location', 'class="form-control" placeholder="Location"') %>
 		<span class="help-block"> <%= job.errors.location or '' %> </span>
 	</div>
@@ -51,7 +51,7 @@
 	</div>
 	<div class="form-group">
 		<label>Employer's website: <span class="red">*</span></label>
-		<%= form.text(job,'employers_website', 'class="form-control" placeholder="http://"') %>
+		<%= form.url(job,'employers_website', 'class="form-control" placeholder="http://"') %>
 		<span class="help-block"> <%= job.errors.employers_website or '' %> </span>
 	</div>
 	<div class="form-group form-inline">
@@ -125,20 +125,65 @@
 		<%= form.textarea(job,'how_to_apply', 'class="form-control big-input" placeholder="Intructions on how to reach you..."') %>
 		<span class="help-block"> <%= job.errors.how_to_apply or '' %> </span>
 	</div>
-	<!--
-	<div class="form-group">
-		<label>approved:</label>
-		<%= form.text(job,'approved', 'class="form-control" placeholder="approved"') %>
-		<span class="help-block"> <%= job.errors.approved or '' %> </span>
-	</div>
-	-->
 	<input type="submit" class="btn btn-primary" value="Submit to approval"/>
 </form>
 <br/>
 <a href="<%= page:make_url('jobs/index') %>"><- Back Job Listing</a>
 
 
+
+
+<script src="pub/js/jquery-1.10.2.min.js"></script>
+<script>function _(selector){
+	return $(selector)
+}
+</script>
+
+<?lua page:to_browser{job_types = job.types} ?>
+
 <?lua@client
+window.extract()
+
+local v = require "valua"
+
+local rules = {
+	email = v:new().not_empty().email(),
+	title = v:new().not_empty().len(10,100),
+	location = v:new().len(0,200),
+	employer = v:new().not_empty().len(1,100),
+	employers_website = v:new().not_empty().len(1,255).match('^http://[%w]+%.[%w]+.*'),
+	description = v:new().not_empty().len(10,2000),
+	skills_required = v:new().len(0,500),
+	skills_desired = v:new().len(0,500),
+	about_company  = v:new().not_empty().len(10,500),
+	benefits = v:new().len(0,500),
+	how_to_apply  = v:new().not_empty().len(10,500),
+	type = v:new().not_empty().in_list(job_types),
+	length = v:new().integer(),
+	salary_range_min = v:new().len(0,50),
+	salary_range_max = v:new().len(0,50),
+}
+
+local function validateInput(attr,input)
+	return function()
+		print(rules[attr](input.value))
+	end
+end
+
+-- Add focus out listeners
+for attr,rule in pairs(rules) do 
+	local input = document:getElementById('job:'..attr)
+	input:addEventListener("focusout", validateInput(attr,input))
+end
+
+local function validateForm()
+	for attr,rule in pairs(rules) do 
+		local input = document:getElementById('job:'..attr)
+		validateInput(attr,input)()
+	end
+end
+
+--validateForm()
 
 
 ?>

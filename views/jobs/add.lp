@@ -29,51 +29,53 @@
 <br/>
 <form method="post" id="job_add">
 	<div class="form-group">
-		
-		<div class="form-group">
-		<label>Email: <span class="red">*</span></label>
-		<%= form.text(job,'email', 'class="form-control" placeholder="a@a.com"') %>
-		<span class="help-block"> <%= job.errors.email or '' %> </span>
+		<label class="control-label">Email: <span class="red">*</span></label>
+		<%= form.email(job,'email', 'class="form-control" placeholder="a@a.com"') %>
+		<span class="help-block" id='job:email:error'> <%= job.errors.email or '' %> </span>
 	</div>
-		<label>Job title: <span class="red">*</span></label>
+	<div class="form-group">
+		<label class="control-label">Job title: <span class="red">*</span></label>
 		<%= form.text(job,'title', 'class="form-control" placeholder="Title"') %>
-		<span class="help-block"> <%= job.errors.title or '' %> </span>
+		<span class="help-block" id='job:title:error'> <%= job.errors.title or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>Location: </label>
+		<label class="control-label">Location: </label>
 		<%= form.text(job,'location', 'class="form-control" placeholder="Location"') %>
-		<span class="help-block"> <%= job.errors.location or '' %> </span>
+		<span class="help-block" id='job:location:error'> <%= job.errors.location or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>Employer name: <span class="red">*</span></label>
+		<label class="control-label">Employer name: <span class="red">*</span></label>
 		<%= form.text(job,'employer', 'class="form-control" placeholder="Employer"') %>
-		<span class="help-block"> <%= job.errors.employer or '' %> </span>
+		<span class="help-block" id='job:employer:error'> <%= job.errors.employer or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>Employer's website: <span class="red">*</span></label>
+		<label class="control-label">Employer's website: <span class="red">*</span></label>
 		<%= form.url(job,'employers_website', 'class="form-control" placeholder="http://"') %>
-		<span class="help-block"> <%= job.errors.employers_website or '' %> </span>
+		<span class="help-block" id='job:employers_website:error'> <%= job.errors.employers_website or '' %> </span>
 	</div>
 	<div class="form-group form-inline">
-		<label class="col-sm-3">Job type: <span class="red">*</span></label>
+		<label class="col-sm-3" class="control-label">Job type: <span class="red">*</span></label>
 		<%= form.dropdown(job,'type', job.formTypes, 'Select job type...', 'class="form-control" placeholder="type"') %>
-		<span class="help-block"> <%= job.errors.type or '' %> </span>
-		<label class="col-sm-3" >Duration:</label>
+		<span class="help-block" id='job:type:error'> <%= job.errors.type or '' %> </span>
+	</div>
+	<div class="form-group form-inline">
+		<label class="col-sm-3" class="control-label">Duration:</label>
 		<div class="input-group">
-			<%= form.text(job,'length', 'class="form-control"') %>
+			<%= form.number(job,'length', 'class="form-control"') %>
 			<div class="input-group-addon">months</div>
 		</div>
-		<span class="help-block"> <%= job.errors.length or '' %> </span>
+		<span class="help-block" id='job:length:error'> <%= job.errors.length or '' %> </span>
 	</div>
 	<div class="form-group form-inline">
-		<label class="col-sm-3">Salary Range:</label>
+		<label class="col-sm-3" class="control-label">Salary Range:</label>
 		<div class="input-group">
 			<div class="input-group-addon">Between</div>
 			<%= form.text(job,'salary_range_min', 'class="form-control" style="width: 100px" placeholder="min"') %>
 			<div class="input-group-addon">and</div>
 			<%= form.text(job,'salary_range_max', 'class="form-control"  style="width: 100px" placeholder="max"') %>
 		</div>
-		<span class="help-block"> <%= job.errors.salary_range_min or '' %> </span>
+		<span class="help-block" id='job:salary_range_min:error'> <%= job.errors.salary_range_min or '' %> </span>
+		<span class="help-block" id='job:salary_range_max:error'> <%= job.errors.salary_range_max or '' %> </span>
 	</div>
 	<div class="checkbox ">
 		<div class="col-sm-1"> </div>
@@ -96,48 +98,40 @@
 	</div>
 	<br/><br/>
 	<div class="form-group">
-		<label>Job description: <span class="red">*</span> (markdown accepted)</label>
+		<label class="control-label">Job description: <span class="red">*</span> (markdown accepted)</label>
 		<%= form.textarea(job,'description', 'class="form-control big-input" placeholder="Job description..."') %>
-		<span class="help-block"> <%= job.errors.description or '' %> </span>
+		<span class="help-block" id='job:description:error'> <%= job.errors.description or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>Skills required: (markdown accepted) </label>
+		<label class="control-label">Skills required: (markdown accepted) </label>
 		<%= form.textarea(job,'skills_required', 'class="form-control big-input" placeholder="Requirements..."') %>
-		<span class="help-block"> <%= job.errors.skills_required or '' %> </span>
+		<span class="help-block" id='job:skills_required:error'> <%= job.errors.skills_required or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>Skills desired: (markdown accepted)</label>
+		<label class="control-label">Skills desired: (markdown accepted)</label>
 		<%= form.textarea(job,'skills_desired', 'class="form-control big-input" placeholder="Bonus points..."') %>
-		<span class="help-block"> <%= job.errors.skills_desired or '' %> </span>
+		<span class="help-block" id='job:skills_desired:error'> <%= job.errors.skills_desired or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>About the company: <span class="red">*</span> (markdown accepted)</label>
+		<label class="control-label">About the company: <span class="red">*</span> (markdown accepted)</label>
 		<%= form.textarea(job,'about_company', 'class="form-control big-input" placeholder="Tells us a little about you..."') %>
-		<span class="help-block"> <%= job.errors.about_company or '' %> </span>
+		<span class="help-block" id='job:about_company:error'> <%= job.errors.about_company or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>Benefits: (markdown accepted)</label>
+		<label class="control-label">Benefits: (markdown accepted)</label>
 		<%= form.textarea(job,'benefits', 'class="form-control big-input" placeholder="What are the perks?"') %>
-		<span class="help-block"> <%= job.errors.benefits or '' %> </span>
+		<span class="help-block" id='job:benefits:error'> <%= job.errors.benefits or '' %> </span>
 	</div>
 	<div class="form-group">
-		<label>How to apply: <span class="red">*</span> (markdown accepted)</label>
+		<label class="control-label">How to apply: <span class="red">*</span> (markdown accepted)</label>
 		<%= form.textarea(job,'how_to_apply', 'class="form-control big-input" placeholder="Intructions on how to reach you..."') %>
-		<span class="help-block"> <%= job.errors.how_to_apply or '' %> </span>
+		<span class="help-block" id='job:how_to_apply:error'> <%= job.errors.how_to_apply or '' %> </span>
 	</div>
 	<input type="submit" class="btn btn-primary" value="Submit to approval"/>
 </form>
 <br/>
 <a href="<%= page:make_url('jobs/index') %>"><- Back Job Listing</a>
 
-
-
-
-<script src="pub/js/jquery-1.10.2.min.js"></script>
-<script>function _(selector){
-	return $(selector)
-}
-</script>
 
 <?lua page:to_browser{job_types = job.types} ?>
 
@@ -150,7 +144,7 @@ local rules = {
 	email = v:new().not_empty().email(),
 	title = v:new().not_empty().len(10,100),
 	location = v:new().len(0,200),
-	employer = v:new().not_empty().len(1,100),
+	employer = v:new().not_empty().len(5,100),
 	employers_website = v:new().not_empty().len(1,255).match('^http://[%w]+%.[%w]+.*'),
 	description = v:new().not_empty().len(10,2000),
 	skills_required = v:new().len(0,500),
@@ -164,9 +158,23 @@ local rules = {
 	salary_range_max = v:new().len(0,50),
 }
 
+
 local function validateInput(attr,input)
 	return function()
-		print(rules[attr](input.value))
+		local check,msg = rules[attr](input.value)
+		local parent = input.parentNode
+		local error = document:getElementById('job:'..attr..':error')
+
+		if check then
+			parent.classList:remove('has-error')
+			parent.classList:add('has-success')
+			error.innerHTML = ''
+		else
+			parent.classList:remove('has-success')
+			parent.classList:add('has-error')
+			error.innerHTML = 'Value '..tostring(msg)
+		end
+		return check
 	end
 end
 
@@ -176,14 +184,20 @@ for attr,rule in pairs(rules) do
 	input:addEventListener("focusout", validateInput(attr,input))
 end
 
+local form = document:getElementById('job_add')
 local function validateForm()
+	local check = true
 	for attr,rule in pairs(rules) do 
 		local input = document:getElementById('job:'..attr)
-		validateInput(attr,input)()
+		local val = validateInput(attr,input)()
+		check = check and val
+	end
+	
+	if check == true then
+		form:submit()
 	end
 end
-
---validateForm()
+form.onsubmit = function(event) event:preventDefault() validateForm() end
 
 
 ?>

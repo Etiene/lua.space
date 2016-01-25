@@ -117,7 +117,7 @@ Example: [http://lua.space/gamedev/using-tiled-maps-in-love](http://lua.space/ga
 	* Add code snippets whenever possible
 
 ###English & Grammar
-For the moment, the only language used for posting is English (although we may add more languages in the future). Pay attention to ortography and grammar. If English is not your first language, don't refrain from writing, English is not my first language either. If you are insecure about your English level, once you've written the article on your fork, show it to us, so we can help it out. :)
+For the moment, the only language used for posting is English (although we may add more languages in the future). Pay attention to orthography and grammar. If English is not your first language, don't refrain from writing, English is not my first language either. If you are insecure about your English level, once you've written the article on your fork, show it to us, so we can help it out. :)
 
 ###How articles are accepted
 Once you've created your article on your fork and made a pull request, we will read it and decide how to proceed. If you've read the sections above, you have an idea on what's the scope of this blog. If we think your article is good to go, your PR will be immediately accepted and merged. We might feel something could be improved before publishing, like a section that could be described in more details or an important URL is missing, for example. We will, then, give feedback by commenting on the PR so you can address it. :)

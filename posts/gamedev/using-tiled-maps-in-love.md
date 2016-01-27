@@ -64,7 +64,7 @@ It is worth noting here that Tiled supports adding custom properties to any obje
 
 		-- Get player spawn object
 		local player
-		for i, object in ipairs(map.objects) do
+		for k, object in pairs(map.objects) do
 			if object.name == "Player" then
 				player = object
 				break
@@ -95,7 +95,7 @@ We are also going to want to remove our old `Object Layer` since we've extracted
 
 		-- Get player spawn object
 		local player
-		for i, object in ipairs(map.objects) do
+		for k, object in pairs(map.objects) do
 			if object.name == "Player" then
 				player = object
 				break
@@ -150,7 +150,7 @@ In our player controller, we will be overriding the `layer.update` callback to d
 
 		-- Get player spawn object
 		local player
-		for i, object in ipairs(map.objects) do
+		for k, object in pairs(map.objects) do
 			if object.name == "Player" then
 				player = object
 				break
@@ -169,8 +169,8 @@ In our player controller, we will be overriding the `layer.update` callback to d
 
 		-- Add controls to player
 		layer.update = function(self, dt)
-			-- 72 pixels per second
-			local speed = 72
+			-- 96 pixels per second
+			local speed = 96
 
 			-- Move player up
 			if love.keyboard.isDown("w") or love.keyboard.isDown("up") then
@@ -268,7 +268,7 @@ Alright, now let's put it all together and see what we've got!
 
 		-- Get player spawn object
 		local player
-		for i, object in ipairs(map.objects) do
+		for k, object in pairs(map.objects) do
 			if object.name == "Player" then
 				player = object
 				break
@@ -287,8 +287,8 @@ Alright, now let's put it all together and see what we've got!
 
 		-- Add controls to player
 		layer.update = function(self, dt)
-			-- 72 pixels per second
-			local speed = 72
+			-- 96 pixels per second
+			local speed = 96
 
 			-- Move player up
 			if love.keyboard.isDown("w") or love.keyboard.isDown("up") then

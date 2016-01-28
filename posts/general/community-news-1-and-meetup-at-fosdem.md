@@ -16,7 +16,7 @@ by bundling the standard Nginx core, Lua/LuaJIT, lots of
 3rd-party Nginx modules and Lua libraries, as well as most of their external
 dependencies.
 
-### Dec 23rd - Luamongo 0.50 released
+### Dec 23rd - Luamongo 0.5.0 released
 
 [Source [MIT]](https://github.com/moai/luamongo)
 
@@ -45,7 +45,7 @@ So we decided to open one of them to international members and switch the defaul
 Write down on your calendars: on January 30th 2016 we will be meeting at FOSDEM, where a Lua Dev room will be hosted with great talks, great people and great discussions about what's coming next!
 
 
-<a href="http://fosdem.org"><center><img src="http://fosdem.org/2016/support/promote/wide.png" alt="FOSDEM"/></center></a>
+<a href="http://fosdem.org"><center><img class="img-responsive" src="http://fosdem.org/2016/support/promote/wide.png" alt="FOSDEM"/></center></a>
 
 FOSDEM is a free event for software developers to meet, share ideas and collaborate. It is the biggest FOSS event in Europe with over 400 lectures and over 5000 participants! 
 It will be held at Brussels, Belgium, on January 30th-31st 2016. 

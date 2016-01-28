@@ -19,7 +19,7 @@
 
 <h2>Maintainer</h2>
 <ul>
-	<li><a href="http://etiene.net">Etiene Dalcol</a> - <a href="http://sailorproject.org">Sailor Framework</a></li>
+	<li><a href="https://twitter.com/etiene_d">Etiene Dalcol</a> - <a href="http://sailorproject.org">Sailor Framework</a></li>
 </ul>
 
 <h2>Contributors</h2>

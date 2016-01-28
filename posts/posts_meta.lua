@@ -72,6 +72,14 @@ local authors = {
 
 return {
 	{
+		page_title = 'Contributing to Lua.Space', -- Post and page title
+		short_url = 'contributing-to-lua-space', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Jan 28 2016 8:17', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.etiene
+	},
+	{
 		page_title = 'Autograd for Torch', -- Post and page title
 		short_url = 'autograd-for-torch', -- Short url and same as md file name
 		category = 'science', -- folder of where it's in

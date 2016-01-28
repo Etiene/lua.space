@@ -1,46 +1,23 @@
-# Lua.Space
-The Lua Community Blog 
+This will be a meta-post :D
 
-More info:  [Opening Post](http://lua.space/general/blog-opening-and-contribution-guide)
+As you know, [Lua.Space](http://lua.space) is a community blog, at least that's what's written on the top! So how does that work? It means that this blog is not made by one person, it belongs to the community, it is written by the community and it is curated by the community. 
 
-##Yay, awesome, what is this blog for?
-Yes, that's an important question! Please notice that we don't have any affilitation with the official Lua team, but we intend to be a central hub for distributing news, technical posts and general discussions on everything related to Lua. Or, as the name says, a Lua space. Subscribe to our [RSS feed](http://feeds.feedburner.com/Luaspace) if you wish to be notified when there's new content.
+I have already written a little bit about this on the opening post, and on the "about" page. Since the blog opened, we had some really awesome posts! However, I've been receiving more questions about this, so I've decided to write another post where I'll repeat some of the information I've given before and add more material to it. 
 
-##Becoming a writer
-[![Issue Stats](http://issuestats.com/github/Etiene/lua.space/badge/pr)](http://issuestats.com/github/Etiene/lua.space)
-
-All posts are written in markdown and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. [This one](http://lua.space/general/blog-opening-and-contribution-guide), for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general).  
-
-Steps to writing a blog post:
-
-* Fork our [git repository](https://github.com/Etiene/lua.space)
-* Write your post using the [markdown syntax](https://help.github.com/articles/markdown-basics/)
-* Put it in one of the category directories inside `posts` or create a new one
-   *  The md file should be named in the same way you wish the url to be + `.md`
-   *  The convention is all lower case separating words by hyphens Ex.: blog-opening-and-contribution-guide.md
-* Edit the file `posts_meta.lua` adding an entry for your post and your author details
-   *  Just follow the pattern of the other entries already there :)
-* Commit and make a pull request
-* By making a pull request you certify that you are sharing your post and allowing it to be published here
-   *  We will never modify your original post unless for typo fixes or if you require to do so 
-   *  You'll still own all the copyrights of your post
-
-This blogs support syntax highlight provided by [highlight.js](http://highlightjs.org). Highlight.js auto-detects the programming language. Code blocks should be written in markdown using 4 spaces or a tab (+ the regular code indentation). Example:
-
-	local function welcome_to_luaspace()
-		print("You are awesome!")
-	end
+##How to become one of the writers?
+Decide that you want to contribute with a post :)
 
 ##What type of content is welcome?
 This blog was created to promote the use of Lua on various levels, both personally and on the industry.
 
 ###Topics:
+
 * General Lua use
-	* Tutorials on language aspects
-	* How to share modules
-	* Community aspects
-	* Analysis of language aspects, e.g. the ecosystem
-	* etc.
+     - Tutorials on language aspects
+     - How to share modules
+     - Community aspects
+     - Analysis of language aspects, e.g. the ecosystem
+     - etc.
 * Web development
 * Embedded systems
 * Scientific computing
@@ -119,19 +96,26 @@ Example: [http://lua.space/gamedev/using-tiled-maps-in-love](http://lua.space/ga
 ###English & Grammar
 For the moment, the only language used for posting is English (although we may add more languages in the future). Pay attention to orthography and grammar. If English is not your first language, don't refrain from writing, English is not my first language either. If you are insecure about your English level, once you've written the article on your fork, show it to us, so we can help it out. :)
 
+##How to add your post
+All posts are written in [markdown](https://help.github.com/articles/markdown-basics/) and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. This one, for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general). Code snippets should be added using the 4 space notation and not the `\`\`\`` notation.  
+
+###Steps
+
+- Fork our [git repository](https://github.com/Etiene/lua.space)
+- Write your post using the [markdown syntax](https://help.github.com/articles/markdown-basics/)
+- Put it in one of the category directories inside `posts` or create a new one
+     -  The md file should be named in the same way you wish the url to be + `.md`
+     -  The convention is all lower case separating words by hyphens Ex.: blog-opening-and-contribution-guide.md
+- Edit the file `posts_meta.lua` adding an entry for your post and your author details
+     -  Just follow the pattern of the other entries already there :)
+- Commit and make a pull request
+- By making a pull request you certify that you are sharing your post and allowing it to be published here
+     -  We will never modify your original post unless for typo fixes or if you require to do so 
+     -  You'll still own all the copyrights of your post
+
 ###How articles are accepted
 Once you've created your article on your fork and made a pull request, we will read it and decide how to proceed. If you've read the sections above, you have an idea on what's the scope of this blog. If we think your article is good to go, your PR will be immediately accepted and merged. We might feel something could be improved before publishing, like a section that could be described in more details or an important URL is missing, for example. We will, then, give feedback by commenting on the PR so you can address it. :)
 
 If you have a subject but you are unsure on how to present it, you can also open an issue before writing the post. We will discuss and help you elaborate your idea. :) 
 
-
-##Maintainer
- * [Etiene](http://twitter.com/etiene_d) ([Sailor framework](http://sailorproject.org))
-
-##Main Contributors
-* [Pierre Chapuis](https://twitter.com/pchapuis) ([Lua Toolbox](https://lua-toolbox.com/))
-* [undef](https://twitter.com/undefdev) ([quadrant](http://quadrantgame.com/))
-* [Bogdan Marinescu](https://twitter.com/bogdanm78) ([eLua](http://eluaproject.net))
-* [Mathäus Mendel](https://twitter.com/mathausmendel) ([OpenTibia](https://github.com/opentibia/ )) 
-* [Elihu Garret](https://twitter.com/Mr_Auk) ([Moonlet](https://github.com/elihugarret/Moonlet))
-* All the writers!
+###Yay! That is all for now! Have fun writing, we can't wait to see what you have to share with us! :D

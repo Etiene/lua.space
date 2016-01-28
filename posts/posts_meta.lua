@@ -64,7 +64,7 @@ local authors = {
 		description = 'Neuroscience PhD student, Engineer at Twitter Cortex',
 		twitter = 'https://twitter.com/awiltsch',
 		github = 'https://github.com/alexbw',
-		website ='https://www.whetlab.com/',
+		website = nil,
 		linkedin = nil,
 		facebook = nil
 	}

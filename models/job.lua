@@ -33,10 +33,10 @@ job.attributes = {
 	{ benefits = v:new().len(0,500) },
 	{ how_to_apply  = v:new().not_empty().len(10,500) },
 	{ email = v:new().not_empty().email() },
-	{ posted_date = v:new().not_empty().date() },
-	{ allow_remote = v:new().not_empty().boolean() },
-	{ visa_sponsoring  = v:new().not_empty().boolean() },
-	{ relocation_aid  = v:new().not_empty().boolean() },
+	{ posted_date = v:new().not_empty() },
+	{ allow_remote = v:new().boolean() },
+	{ visa_sponsoring  = v:new().boolean() },
+	{ relocation_aid  = v:new().boolean() },
 	{ approved = v:new().boolean() }
 }
 

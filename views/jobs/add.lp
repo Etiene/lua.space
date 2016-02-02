@@ -28,6 +28,14 @@
 <br/>
 <br/>
 <form method="post" id="job_add">
+	<div class="form-group has-error">
+		<ul>
+		<?lua for _,e in pairs(job.errors) do ?>
+			<li><label class="control-label"><%=e%></label></li>
+		<?lua end?>
+		</ul>
+	</div>
+
 	<div class="form-group">
 		<label class="control-label">Email: <span class="red">*</span></label>
 		<%= form.email(job,'email', 'class="form-control" placeholder="a@a.com"') %>

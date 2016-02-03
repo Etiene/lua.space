@@ -2,57 +2,71 @@
 	.table td {
 	    cursor: pointer;
 	}
+	a {
+		text-decoration: none !important;
+	}
 </style>
-<h2>View all</h2>
-<table class="table">
-	<tr>
-		<th>int</th>
-		<th>title</th>
-		<th>description</th>
-		<th>type</th>
-		<th>length</th>
-		<th>salary_range_min</th>
-		<th>salary_range_max</th>
-		<th>location</th>
-		<th>employer</th>
-		<th>employers_website</th>
-		<th>skills_required</th>
-		<th>skills_desired</th>
-		<th>about_company</th>
-		<th>benefits</th>
-		<th>how_to_apply</th>
-		<th>email</th>
-		<th>posted_date</th>
-		<th>allow_remote</th>
-		<th>visa_sponsoring</th>
-		<th>relocation_aid</th>
-		<th>approved</th>
-	</tr>
-	<?lua for k,v in pairs(jobs) do ?>
-		<tr onclick="location.href='<%= page:make_url('job/view',{id = v.id}) %>'" >
-			<td> <%= v.int %> </td>
-			<td> <%= v.title %> </td>
-			<td> <%= v.description %> </td>
-			<td> <%= v.type %> </td>
-			<td> <%= v.length %> </td>
-			<td> <%= v.salary_range_min %> </td>
-			<td> <%= v.salary_range_max %> </td>
-			<td> <%= v.location %> </td>
-			<td> <%= v.employer %> </td>
-			<td> <%= v.employers_website %> </td>
-			<td> <%= v.skills_required %> </td>
-			<td> <%= v.skills_desired %> </td>
-			<td> <%= v.about_company %> </td>
-			<td> <%= v.benefits %> </td>
-			<td> <%= v.how_to_apply %> </td>
-			<td> <%= v.email %> </td>
-			<td> <%= v.posted_date %> </td>
-			<td> <%= v.allow_remote %> </td>
-			<td> <%= v.visa_sponsoring %> </td>
-			<td> <%= v.relocation_aid %> </td>
-			<td> <%= v.approved %> </td>
-		</tr>
-	<?lua end ?>
-</table>
+<h1>Lua Job Offers</h1>
+	<?lua 
+
+	local date = require "date"
+	for _,v in ipairs(jobs) do 
+		if v.approved then
+			local salary_range 
+			salary_range_min = v.salary_range_min
+			if not v.salary_range_min and not v.salary_range_max then
+				salary_range = ' '
+			elseif v.salary_range_min and not v.salary_range_max then
+				salary_range = v.salary_range_min..' or more '
+			elseif not v.salary_range_min and v.salary_range_max then
+				salary_range = 'Up to '..v.salary_range_max
+			else
+				salary_range = v.salary_range_min..' - '..v.salary_range_max
+			end
+
+			local location = v.location or ''
+
+			local remote = v.allow_remote and '<i class="fa fa-wifi"></i> Remote allowed' or ''
+			local visa = v.visa_sponsoring and '<i class="fa fa-newspaper-o" style="margin-left: 8px;"></i> Visa sponsor' or ''
+			local reloc = v.relocation_aid and '<i class="fa fa-suitcase" style="margin-left: 8px;"></i> Relocation aid' or ''
+
+		?>
+		<hr/>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-10">
+						<h3>
+							<a href="<%= page:make_url('job/view',{id = v.id}) %>"> 
+								<%= v.title %> <small> ( <%= v.type %> )  </small> 
+							</a>
+						</h3>
+					</div>
+					<div class="col-md-2">
+						<h3><small><p class="text-success text-right"> <%= salary_range %> </p></small></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<a href="<%= v.employers_website %>" target="_blank"><%= v.employer %></a> 
+					</div>
+					<div class="col-md-4">
+						<p class="text-right"><%= location %></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						Posted on <%= date(v.posted_date ):fmt("%b %d %Y") %>
+					</div>
+					<div class="col-md-6 pull-right text-right">
+						<%= remote %>
+						<%= reloc %>
+						<%= visa %>
+					</div>
+				</div>
+			</div>
+	<?lua end 
+	end ?>
+<hr/>
 <br/>
-<a href="<%= page:make_url('job/create') %>" class="btn btn-primary">Create new job</a>
+<a href="<%= page:make_url('jobs/add') %>" class="btn btn-primary">Add a job offer to the listing!</a>
+<br/>

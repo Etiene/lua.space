@@ -19,7 +19,7 @@ function M.add(page)
 		job.approved = false
 		saved = job:save()
 		if saved then
-			page:redirect('job/index')
+			page:redirect('jobs/index')
 		end
 	end
 	page:render('add',{job = job, saved = saved})

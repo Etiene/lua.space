@@ -67,10 +67,28 @@ local authors = {
 		website = nil,
 		linkedin = nil,
 		facebook = nil
-	}
+	},
+	pgimeno = {
+		name = 'Pedro Gimeno Fortea',
+		picture = 'http://www.formauri.es/personal/pgimeno/files/blog/pgimeno-thumb.png',
+		description = 'Pedro Gimeno has been a software developer for more than 30 years and lives in Valencia, Spain.',
+		website = 'http://www.formauri.es/personal/pgimeno/',
+		twitter = nil,
+		github = 'http://github.com/pgimeno',
+		linkedin = nil,
+		facebook = nil,
+	},
 }
 
 return {
+	{
+		page_title = 'A caveat when using assert()', -- Post and page title
+		short_url = 'assert-usage-caveat', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Feb 05 2016 01:07', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.pgimeno
+	},
 	{
 		page_title = 'Contributing to Lua.Space', -- Post and page title
 		short_url = 'contributing-to-lua-space', -- Short url and same as md file name

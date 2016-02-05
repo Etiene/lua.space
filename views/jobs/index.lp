@@ -1,7 +1,4 @@
 <style>
-	.table td {
-	    cursor: pointer;
-	}
 	a {
 		text-decoration: none !important;
 	}
@@ -35,7 +32,7 @@
 				<div class="row">
 					<div class="col-md-10">
 						<h3>
-							<a href="<%= page:make_url('job/view',{id = v.id}) %>"> 
+							<a href="<%= page:make_url('jobs/view',{id = v.id}) %>"> 
 								<%= v.title %> <small> ( <%= v.type %> )  </small> 
 							</a>
 						</h3>

@@ -43,7 +43,7 @@ end
 
 function M.view(page)
 	local job = Job:find_by_id(page.GET.id)
-	if not job then
+	if not job or not job.approved then
 		return 404
 	end
 	page:render('view',{job = job})

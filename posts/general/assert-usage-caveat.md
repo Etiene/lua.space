@@ -9,14 +9,17 @@ require 'socket'
 gettime = socket.gettime
 
 -- Redefine the standard assert() to add basic function support
-function assert(a, f, ...)
+function assert(a, ...)
   if a then return ... end
+  local f = ...
   if type(f) == "function" then
-    error(f(...))
+    local args = {...}
+    table.remove(args, 1)
+    error(f(unpack(args)), 2)
   elseif f == nil then
-    error("assertion failed!")
+    error("assertion failed!", 2)
   else
-    error(f, ...)
+    error(f, 2)
   end
 end
 
@@ -55,16 +58,16 @@ print('assert(true, string.concat, "blah", i): ' .. finish - start)
 Here's one sample result using luajit:
 
     $ luajit assert-benchmark.lua
-    assert(true, "blah" .. i): 1.4835920333862
-    assert(true, function() return "blah" .. i end): 0.2511191368103
-    assert(true, string.concat, "blah", i): 0.00069618225097656
+    assert(true, "blah" .. i): 1.4565999507904
+    assert(true, function() return "blah" .. i end): 0.25716495513916
+    assert(true, string.concat, "blah", i): 0.0007011890411377
 
 For comparison, here's a pure Lua version:
 
     $ lua assert-benchmark.lua
-    assert(true, "blah" .. i): 1.7685780525208
-    assert(true, function() return "blah" .. i end): 0.47876191139221
-    assert(true, string.concat, "blah", i): 0.2859890460968
+    assert(true, "blah" .. i): 1.7639260292053
+    assert(true, function() return "blah" .. i end): 0.4820818901062
+    assert(true, string.concat, "blah", i): 0.28921484947205
 
 That test was made with an Intel Core i3-2100 @ 3.10GHz
 
@@ -76,14 +79,17 @@ So, here's the proposed function in isolation:
 
 ```
 -- Redefine the standard assert() to add basic function support
-function assert(a, f, ...)
+function assert(a, ...)
   if a then return ... end
+  local f = ...
   if type(f) == "function" then
-    error(f(...))
+    local args = {...}
+    table.remove(args, 1)
+    error(f(unpack(args)), 2)
   elseif f == nil then
-    error("assertion failed!")
+    error("assertion failed!", 2)
   else
-    error(f, ...)
+    error(f, 2)
   end
 end
 ```

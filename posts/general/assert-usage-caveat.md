@@ -4,54 +4,53 @@ Unfortunately, Lua doesn't have a preprocessor. In Lua we can't make the asserts
 
 The latter is more of a problem than we realize. The [PIL book](http://www.lua.org/pil/8.3.html) warns us about it, as does the [LuaJIT wiki](http://wiki.luajit.org/Numerical-Computing-Performance-Guide). I wanted to know how much of a problem it actually was, so I prepared a potential solution that I could benchmark against. Here's the full benchmark program including the function and the results:
 
-```
-require 'socket'
-gettime = socket.gettime
+    require 'socket'
+    gettime = socket.gettime
 
--- Like assert() but with support for a function argument
-function xassert(a, ...)
-  if a then return a, ... end
-  local f = ...
-  if type(f) == "function" then
-    local args = {...}
-    table.remove(args, 1)
-    error(f(unpack(args)), 2)
-  else
-    error(f or "assertion failed!", 2)
-  end
-end
+    -- Like assert() but with support for a function argument
+    function xassert(a, ...)
+      if a then return a, ... end
+      local f = ...
+      if type(f) == "function" then
+        local args = {...}
+        table.remove(args, 1)
+        error(f(unpack(args)), 2)
+      else
+        error(f or "assertion failed!", 2)
+      end
+    end
 
--- This is a function that concatenates all of its arguments and returns the result
-function string.concat(...)
-  return table.concat({...})
-end
+    -- This is a function that concatenates all of its arguments and returns the result
+    function string.concat(...)
+      return table.concat({...})
+    end
 
-local start, finish
+    local start, finish
 
-start = gettime()
-for i = 1, 2000000 do
-  xassert(true, "blah" .. i)
-end
-finish = gettime()
+    start = gettime()
+    for i = 1, 2000000 do
+      xassert(true, "blah" .. i)
+    end
+    finish = gettime()
 
-print('xassert(true, "blah" .. i): ' .. finish - start)
+    print('xassert(true, "blah" .. i): ' .. finish - start)
 
-start = gettime()
-for i = 1, 2000000 do
-  xassert(true, function() return "blah" .. i end)
-end
-finish = gettime()
+    start = gettime()
+    for i = 1, 2000000 do
+      xassert(true, function() return "blah" .. i end)
+    end
+    finish = gettime()
 
-print('xassert(true, function() return "blah" .. i end): ' .. finish - start)
+    print('xassert(true, function() return "blah" .. i end): ' .. finish - start)
 
-start = gettime()
-for i = 1, 2000000 do
-  xassert(true, string.concat, "blah", i)
-end
-finish = gettime()
+    start = gettime()
+    for i = 1, 2000000 do
+      xassert(true, string.concat, "blah", i)
+    end
+    finish = gettime()
 
-print('xassert(true, string.concat, "blah", i): ' .. finish - start)
-```
+    print('xassert(true, string.concat, "blah", i): ' .. finish - start)
+
 
 Here's one sample result using luajit:
 
@@ -75,31 +74,31 @@ What do these timings mean in terms of user code? Imagine it's used in a game. I
 
 So, here's the proposed function in isolation:
 
-```
--- Like assert() but with support for a function argument
-function xassert(a, ...)
-  if a then return a, ... end
-  local f = ...
-  if type(f) == "function" then
-    local args = {...}
-    table.remove(args, 1)
-    error(f(unpack(args)), 2)
-  else
-    error(f or "assertion failed!", 2)
-  end
-end
-```
+
+    -- Like assert() but with support for a function argument
+    function xassert(a, ...)
+      if a then return a, ... end
+      local f = ...
+      if type(f) == "function" then
+        local args = {...}
+        table.remove(args, 1)
+        error(f(unpack(args)), 2)
+      else
+        error(f or "assertion failed!", 2)
+      end
+    end
+
 
 It should be compatible with the standard Lua `assert`, with the additional feature that if the second parameter is a function instead of a string, that function will be called only if the assertion fails, and the result is the one that will be used as an error message. The idea of `xassert` is to postpone any calculations performed on the second parameter (notably concatenation) to the case when the condition fails, rather than performing them unconditionally.
 
 Since `xassert` is compatible with `assert`, it can be used as a drop-in replacement. I suggest to include the following function in the set as well:
 
-```
--- This is a function that concatenates all of its arguments and returns the result
-function string.concat(...)
-  return table.concat({...})
-end
-```
+
+    -- This is a function that concatenates all of its arguments and returns the result
+    function string.concat(...)
+      return table.concat({...})
+    end
+
 
 That enables us to call it like this: `xassert(condition, string.concat, value1, value2...)`, so that all values are concatenated together _only_ if the assertion fails. The penalty of that is expected to be much less, and the benchmark agrees.
 
@@ -107,25 +106,25 @@ One price to pay, of course, is readability. However, I certainly prefer to get 
 
 There are cases where `string.concat` alone is not enough to postpone all calculations. The LuaJIT wiki mentions this example:
 
-```
-assert(type(x) == "number", "x is a "..mytype(x))
-```
+
+    assert(type(x) == "number", "x is a "..mytype(x))
+
 
 With `xassert` and `string.concat`, we would write it as:
 
-```
-xassert(type(x) == "number", string.concat, "x is a ", mytype(x))
-```
+
+    xassert(type(x) == "number", string.concat, "x is a ", mytype(x))
+
 
 But that causes `mytype(x)` to be called every time, and not only when the condition fails as we would prefer. In such a case, we need to stop for a moment and ponder whether that function is costly or not, and how often it will be called. If it's worth to avoid that call when not used, then a solution may be to use a custom function like this:
 
-```
-function type_err(var, fn, value)
-  return var .. " is a " .. fn(value)
-end
--- We'd call it like this:
-xassert(type(x) == "number", type_err, "x", mytype, x)
-```
+
+    function type_err(var, fn, value)
+      return var .. " is a " .. fn(value)
+    end
+    -- We'd call it like this:
+    xassert(type(x) == "number", type_err, "x", mytype, x)
+
 
 Or to use a custom assert function, or some other tailor-made function adequate to the specific needs.
 

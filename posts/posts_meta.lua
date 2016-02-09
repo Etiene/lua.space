@@ -85,7 +85,7 @@ return {
 		page_title = 'A caveat when using assert()', -- Post and page title
 		short_url = 'assert-usage-caveat', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in
-		date = 'Feb 05 2016 01:07', -- Just for printing, ordering is done by this table order
+		date = 'Feb 09 2016 09:26', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.pgimeno
 	},

@@ -97,7 +97,7 @@ Example: [http://lua.space/gamedev/using-tiled-maps-in-love](http://lua.space/ga
 For the moment, the only language used for posting is English (although we may add more languages in the future). Pay attention to orthography and grammar. If English is not your first language, don't refrain from writing, English is not my first language either. If you are insecure about your English level, once you've written the article on your fork, show it to us, so we can help it out. :)
 
 ##How to add your post
-All posts are written in [markdown](https://help.github.com/articles/markdown-basics/) and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. This one, for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general). Code snippets should be added using the 4 space notation and not the `\`\`\`` notation.  
+All posts are written in [markdown](https://help.github.com/articles/markdown-basics/) and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. This one, for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general). Code snippets should be added using the 4 space notation and not the ``` notation.  
 
 ###Steps
 

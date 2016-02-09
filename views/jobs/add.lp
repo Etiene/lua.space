@@ -38,6 +38,7 @@
 
 	<div class="form-group">
 		<label class="control-label">Email: <span class="red">*</span></label>
+		</br> This email won't be visible and will be used only for communication purposes with Lua.Space
 		<%= form.email(job,'email', 'class="form-control" placeholder="a@a.com"') %>
 		<span class="help-block" id='job:email:error'> <%= job.errors.email or '' %> </span>
 	</div>

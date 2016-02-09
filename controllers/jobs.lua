@@ -19,10 +19,16 @@ function M.add(page)
 		job.approved = false
 		saved = job:save()
 		if saved then
-			page:redirect('jobs/index')
+			local mail = require "mail"
+			mail.send_message('', "New job post waiting", "please check, this was the sender: "..job.email)
+			page:redirect('jobs/waiting')
 		end
 	end
 	page:render('add',{job = job, saved = saved})
+end
+
+function M.waiting(page)
+	page:write("Your request has been registered and is now pending approval. Thank you :)")
 end
 
 function M.modify(page)

@@ -7,24 +7,27 @@
 	<?lua 
 
 	local date = require "date"
-	for _,v in ipairs(jobs) do 
-		local salary_range 
-		salary_range_min = v.salary_range_min
-		if not v.salary_range_min and not v.salary_range_max then
-			salary_range = ' '
-		elseif v.salary_range_min and not v.salary_range_max then
-			salary_range = v.salary_range_min..' or more '
-		elseif not v.salary_range_min and v.salary_range_max then
-			salary_range = 'Up to '..v.salary_range_max
-		else
-			salary_range = v.salary_range_min..' - '..v.salary_range_max
-		end
+	if not jobs or not next(jobs) then
+		page:print("There are no positions posted yet")
+	else 
+		for _,v in ipairs(jobs) do 
+			local salary_range 
+			salary_range_min = v.salary_range_min
+			if not v.salary_range_min and not v.salary_range_max then
+				salary_range = ' '
+			elseif v.salary_range_min and not v.salary_range_max then
+				salary_range = v.salary_range_min..' or more '
+			elseif not v.salary_range_min and v.salary_range_max then
+				salary_range = 'Up to '..v.salary_range_max
+			else
+				salary_range = v.salary_range_min..' - '..v.salary_range_max
+			end
 
-		local location = v.location or ''
+			local location = v.location or ''
 
-		local remote = v.allow_remote and '<i class="fa fa-wifi"></i> Remote allowed' or ''
-		local visa = v.visa_sponsoring and '<i class="fa fa-newspaper-o" style="margin-left: 8px;"></i> Visa sponsor' or ''
-		local reloc = v.relocation_aid and '<i class="fa fa-suitcase" style="margin-left: 8px;"></i> Relocation aid' or ''
+			local remote = v.allow_remote and '<i class="fa fa-wifi"></i> Remote allowed' or ''
+			local visa = v.visa_sponsoring and '<i class="fa fa-newspaper-o" style="margin-left: 8px;"></i> Visa sponsor' or ''
+			local reloc = v.relocation_aid and '<i class="fa fa-suitcase" style="margin-left: 8px;"></i> Relocation aid' or ''
 
 		?>
 		<hr/>
@@ -97,8 +100,9 @@
 					</div>
 				<?lua end?>
 			</div>
-	<?lua 
-	end ?>
+	<?lua end
+	end 
+	?>
 <hr/>
 <br/>
 <a href="<%= page:make_url('jobs/add') %>" class="btn btn-primary">Add a job offer to the listing!</a>

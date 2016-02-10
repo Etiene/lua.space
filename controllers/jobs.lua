@@ -2,6 +2,7 @@ local M = {}
 local Job = require "sailor.model"("job")
 
 function M.index(page)
+	local date = require "date"
 	local jobs = Job:find_all('approved = 1')
 	page:render('index',{jobs = jobs})
 end
@@ -20,7 +21,7 @@ function M.add(page)
 		saved = job:save()
 		if saved then
 			local mail = require "mail"
-			mail.send_message('', "New job post waiting", "please check, this was the sender: "..job.email)
+			mail.send_message('dalcol@etiene.net', "New job post waiting", "please check, this was the sender: "..job.email)
 			page:redirect('jobs/waiting')
 		end
 	end

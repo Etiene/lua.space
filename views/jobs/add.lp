@@ -14,9 +14,8 @@
 	<li>Your job post needs to be approved before appearing on the list</li>
 	<li>It may take a few days until approval</li>
 	<li>All job posts automatically expire after 2 months</li>
-	<li>You can manually remove it before 2 months if you wish</li>
 	<li>You may repost it</li>
-	<li>For the moment, new submissions are <strong>free</strong> of charge</li>
+	<li>This service is currently being provided <strong>free</strong> of charge</li>
 </ul>
 
 <?lua if saved == false then ?>
@@ -154,13 +153,13 @@ local rules = {
 	title = v:new().not_empty().len(10,100),
 	location = v:new().len(0,200),
 	employer = v:new().not_empty().len(5,100),
-	employers_website = v:new().not_empty().len(1,255).match('^http://[%w]+%.[%w]+.*'),
-	description = v:new().not_empty().len(10,2000),
-	skills_required = v:new().len(0,500),
-	skills_desired = v:new().len(0,500),
-	about_company  = v:new().not_empty().len(10,500),
-	benefits = v:new().len(0,500),
-	how_to_apply  = v:new().not_empty().len(10,500),
+	employers_website = v:new().not_empty().len(1,255).match('^https?://[%w]+%.[%w]+.*'),
+	description = v:new().not_empty().len(10,5000),
+	skills_required = v:new().len(0,5000),
+	skills_desired = v:new().len(0,5000),
+	about_company  = v:new().not_empty().len(10,5000),
+	benefits = v:new().len(0,5000),
+	how_to_apply  = v:new().not_empty().len(10,5000),
 	type = v:new().not_empty().in_list(job_types),
 	length = v:new().integer(),
 	salary_range_min = v:new().len(0,50),
@@ -179,6 +178,7 @@ local function validateInput(attr,input)
 			parent.classList:add('has-success')
 			error.innerHTML = ''
 		else
+			print(input.value,type(input.value))
 			parent.classList:remove('has-success')
 			parent.classList:add('has-error')
 			error.innerHTML = 'Value '..tostring(msg)

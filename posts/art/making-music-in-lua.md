@@ -13,5 +13,5 @@ I made a few videos showing how Moonlet behaves with diverse Lua libraries.
 Lua is a minimal programming language, and many "popular" features are not included in the language. But I think that the "less is more" Lua philosophy is great, handling with a restricted environment makes you more creative, also everything in the language is well designed and it is not just a pile of features. When I found the [f-strings](https://github.com/hishamhm/f-strings) module that implements python-like string interpolation, I decided to make something with it:
 
 <center>
-[![](http://imgur.com/YCtx7Bu)](https://youtu.be/VrhpBRaRIXM)
+[![](http://i.imgur.com/YCtx7Bu.png?1)](https://youtu.be/VrhpBRaRIXM)
 </center>

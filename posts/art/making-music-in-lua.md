@@ -15,3 +15,13 @@ Lua is a minimal programming language, and many "popular" features are not inclu
 <center>
 [![](http://i.imgur.com/YCtx7Bu.png?1)](https://youtu.be/VrhpBRaRIXM)
 </center>
+
+In the video basically Moonlet sends MIDI messages in real-time to an external synth, the script is updated when saved. Moonlet can read numerical notes (61) and traditional notation (c#4). Note patterns are represented as long strings, then the method "string:n()" converts it to a table. Representing note events as strings lets me use the f-strings library to manipulate the pitch of each note individually.
+
+	-- numbers are notes and underscores represents silence
+	local a = (F[[
+		60 _ 72 {67 + 12} _ _ 63 63
+		67 _ _ 63 _ 77 65 74
+		60 _ _ 67 _ {63 + 7} 79 60
+		_ _ 65 _ _ 60 _ 67
+		]]):n()

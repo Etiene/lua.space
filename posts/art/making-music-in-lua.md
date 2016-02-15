@@ -38,9 +38,16 @@ This snippet of code is a lispy step sequencer:
 
 	-- the semantic of the language does not change.
 	-- is like writing in Lua a,b,c,d,e = " ", " ", " ", " ", " "
+	
 	-- letters are sound samples 
-	-- "x" means a kick drum
+	-- "x" -> kick drum
+	
 	sLua[[
-		($ (a b c d e) !(c3 d#4 g4) !(c4 d4 g4) !(x _ _ _ x _ _ _) !(_ h _ h p _ _ G) !(_ d#5 _ c5 f4 g4 g4 c3 ))
+		($ (a b c d e) 
+			!(c3 d#4 g4) 
+			!(c4 d4 g4) 
+			!(x _ _ _ x _ _ _) 
+			!(_ h _ h p _ _ G) 
+			!(_ d#5 _ c5 f4 g4 g4 c3 ))
 	]]
 	

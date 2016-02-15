@@ -27,9 +27,20 @@ In the video basically Moonlet sends MIDI messages in real-time to an external s
 		]] ):n()
 
 ###S-Lua experiment
-I love functional programming languages and, obviously, parentheses. Lua has the coolest functional features and if you use LuaJIT (the ffi library) it lets you write and call C stuff within your Lua code. If you think this is really great just hold on and check [this](https://github.com/eugeneia/s-lua). Yes, s-expressions for Lua, also you should read this: [Experimental Meta-Programming for Lua](http://mr.gy/blog/lua-meta-programming.html) by Max Rottenkolber.
-In this experiment I represent notes and sound samples as s-expressions:
+I love functional programming languages and, obviously, parentheses. Lua has the coolest functional features and the LuaJIT ffi library lets you write and call C stuff within Lua code. If you think this is really great just hold on and check [this](https://github.com/eugeneia/s-lua). Yes, s-expressions for Lua, also you must read this: [Experimental Meta-Programming for Lua](http://mr.gy/blog/lua-meta-programming.html) by Max Rottenkolber.
+In this experiment I represent notes and sound samples as s-expression:
 
 <center>
 [![](http://i.imgur.com/BoAdUmC.png)](https://youtu.be/8PgcM0aYDN8)
 </center>
+
+This snippet of code is a lispy step sequencer:
+
+	-- the semantic of the language does not change.
+	-- is like writing in Lua a,b,c,d,e = " ", " ", " ", " ", " "
+	-- letters are sound samples 
+	-- "x" means a kick drum
+	sLua[[
+		($ (a b c d e) !(c3 d#4 g4) !(c4 d4 g4) !(x _ _ _ x _ _ _) !(_ h _ h p _ _ G) !(_ d#5 _ c5 f4 g4 g4 c3 ))
+	]]
+	

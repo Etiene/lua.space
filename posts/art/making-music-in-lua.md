@@ -7,5 +7,11 @@ Well, that was the first question that I had to answer when I decided to write a
 Writing your own environment is like making your own musical instrument and Lua lets me to express easily (with a few lines of code) ideas and structures, needed to create the music that I want. I will explain, in future posts entries, how developing some musical concepts in Lua are easier and more readable compared with other languages.
 
 ##A few experiments
+I made a few videos showing how Moonlet behaves with diverse Lua libraries.
 
 ###String interpolation experiment
+Lua is a minimal programming language, and many "popular" features are not included in the language. But I think that the "less is more" Lua philosophy is great, handling with a restricted environment makes you more creative, also everything in the language is well designed and it is not just a pile of features. When I found the [f-strings](https://github.com/hishamhm/f-strings) module that implements python-like string interpolation, I decided to make something with it:
+
+<center>
+[![](http://imgur.com/YCtx7Bu)](https://youtu.be/VrhpBRaRIXM)
+</center>

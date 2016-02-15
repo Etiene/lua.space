@@ -28,7 +28,7 @@ In the video basically Moonlet sends MIDI messages in real-time to an external s
 
 ###S-Lua experiment
 I love functional programming languages and, obviously, parentheses. Lua has the coolest functional features and the LuaJIT ffi library lets you write and call C stuff within Lua code. If you think this is really great just hold on and check [this](https://github.com/eugeneia/s-lua). Yes, s-expressions for Lua, also you must read this: [Experimental Meta-Programming for Lua](http://mr.gy/blog/lua-meta-programming.html) by Max Rottenkolber.
-In this experiment I represent notes and sound samples as s-expression:
+In this experiment I represent notes and sound samples as s-expressions:
 
 <center>
 [![](http://i.imgur.com/BoAdUmC.png)](https://youtu.be/8PgcM0aYDN8)
@@ -51,3 +51,6 @@ This snippet of code is a lispy step sequencer:
 			!(_ d#5 _ c5 f4 g4 g4 c3 ))
 	]]
 	
+
+##Conclusions
+There are a lot of things that I left out about Moonlet, like how it works or how to install it. I will write about that in the near future. The purpose of this post is to show that Lua is capable for music handling

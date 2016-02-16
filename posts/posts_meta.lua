@@ -1,8 +1,8 @@
 --
 --	1 Rule = More Recent posts on the top!
---  To unpublish, comment the entry
---  Warning, posts with the category and short_url will clash
---  Congratulations on your article and thanks for your contribution!
+--	To unpublish, comment the entry
+--	Warning, posts with the category and short_url will clash
+--	Congratulations on your article and thanks for your contribution!
 --
 
 local authors = {
@@ -76,7 +76,17 @@ local authors = {
 		twitter = nil,
 		github = 'http://github.com/pgimeno',
 		linkedin = nil,
-		facebook = nil,
+		facebook = nil
+	}
+	kikito = {
+		name = 'Enrique García Cota',
+		picture = 'https://pbs.twimg.com/profile_images/1163890262/super.png',
+		description = 'Enrique is a developer from Spain. He does ruby & Lua.',
+		website = 'http://kiki.to',
+		twitter = 'http://twitter.com/otikik',
+		github = 'http://github.com/kikito',
+		linkedin = nil,
+		facebook = nil
 	},
 }
 
@@ -160,5 +170,13 @@ return {
 		date = 'Dec 11 2015 18:17', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
-	}
+	},
+	{
+		page_title = 'Continuous Integration with Lua', -- Post and page title
+		short_url = 'ci-with-lua', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Feb 2 2016 14:09', -- Just for printing, ordering is done by this table order
+		reblogged_from = 'http://kiki.to/blog/2016/02/04/talk-continuous-integration-with-lua/', -- [string] URL if this was posted somewhere else first
+		author = authors.kikito
+	},
 }

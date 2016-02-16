@@ -64,7 +64,7 @@ hundreds lines of code, which require maintenance. It also must be included on e
 
 Fortunately, a better solution was presented to me. And it came from an unlikely place: Python!
 
-There is this Python project called hererocks: https://github.com/mpeterv/hererocks. Hererocks is a python script which can install any of the
+There is this Python project called [hererocks](https://github.com/mpeterv/hererocks). Hererocks is a python script which can install any of the
 major versions of Lua and LuaJIT in a folder, with no "global" dependencies. It's maintained by Peter Melnichenko, and since Python is supported
 by travis, we can set up the environment like this:
 
@@ -95,7 +95,7 @@ in a folder called `lua_install`.
 As I said before, specs are "extra code which makes sure that your regular code works as you think it should". A usual term to refer to them
 is *automated tests*. I prefer *specs* because it is a bit more specific (there are lots of "tests" which can be "automated").
 
-To implement my specs I use the library `busted`, by olivinelabs: http://olivinelabs.com/busted/ .
+To implement my specs I use the library [busted](http://olivinelabs.com/busted/), by olivinelabs.
 
 A quick taste of how specs look like in busted. Here's an extremely simple Lua library:
 

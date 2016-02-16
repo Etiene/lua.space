@@ -1,7 +1,9 @@
 I recently gave a talk in [FOSDEM](https://fosdem.org), which is a great event if, like me, you are into
 open source.
 
+<center>
 <iframe src="https://kikito.github.io/ci-with-lua/"></iframe>
+</center>
 
 [Direct link to slides](https://kikito.github.io/ci-with-lua/)
 
@@ -135,7 +137,7 @@ Just by adding this to your `.travis.yml`, you should be able to "run your specs
 some niceties if you use it as a platform: it will run the specs automatically every time anyone pushes code to any of the branches, or sends
 a pull request. It will also mark all the commits and pull requests with a green flag (when the specs pass) or a red cross (when they don't).
 
-![Travis Github integration](http://kikito.github.io/ci-with-lua/img/travis-github-green.png)
+<img alt="Travis Github integration" class="img-responsive" src="http://kikito.github.io/ci-with-lua/img/travis-github-green.png"/>
 
 ### c) Coverage
 
@@ -151,7 +153,7 @@ A tool which I find really useful is the [coveralls.io website](http://coveralls
 get your coverage data to it, it can present it in a very human-friendly way. And it doesn't limit itself to showing a single number; it
 presents multiple reports, per build, job, file and line. That last one is the one which I like the most:
 
-![coveralls file report](http://kikito.github.io/ci-with-lua/img/coveralls-file.png)
+<img alt="coveralls file report" class="img-responsive" src="http://kikito.github.io/ci-with-lua/img/coveralls-file.png"/>
 
 The picture above is coveralls.io showing the source code of one of my libraries, [middleclass](https://github.com/kikito/middleclass).
 

@@ -77,7 +77,7 @@ local authors = {
 		github = 'http://github.com/pgimeno',
 		linkedin = nil,
 		facebook = nil
-	}
+	},
 	kikito = {
 		name = 'Enrique García Cota',
 		picture = 'https://pbs.twimg.com/profile_images/1163890262/super.png',
@@ -91,6 +91,15 @@ local authors = {
 }
 
 return {
+	-- Insert next post here
+	{
+		page_title = 'Continuous Integration with Lua', -- Post and page title
+		short_url = 'ci-with-lua', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Feb 2 2016 14:09', -- Just for printing, ordering is done by this table order
+		reblogged_from = 'http://kiki.to/blog/2016/02/04/talk-continuous-integration-with-lua/', -- [string] URL if this was posted somewhere else first
+		author = authors.kikito
+	},
 	{
 		page_title = 'A caveat when using assert()', -- Post and page title
 		short_url = 'assert-usage-caveat', -- Short url and same as md file name
@@ -171,12 +180,5 @@ return {
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
 	},
-	{
-		page_title = 'Continuous Integration with Lua', -- Post and page title
-		short_url = 'ci-with-lua', -- Short url and same as md file name
-		category = 'general', -- folder of where it's in
-		date = 'Feb 2 2016 14:09', -- Just for printing, ordering is done by this table order
-		reblogged_from = 'http://kiki.to/blog/2016/02/04/talk-continuous-integration-with-lua/', -- [string] URL if this was posted somewhere else first
-		author = authors.kikito
-	},
+	
 }

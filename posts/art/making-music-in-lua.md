@@ -53,4 +53,5 @@ This snippet of code is a lispy step sequencer:
 	
 
 ##Conclusions
-There are a lot of things that I left out about Moonlet, like how it works or how to install it. I will write about that in the near future. The purpose of this post is to show that Lua is capable for music handling
+There are a lot of things that I left out about Moonlet, like how it works or how to install it. I will write about that in the near future. The purpose of this post is to show that Lua is full capable for music handling in a live coding environment.
+Visit my [soundcloud]("https://soundcloud.com/luehi") if you want to listen complete tracks written in the Lua programming language

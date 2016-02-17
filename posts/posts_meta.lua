@@ -37,6 +37,14 @@ local authors = {
 		github = 'http://github.com/undefdev',
 		facebook = nil,
 	},
+	elihu = {
+		name = 'Elihu Garret',
+		picture = 'http://streak.club/img/dXBsb2Fkcy9pbWFnZS8zNjY4LnBuZw==/original/yvi42X.png',
+		description = 'Elihu is a mathemathician and a Language and Literature student.He also makes art with programming languages',
+		twitter = 'https://twitter.com/Mr_Auk',
+		github = 'https://github.com/elihugarret',
+		facebook = 'https://www.facebook.com/luanuven',
+	}
 }
 
 return {
@@ -64,5 +72,13 @@ return {
 		date = 'Dec 11 2015 18:17', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
+	},
+	{
+		page_title = 'Making music in Lua', -- Post and page title
+		short_url = 'making-music-in-lua', -- Short url and same as md file name
+		category = 'art', -- folder of where it's in
+		date = 'Feb 16 2016 20:26', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.elihu
 	}
 }

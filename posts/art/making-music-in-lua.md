@@ -4,7 +4,7 @@ Live coding is a hard thing to define but essentially it is about writing code t
 ##Using Lua in a musical context
 Why use Lua for live coding if there are cooler and more developed frameworks?
 Well, that was the first question that I had to answer when I decided to write a musical live coding environment in Lua, now named [Moonlet](https://github.com/elihugarret/Moonlet). It is not the first Lua live coding framework, may be the best known is [LuaAV](http://lua-av.mat.ucsb.edu/blog/) but the project seems dead, it also exists [Praxis](https://github.com/createuniverses/praxis) and [Worp](http://worp.zevv.nl/) but you have to compile a lot of things and I hate to compile a lot of things, in this case Moonlet is portable (only for Windows users).
-Writing your own environment is like making your own musical instrument and Lua lets me to express easily (with a few lines of code) ideas and structures, needed to create the music that I want. I will explain, in future posts entries, how developing some musical concepts in Lua are easier and more readable compared with other languages.
+Writing your own environment is like making your own musical instrument and Lua lets me to express easily (with a few lines of code) ideas and structures, needed to create the music that I want. I will explain that in future posts entries and how developing some musical concepts in Lua are easier and more readable compared with other languages.
 
 ##Experiments
 I made a few videos showing how Moonlet behaves with diverse Lua libraries.

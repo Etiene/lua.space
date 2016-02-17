@@ -135,3 +135,7 @@ If you have a subject but you are unsure on how to present it, you can also open
 * [Mathäus Mendel](https://twitter.com/mathausmendel) ([OpenTibia](https://github.com/opentibia/ )) 
 * [Elihu Garret](https://twitter.com/Mr_Auk) ([Moonlet](https://github.com/elihugarret/Moonlet))
 * All the writers!
+
+##License
+
+Everything that is under `posts` has copyright to the respective authors. On the `themes` folder, the design also belogs to the respective author. Other than that, the whole blog structure is `MIT` licensed and you can use it to create your own blogs reading from `markdown` files.

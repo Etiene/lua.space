@@ -58,7 +58,6 @@ local authors = {
 		linkedin = nil,
 		facebook = nil,
 	},
-<<<<<<< HEAD
 	alex = {
 		name = 'Alex Wiltschko',
 		picture = 'https://pbs.twimg.com/profile_images/1548646247/SkeleTON_200x200.png',

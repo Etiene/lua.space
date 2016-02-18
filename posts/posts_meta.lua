@@ -58,6 +58,7 @@ local authors = {
 		linkedin = nil,
 		facebook = nil,
 	},
+<<<<<<< HEAD
 	alex = {
 		name = 'Alex Wiltschko',
 		picture = 'https://pbs.twimg.com/profile_images/1548646247/SkeleTON_200x200.png',
@@ -88,10 +89,26 @@ local authors = {
 		linkedin = nil,
 		facebook = nil
 	},
+	elihu = {
+		name = 'Elihu Garret',
+		picture = 'http://streak.club/img/dXBsb2Fkcy9pbWFnZS8zNjY4LnBuZw==/original/yvi42X.png',
+		description = 'Elihu is a mathemathician and a Language and Literature student.He also makes art with programming languages',
+		twitter = 'https://twitter.com/Mr_Auk',
+		github = 'https://github.com/elihugarret',
+		facebook = 'https://www.facebook.com/luanuven',
+	}
 }
 
 return {
 	-- Insert next post here
+	{
+		page_title = 'Making music in Lua', -- Post and page title
+		short_url = 'making-music-in-lua', -- Short url and same as md file name
+		category = 'art', -- folder of where it's in
+		date = 'Feb 18 2016 09:36', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.elihu
+	},
 	{
 		page_title = 'Continuous Integration with Lua', -- Post and page title
 		short_url = 'ci-with-lua', -- Short url and same as md file name
@@ -179,6 +196,5 @@ return {
 		date = 'Dec 11 2015 18:17', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
-	},
-	
+	}
 }

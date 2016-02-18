@@ -96,7 +96,7 @@ return {
 		page_title = 'Continuous Integration with Lua', -- Post and page title
 		short_url = 'ci-with-lua', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in
-		date = 'Feb 2 2016 14:09', -- Just for printing, ordering is done by this table order
+		date = 'Feb 16 2016 17:40', -- Just for printing, ordering is done by this table order
 		reblogged_from = 'http://kiki.to/blog/2016/02/04/talk-continuous-integration-with-lua/', -- [string] URL if this was posted somewhere else first
 		author = authors.kikito
 	},

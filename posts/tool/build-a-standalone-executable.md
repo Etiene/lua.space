@@ -7,7 +7,7 @@ Below is a description of the arguments `luastatic` supports:
 	luastatic main.lua[1] require.lua[2] liblua.a[3] module.a[4] -Iinclude/lua[5] [6]
 	[1]: The entry point to the Lua program
 	[2]: One or more required Lua source files
-	[3]: The Lua intepreter static library
+	[3]: The Lua interpreter static library
 	[4]: One or more static libraries for a required Lua binary module
 	[5]: The path to the directory containing lua.h
 	[6]: Additional arguments are passed to the C compiler
@@ -16,7 +16,7 @@ The shell script below shows how to use `luastatic` to build [this program](http
 
 	#/bin/sh
 	
-	# download build tools (if neccesary)
+	# download build tools (if necessary)
 	sudo apt-get install build-essential make mingw-w64 unzip libreadline-dev
 	
 	# download program dependencies

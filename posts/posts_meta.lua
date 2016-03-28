@@ -95,11 +95,26 @@ local authors = {
 		twitter = 'https://twitter.com/Mr_Auk',
 		github = 'https://github.com/elihugarret',
 		facebook = 'https://www.facebook.com/luanuven',
+	},
+	ers35 = {
+		name = 'Eric R. Schulz',
+		picture = 'https://avatars2.githubusercontent.com/u/1037893',
+		description = 'Eric is a software developer from the United States.',
+		website = 'https://www.ers35.com/',
+		github = 'https://github.com/ers35',
 	}
 }
 
 return {
 	-- Insert next post here
+	{
+		page_title = 'Build a Standalone Executable', -- Post and page title
+		short_url = 'build-a-standalone-executable', -- Short url and same as md file name
+		category = 'tool', -- folder of where it's in
+		date = 'Mar 04 2016 00:00', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.ers35
+	},
 	{
 		page_title = 'Making music in Lua', -- Post and page title
 		short_url = 'making-music-in-lua', -- Short url and same as md file name

@@ -110,8 +110,8 @@ return {
 	{
 		page_title = 'Build a Standalone Executable', -- Post and page title
 		short_url = 'build-a-standalone-executable', -- Short url and same as md file name
-		category = 'tool', -- folder of where it's in
-		date = 'Mar 04 2016 00:00', -- Just for printing, ordering is done by this table order
+		category = 'tools', -- folder of where it's in
+		date = 'Mar 28 2016 12:15', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.ers35
 	},

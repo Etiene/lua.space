@@ -102,11 +102,29 @@ local authors = {
 		description = 'Eric is a software developer from the United States.',
 		website = 'https://www.ers35.com/',
 		github = 'https://github.com/ers35',
-	}
+	},
+	geckojsc = {
+		name = 'Jeremy Clarke',
+		picture = 'https://pbs.twimg.com/profile_images/496416737458659329/3hMRwCdG.jpeg',
+		description = 'Jeremy is a Computer Science student, hobbyist game developer and electronic musician.',
+		website = 'http://geckojsc.com',
+		twitter = 'http://twitter.com/geckojsc',
+		github = 'http://github.com/geckojsc',
+		linkedin = nil,
+		facebook = nil,
+	},
 }
 
 return {
 	-- Insert next post here
+	{
+		page_title = 'Using Lua coroutines to create an RPG dialogue system', -- Post and page title
+		short_url = 'using-lua-coroutines-to-create-rpg', -- Short url and same as md file name
+		category = 'gamedev', -- folder of where it's in
+		date = 'Mar 28 2016 15:46', -- Just for printing, ordering is done by this table order
+		reblogged_from = 'http://blog.geckojsc.com/2016/03/using-lua-coroutines-to-create-rpg.html', -- [string] URL if this was posted somewhere else first
+		author = authors.geckojsc
+	},
 	{
 		page_title = 'Build a Standalone Executable', -- Post and page title
 		short_url = 'build-a-standalone-executable', -- Short url and same as md file name

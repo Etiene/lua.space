@@ -174,7 +174,7 @@ Here are some things you might want to do next, to create a more full-featured R
 
 * Add `lock()` and `release()`, so it's possible to display text while the player is moving, or stop the player from moving even when there is no text.
 * Add an `ask(str, ...)` function whereby the player can choose from a list of options (e.g. yes/no)
-* Download a level editor such as Tiled, or create your own. ([Create a map](/gamedev/using-tiled-maps-in-love)) and try attaching some scripts to game objects such as buttons and NPCs.
+* Download a level editor such as Tiled, or create your own. Try attaching some scripts to game objects such as buttons and NPCs. [Relevant tutorial on using Tiled with LÖVE](/gamedev/using-tiled-maps-in-love)
 * Create an easy-to-use animation system with commands such as 'face X direction' or 'move N steps'
 * Add character portraits so that the player knows who's speaking (this might require you to add an extra parameter to `say()` or some new functions)
 * Consider how you would go about handling save data. How to distinguish it from data which is part of the gamestate but does not need to be saved permanently?

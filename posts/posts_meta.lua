@@ -118,6 +118,14 @@ local authors = {
 return {
 	-- Insert next post here
 	{
+		page_title = 'Community news #2', -- Post and page title
+		short_url = 'community-news-2', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'May 04 2016 23:46', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.etiene
+	},
+	{
 		page_title = 'Using Lua coroutines to create an RPG dialogue system', -- Post and page title
 		short_url = 'using-lua-coroutines-to-create-rpg', -- Short url and same as md file name
 		category = 'gamedev', -- folder of where it's in

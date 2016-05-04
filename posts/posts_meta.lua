@@ -121,7 +121,7 @@ return {
 		page_title = 'Using Lua coroutines to create an RPG dialogue system', -- Post and page title
 		short_url = 'using-lua-coroutines-to-create-rpg', -- Short url and same as md file name
 		category = 'gamedev', -- folder of where it's in
-		date = 'Mar 28 2016 15:46', -- Just for printing, ordering is done by this table order
+		date = 'Apr 11 2016 07:31', -- Just for printing, ordering is done by this table order
 		reblogged_from = 'http://blog.geckojsc.com/2016/03/using-lua-coroutines-to-create-rpg.html', -- [string] URL if this was posted somewhere else first
 		author = authors.geckojsc
 	},

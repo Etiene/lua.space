@@ -8,7 +8,7 @@
      * [Website](http://luaconf.com)
      * [Call for presentations](http://bit.ly/1Q5pjXM)
 
-* October 13th-14th - 2016 Lua Workshop, San Francisco
+* October 13th-14th 2016 - Lua Workshop, San Francisco
      * [Website](https://www.lua.org/wshop16.html)
 
 ###Past

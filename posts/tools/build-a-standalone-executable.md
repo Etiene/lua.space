@@ -1,4 +1,4 @@
-`luastatic` is a command line tool which builds a standalone executable from a Lua program. The executable runs on systems which do not have Lua installed because Lua is embedded alongside the program. Lua 5.1, 5.2, 5.3 and LuaJIT are supported. `luastatic` can be [downloaded from GitHub](https://github.com/ers35/luastatic).
+`luastatic` is a command line tool that builds a standalone executable from a Lua program. The executable runs on systems that do not have Lua installed because Lua is embedded alongside the program. Lua 5.1, 5.2, 5.3 and LuaJIT are supported. `luastatic` can be [downloaded from GitHub](https://github.com/ers35/luastatic) or [LuaRocks](http://luarocks.org/modules/ers35/luastatic).
 
 Lua is commonly used as an embeddable scripting language as part of a larger program written in another language. However, Lua can also be the primary language used to implement a program. Programmers using C are accustomed to building an application to a single executable that is distributed to the end user. `luastatic` does the same for Lua programs.
 
@@ -43,10 +43,8 @@ The shell script below shows how to use `luastatic` to build [this program](http
 	mv src/liblua.a ../linux
 	make clean
 	# build Lua for Windows
-	sed -i'' s/CC=\ gcc/CC=\ x86_64-w64-mingw32-gcc/g src/Makefile
-	make mingw
-	sed -i'' s/CC=\ x86_64-w64-mingw32-gcc/CC=\ gcc/g src/Makefile
-	cp src/liblua.a ../windows
+	make mingw CC=x86_64-w64-mingw32-gcc
+	mv src/liblua.a ../windows
 	cd ../
 	
 	# build luastatic using itself
@@ -60,8 +58,7 @@ The shell script below shows how to use `luastatic` to build [this program](http
 	ar rcs ../linux/sqlite3.a sqlite3.o
 	# build SQLite3 for Windows
 	x86_64-w64-mingw32-gcc -c -O2 sqlite3.c -o sqlite3.o
-	x86_64-w64-mingw32-ar rcs sqlite3.a sqlite3.o
-	mv sqlite3.a ../windows
+	x86_64-w64-mingw32-ar rcs ../windows/sqlite3.a sqlite3.o
 	cd ../
 	
 	# build LuaSQLite3 for GNU/Linux

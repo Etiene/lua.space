@@ -25,6 +25,7 @@
 
 ## News
 
+* May 4th - [Lua 5.3.3 now available for testing]( http://www.lua.org/work/)
 * May 2nd - [Annoy (Approximate Nearest Neighbors) now has Lua bindings](https://github.com/spotify/annoy/blob/master/README_Lua.md)
 * April 28th - [Haxe introduces Lua target](http://haxe.org/blog/hello-lua)
 * April 22nd - [Book "Le guide et ses applications 2ed" published (French)](http://www.d-booker.fr/lua-complet/372-le-guide-de-lua-et-ses-applications.html)

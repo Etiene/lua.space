@@ -16,7 +16,8 @@ Point #2 is especially powerful because it allows you to set default values for 
 You can attach a metatable to any other table using the [setmetatable](http://www.lua.org/manual/5.2/manual.html#pdf-setmetatable) function.
 
 All possible metatable events are explained on the lua-users wiki:  
-**>>> [list of metatable events](http://lua-users.org/wiki/MetatableEvents) <<<**  
+ >>> [list of metatable events](http://lua-users.org/wiki/MetatableEvents) <<<
+
 which is, as far as I'm aware, the best reference for everything that metatables can be used for.
 
 And that's really all you need to know!
@@ -26,70 +27,70 @@ And that's really all you need to know!
 
 I'll now demonstrate how metatables could be used to make a "2D point/vector" type, with custom operators.
 
-```
--- define a new metatable to be shared by all vectors
-local mt = {}
 
--- function to create a new vector
-function makevec2d(x, y)
-	local t = {
-		x = x,
-		y = y
-	}
-	setmetatable(t, mt)
-	return t
-end
+	-- define a new metatable to be shared by all vectors
+	local mt = {}
 
--- define some vector operations such as addition, subtraction:
-function mt.__add(a, b)
-	return makevec2d(
-		a.x + b.x,
-		a.y + b.y
-	)
-end
-
-function mt.__sub(a, b)
-	return makevec2d(
-		a.x - b.x,
-		a.y - b.y
-	)
-end
-
--- more fancy example, implement two different kinds of multiplication:
--- number*vector -> scalar product
--- vector*vector -> cross product
--- don't worry if you're not a maths person, this isn't important :)
-
-function mt.__mul(a, b)
-	if type(a) == "number" then
-		return makevec2d(b.x * a, b.y * a)
-	elseif type(b) == "number" then
-		return makevec2d(a.x * b, a.y * b)
+	-- function to create a new vector
+	function makevec2d(x, y)
+		local t = {
+			x = x,
+			y = y
+		}
+		setmetatable(t, mt)
+		return t
 	end
-	return a.x * b.x + a.y * b.y
-end
 
--- check if two vectors with different addresses are equal to each other
-function mt.__eq(a, b)
-	return a.x == b.x and a.y == b.y
-end
+	-- define some vector operations such as addition, subtraction:
+	function mt.__add(a, b)
+		return makevec2d(
+			a.x + b.x,
+			a.y + b.y
+		)
+	end
 
--- custom format when converting to a string:
-function mt.__tostring(a)
-	return "(" .. a.x .. ", " .. a.y .. ")"
-end
-```
+	function mt.__sub(a, b)
+		return makevec2d(
+			a.x - b.x,
+			a.y - b.y
+		)
+	end
+
+	-- more fancy example, implement two different kinds of multiplication:
+	-- number*vector -> scalar product
+	-- vector*vector -> cross product
+	-- don't worry if you're not a maths person, this isn't important :)
+
+	function mt.__mul(a, b)
+		if type(a) == "number" then
+			return makevec2d(b.x * a, b.y * a)
+		elseif type(b) == "number" then
+			return makevec2d(a.x * b, a.y * b)
+		end
+		return a.x * b.x + a.y * b.y
+	end
+
+	-- check if two vectors with different addresses are equal to each other
+	function mt.__eq(a, b)
+		return a.x == b.x and a.y == b.y
+	end
+
+	-- custom format when converting to a string:
+	function mt.__tostring(a)
+		return "(" .. a.x .. ", " .. a.y .. ")"
+	end
+
 
 Now we can use our newly defined 'vector' type like this:
 
-```
-local a = makevec2d(3, 4)
-local b = 2 * a
 
-print(a)      -- calls __tostring internally, so this prints "(3, 4)"
-print(b)      -- (6, 8)
-print(a + b)  -- (9, 12)
-```
+	local a = makevec2d(3, 4)
+	local b = 2 * a
+
+	print(a)      -- calls __tostring internally, so this prints "(3, 4)"
+	print(b)      -- (6, 8)
+	print(a + b)  -- (9, 12)
+
 
 Pretty neat right?
 
@@ -98,19 +99,19 @@ Pretty neat right?
 
 I mentioned that metatables can be used to define what should happen when a key lookup fails, and that this can be used to create custom methods shared by many tables. For example we might want to be able to do this:
 
-```
-a = makevec2d(3, 4)
-a:magnitude()  -- calculate the length of the vector, returning 5
-```
+
+	a = makevec2d(3, 4)
+	a:magnitude()  -- calculate the length of the vector, returning 5
+
 
 In Lua this is not always necessary, for example, we could define an ordinary function to do the job for us:
 
-```
-function magnitude(vec)
-	return sqrt(vec.x^2 + vec.y^2)
-end
-magnitude(a)  -- returns 5
-```
+
+	function magnitude(vec)
+		return sqrt(vec.x^2 + vec.y^2)
+	end
+	magnitude(a)  -- returns 5
+
 
 In fact, for PICO-8 I would recommend that approach, because it's as efficient as you can get, and it uses the least number of tokens (PICO-8 cartridges are limited in code size).
 
@@ -118,12 +119,12 @@ But I think it's educational to see how metatables can make it possible to use L
 
 First off, we define all our methods in a table somewhere. Note, you can define them in the metatable itself (this is a common convention), but I'll put them in a different table to prevent confusion.
 
-```
-local methods = {}
-function methods.magnitude(self)
-	return sqrt(self.x^2 + self.y^2)
-end
-```
+
+	local methods = {}
+	function methods.magnitude(self)
+		return sqrt(self.x^2 + self.y^2)
+	end
+
 
 The `__index` property of a metatable is referred to when you try to look up a key 'k' which is not present in the original table 't'.
 
@@ -132,9 +133,9 @@ If \_\_index is a table, a lookup is performed like `mt.__index[k]`
 
 So we can add the magnitude function, along any other methods we may have defined, to all our existing vector objects by simply setting the \_\_index property to our table of methods:
 
-```
-mt.__index = methods
-```
+
+	mt.__index = methods
+
 
 And now, as we wanted, we can call `a:magnitude()`  
 Which is a shortcut for `a.magnitude(a)`  

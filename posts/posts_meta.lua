@@ -118,6 +118,14 @@ local authors = {
 return {
 	-- Insert next post here
 	{
+		page_title = 'An Introduction to Metatables', -- Post and page title
+		short_url = 'intro-to-metatables', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Jun 12 2016 13:06', -- Just for printing, ordering is done by this table order
+		reblogged_from = 'http://www.lexaloffle.com/bbs/?tid=3342', -- [string] URL if this was posted somewhere else first
+		author = authors.geckojsc
+	},
+	{
 		page_title = 'Community news #2', -- Post and page title
 		short_url = 'community-news-2', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in

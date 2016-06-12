@@ -150,7 +150,7 @@ Fortunately Lua makes it easy to swap out the environment of a function for any 
 
 It also might be helpful to have a script that is called once at startup, to initialise all the game variables to default values, or load them from a save file.
 
-As far as animation goes, we can drop in a tweening solution like flux, along with a few helper functions which will allow us to pause the script until the animation completes.
+As far as animation goes, we can drop in a tweening solution like [flux](https://github.com/rxi/flux), along with a few helper functions which will allow us to pause the script until the animation completes.
 
     game.flux = require "flux"
     

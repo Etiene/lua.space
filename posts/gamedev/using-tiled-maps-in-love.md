@@ -24,7 +24,7 @@ With our skeleton made, we want to import the STI module, load the map, and get 
 
 	function love.load()
 		-- Load map file
-		map = sti.new("map.lua")
+		map = sti("map.lua")
 	end
 
 	function love.update(dt)
@@ -45,7 +45,7 @@ First we need to add a new `Custom Layer` to our map. This layer will be used fo
 
 	function love.load()
 		-- Load map file
-		map = sti.new("map.lua")
+		map = sti("map.lua")
 
 		-- Create new dynamic data layer called "Sprites" as the 8th layer
 		local layer = map:addCustomLayer("Sprites", 8)
@@ -57,7 +57,7 @@ It is worth noting here that Tiled supports adding custom properties to any obje
 
 	function love.load()
 		-- Load map file
-		map = sti.new("map.lua")
+		map = sti("map.lua")
 
 		-- Create new dynamic data layer called "Sprites" as the 8th layer
 		local layer = map:addCustomLayer("Sprites", 8)
@@ -88,7 +88,7 @@ We are also going to want to remove our old `Object Layer` since we've extracted
 
 	function love.load()
 		-- Load map file
-		map = sti.new("map.lua")
+		map = sti("map.lua")
 
 		-- Create new dynamic data layer called "Sprites" as the 8th layer
 		local layer = map:addCustomLayer("Sprites", 8)
@@ -143,7 +143,7 @@ In our player controller, we will be overriding the `layer.update` callback to d
 
 	function love.load()
 		-- Load map file
-		map = sti.new("map.lua")
+		map = sti("map.lua")
 
 		-- Create new dynamic data layer called "Sprites" as the 8th layer
 		local layer = map:addCustomLayer("Sprites", 8)
@@ -261,7 +261,7 @@ Alright, now let's put it all together and see what we've got!
 
 	function love.load()
 		-- Load map file
-		map = sti.new("map.lua")
+		map = sti("map.lua")
 
 		-- Create new dynamic data layer called "Sprites" as the 8th layer
 		local layer = map:addCustomLayer("Sprites", 8)

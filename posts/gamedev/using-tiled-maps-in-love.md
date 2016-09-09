@@ -128,7 +128,7 @@ We are also going to want to remove our old `Object Layer` since we've extracted
 			-- Temporarily draw a point at our location so we know
 			-- that our sprite is offset properly
 			love.graphics.setPointSize(5)
-			love.graphics.point(math.floor(self.player.x), math.floor(self.player.y))
+			love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
 		end
 
 		-- Remove unneeded object layer
@@ -209,7 +209,7 @@ In our player controller, we will be overriding the `layer.update` callback to d
 			-- Temporarily draw a point at our location so we know
 			-- that our sprite is offset properly
 			love.graphics.setPointSize(5)
-			love.graphics.point(math.floor(self.player.x), math.floor(self.player.y))
+			love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
 		end
 
 		-- Remove unneeded object layer
@@ -327,7 +327,7 @@ Alright, now let's put it all together and see what we've got!
 			-- Temporarily draw a point at our location so we know
 			-- that our sprite is offset properly
 			love.graphics.setPointSize(5)
-			love.graphics.point(math.floor(self.player.x), math.floor(self.player.y))
+			love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
 		end
 
 		-- Remove unneeded object layer

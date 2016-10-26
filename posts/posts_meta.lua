@@ -118,6 +118,14 @@ local authors = {
 return {
 	-- Insert next post here
 	{
+		page_title = 'Call for Presentations to Lua Devroom at FOSDEM 2017', -- Post and page title
+		short_url = 'cfp-lua-devroom-fosdem-2017', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Oct 26 2016 10:36', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first or nil
+		author = authors.etiene
+	},
+	{
 		page_title = 'An Introduction to Metatables', -- Post and page title
 		short_url = 'intro-to-metatables', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in

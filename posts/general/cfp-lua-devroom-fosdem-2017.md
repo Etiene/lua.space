@@ -21,7 +21,7 @@ Pierre Chapuis : catwell [at] archlinux [dot] us
 Submission deadline: 2016-12-01  
 Acceptance notifications: 2016-12-11  
 Final schedule announcement: 2016-12-18  
-Devroom: 4th January 2017 (morning)  
+Devroom: 4th February 2017 (morning)  
 
 **Please share this CFP with any person or group you know that could be interested!**  
 

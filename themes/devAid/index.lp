@@ -93,9 +93,9 @@
     <section id="news" class="news section">
         <div class="container">
             <div class="news-inner">
-                <strong>Important News:</strong> 04/05/2016 - <a href="http://lua.space/general/community-news-2">Community news #2</a>
+                <strong>Important News:</strong> 26/10/2016 - <a href="http://lua.space/general/cfp-lua-devroom-fosdem-2017">Call for Presentations to Lua Devroom at FOSDEM 2017</a>
                 <br/>
-                <strong>Important News:</strong> 29/12/2015 - <a href="http://lua.space/general/community-news-1-and-meetup-at-fosdem">Community news #1 and meetup at FOSDEM</a>
+                <strong>Important News:</strong> 04/05/2016 - <a href="http://lua.space/general/community-news-2">Community news #2</a>
 	           <br/>            
                <strong>Important News:</strong> 11/12/2015 - <a href="http://lua.space/general/blog-opening-and-contribution-guide">Blog opening and contribution guide</a>
             </div>

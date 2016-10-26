@@ -13,16 +13,16 @@ All submission should be made using the FOSDEM even planning tool [Pentabarf](ht
 
 There is a [mailing-list](https://lists.fosdem.org/listinfo/lua-devroom) for the devroom, feel free to join and discuss talk ideas, recommend speakers, ask if anyone wants to talk about a topic you would like to know more about or discuss any other Lua devroom related topic.
 
-###If you have any questions, you can contact the devroom organizers by email:   
+*If you have any questions, you can contact the devroom organizers by email*:   
 Etiene Dalcol : dalcol [at] etiene [dot] net   
 Pierre Chapuis : catwell [at] archlinux [dot] us 
 
-###Important dates summary:   
+*Important dates summary:* 
 Submission deadline: 2016-12-01  
 Acceptance notifications: 2016-12-11  
 Final schedule announcement: 2016-12-18  
 Devroom: 4th January 2017 (morning)  
 
-###Please share this CFP with any person or group you know that could be interested! 
+*Please share this CFP with any person or group you know that could be interested! *
 
 See you at FOSDEM! 

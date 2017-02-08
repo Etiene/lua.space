@@ -14,14 +14,14 @@ Below is a description of the arguments `luastatic` supports:
 
 The shell script below shows how to use `luastatic` to build [this program](http://lua.sqlite.org/index.cgi/artifact/0c08de88e066ef2d) for GNU/Linux and Windows. The program uses [Lua](https://www.lua.org/), [LuaSQLite3](http://lua.sqlite.org/index.cgi/home), and [SQLite3](http://sqlite.org/). I tested the script on Ubuntu 15.04.
 
-	#/bin/sh
+	#!/bin/sh
 	
 	# download build tools (if necessary)
 	sudo apt-get install build-essential make mingw-w64 unzip libreadline-dev
 	
 	# download program dependencies
 	wget https://www.lua.org/ftp/lua-5.2.4.tar.gz
-	wget https://raw.githubusercontent.com/ers35/luastatic/master/luastatic.lua
+	wget https://raw.githubusercontent.com/ers35/luastatic/c810584/luastatic.lua
 	wget http://sqlite.org/2016/sqlite-amalgamation-3110100.zip
 	wget http://lua.sqlite.org/index.cgi/zip/lsqlite3_fsl09w.zip
 	wget http://lua.sqlite.org/index.cgi/raw/examples/simple.lua?name=0c08de88e066ef2d6cf59c4be3d7ce2aa7df32c9 -O simple.lua
@@ -72,18 +72,18 @@ The shell script below shows how to use `luastatic` to build [this program](http
 	
 	# build simple.lua for GNU/Linux
 	cd linux
-	./luastatic simple.lua liblua.a sqlite3.a lsqlite3.a -I../lua-5.2.4/src -lpthread
+	./luastatic simple.lua liblua.a lsqlite3.a sqlite3.a -I../lua-5.2.4/src -lpthread
 	strip simple
 	cd ../
 	
 	# build simple.lua for Windows
 	cd windows
-	CC=x86_64-w64-mingw32-gcc ./luastatic simple.lua liblua.a sqlite3.a lsqlite3.a -I../lua-5.2.4/src -lpthread
+	CC=x86_64-w64-mingw32-gcc ./luastatic simple.lua liblua.a lsqlite3.a sqlite3.a -I../lua-5.2.4/src -lpthread
 	strip simple.exe
 
 `luastatic` generates the C source file simple.lua.c containing the Lua program and runs the following command to build the executable:
 
-	cc -Os -std=c99 simple.lua.c liblua.a -rdynamic -ldl -lm lsqlite3.a sqlite3.a -I../lua-5.2.4/src -lpthread -o simple
+	cc -Os simple.lua.c lsqlite3.a liblua.a sqlite3.a -rdynamic -lm -ldl -I../lua-5.2.4/src -lpthread -o simple
 
 If you are familiar with C you can read the file simple.lua.c to see the generated calls to the Lua C API.
 

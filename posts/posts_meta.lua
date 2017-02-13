@@ -10,8 +10,8 @@ local authors = {
 	 -- You can leave all fields nil except name
 	etiene = {
 		name = 'Etiene Dalcol',
-		picture = 'https://scontent-cdg2-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10302647_10205896098953415_7657524150962637562_n.jpg?oh=350d15cd44b05f205949c2105e41ece6&oe=56E10C30',
-		description = 'Etiene is a Software Engineering student from Brazil currently living in France. She is also the Lead developer of Sailor and founder of LuaLadies.',
+		picture = 'https://scontent-lht6-1.xx.fbcdn.net/v/t1.0-9/15697196_10209797816893925_2216958664125969540_n.jpg?oh=9842a7cc4b71b2d405a9bc3222beec95&oe=58FE8D6F',
+		description = 'Etiene is a Software Engineer at Red Badger. She is also the Lead developer of Sailor and an organiser of LuaConf.',
 		website = 'http://etiene.net',
 		twitter = 'http://twitter.com/etiene_d',
 		github = 'http://github.com/Etiene',

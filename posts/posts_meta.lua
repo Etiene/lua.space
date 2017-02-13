@@ -118,6 +118,14 @@ local authors = {
 return {
 	-- Insert next post here
 	{
+		page_title = 'Community news #3', -- Post and page title
+		short_url = 'community-news-3', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Feb 13 2016 23:04', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.etiene
+	},
+	{
 		page_title = 'Call for Presentations to Lua Devroom at FOSDEM 2017', -- Post and page title
 		short_url = 'cfp-lua-devroom-fosdem-2017', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in

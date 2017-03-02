@@ -113,10 +113,28 @@ local authors = {
 		linkedin = nil,
 		facebook = nil,
 	},
+	hisham = {
+		name = 'Hisham Muhammad',
+		picture = 'http://hisham.hm/img/profile_pic.jpg',
+		description = 'Hisham is the lead developer of LuaRocks. Other projects include the htop process viewer and the GoboLinux distribution.',
+		website = 'http://hisham.hm',
+		twitter = 'http://twitter.com/hisham_hm',
+		github = 'http://github.com/hishamhm',
+		linkedin = 'https://linkedin.com/in/hishamhm',
+		facebook = nil,
+	},
 }
 
 return {
 	-- Insert next post here
+	{
+		page_title = 'LuaRocks @ Google Summer of Code 2017', -- Post and page title
+		short_url = 'luarocks-at-gsoc-2017', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Mar 01 2017 21:50', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.hisham
+	},
 	{
 		page_title = 'Community news #3', -- Post and page title
 		short_url = 'community-news-3', -- Short url and same as md file name

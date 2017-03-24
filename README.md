@@ -6,7 +6,7 @@ More info:  [Opening Post](http://lua.space/general/blog-opening-and-contributio
 ##Yay, awesome, what is this blog for?
 Yes, that's an important question! Please notice that we don't have any affilitation with the official Lua team, but we intend to be a central hub for distributing news, technical posts and general discussions on everything related to Lua. Or, as the name says, a Lua space. Subscribe to our [RSS feed](http://feeds.feedburner.com/Luaspace) if you wish to be notified when there's new content.
 
-##Becoming a writer
+## Becoming a writer
 [![Issue Stats](http://issuestats.com/github/Etiene/lua.space/badge/pr)](http://issuestats.com/github/Etiene/lua.space)
 
 All posts are written in markdown and are contained in our [git repository](https://github.com/Etiene/lua.space). Inside the `posts` directory you'll find one or multiple other directories which are the categories of our posts. [This one](http://lua.space/general/blog-opening-and-contribution-guide), for example, is in [general](https://github.com/Etiene/lua.space/tree/master/posts/general).  
@@ -31,10 +31,10 @@ This blogs support syntax highlight provided by [highlight.js](http://highlightj
 		print("You are awesome!")
 	end
 
-##What type of content is welcome?
+## What type of content is welcome?
 This blog was created to promote the use of Lua on various levels, both personally and on the industry.
 
-###Topics:
+### Topics:
 * General Lua use
 	* Tutorials on language aspects
 	* How to share modules
@@ -116,19 +116,19 @@ Example: [http://lua.space/gamedev/using-tiled-maps-in-love](http://lua.space/ga
 	* Post the youtube video, sound cloud url, and resources you deem relevant to the piece
 	* Add code snippets whenever possible
 
-###English & Grammar
+### English & Grammar
 For the moment, the only language used for posting is English (although we may add more languages in the future). Pay attention to orthography and grammar. If English is not your first language, don't refrain from writing, English is not my first language either. If you are insecure about your English level, once you've written the article on your fork, show it to us, so we can help it out. :)
 
-###How articles are accepted
+### How articles are accepted
 Once you've created your article on your fork and made a pull request, we will read it and decide how to proceed. If you've read the sections above, you have an idea on what's the scope of this blog. If we think your article is good to go, your PR will be immediately accepted and merged. We might feel something could be improved before publishing, like a section that could be described in more details or an important URL is missing, for example. We will, then, give feedback by commenting on the PR so you can address it. :)
 
 If you have a subject but you are unsure on how to present it, you can also open an issue before writing the post. We will discuss and help you elaborate your idea. :) 
 
 
-##Maintainer
+## Maintainer
  * [Etiene](http://twitter.com/etiene_d) ([Sailor framework](http://sailorproject.org))
 
-##Main Contributors
+## Main Contributors
 * [Pierre Chapuis](https://twitter.com/pchapuis) ([Lua Toolbox](https://lua-toolbox.com/))
 * [undef](https://twitter.com/undefdev) ([quadrant](http://quadrantgame.com/))
 * [Bogdan Marinescu](https://twitter.com/bogdanm78) ([eLua](http://eluaproject.net))
@@ -136,6 +136,6 @@ If you have a subject but you are unsure on how to present it, you can also open
 * [Elihu Garret](https://twitter.com/Mr_Auk) ([Moonlet](https://github.com/elihugarret/Moonlet))
 * All the writers!
 
-##License
+## License
 
 Everything that is under `posts` has copyright to the respective authors. On the `themes` folder, the design also belogs to the respective author. Other than that, the whole blog structure is `MIT` licensed and you can use it to create your own blogs reading from `markdown` files.

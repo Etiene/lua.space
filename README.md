@@ -3,7 +3,7 @@ The Lua Community Blog
 
 More info:  [Opening Post](http://lua.space/general/blog-opening-and-contribution-guide)
 
-##Yay, awesome, what is this blog for?
+## Yay, awesome, what is this blog for?
 Yes, that's an important question! Please notice that we don't have any affilitation with the official Lua team, but we intend to be a central hub for distributing news, technical posts and general discussions on everything related to Lua. Or, as the name says, a Lua space. Subscribe to our [RSS feed](http://feeds.feedburner.com/Luaspace) if you wish to be notified when there's new content.
 
 ## Becoming a writer
@@ -49,7 +49,7 @@ This blog was created to promote the use of Lua on various levels, both personal
 * Other domains not listed are welcome! We are pretty excited to see Lua being used in different ways!
 	* If you are unsure if the topic would be well received, [open an issue at github](https://github.com/Etiene/lua.space/issues) and ask around :) 
 
-###Format
+### Format
  Follow normal conventions for writing a google article such as having an introduction, adding references whenever possible etc. All posts should be Lua related in some level. Try to raise interesting discussions :) Besides that, the format is pretty flexible. In case you are unsure, you'll find some examples of types of article below. 
  
 #### Some example formats: 

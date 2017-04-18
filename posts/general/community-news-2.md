@@ -1,6 +1,6 @@
 ## Meet-ups and conferences!
 
-###Next
+### Next
 
 [<img src="http://luaconf.com/pub/luaconf.png" alt="luaconf logo" width="80px" style="float: right"/>](http://luaconf.com)
 
@@ -11,7 +11,7 @@
 * October 13th-14th 2016 - Lua Workshop, San Francisco
      * [Website](https://www.lua.org/wshop16.html)
 
-###Past
+### Past
 
 * March 8th - 1st Bay Area OpenResty meetup, San Francisco
      * [Meetup page](http://www.meetup.com/Bay-Area-OpenResty-Meetup/)

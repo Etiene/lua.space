@@ -32,11 +32,11 @@ You can make a [pull request to this article](https://github.com/Etiene/lua.spac
 
 Something important to note, there is one advantage that is not listed because it applies to all of them, which is the good performance and small footprint. This is even more enhanced on tools that support LuaJIT.
 
-##Web Frameworks Comparison
-##Micro frameworks
+## Web Frameworks Comparison
+## Micro frameworks
 Cousins in other languages: Flask (Python), Sinatra (Ruby)
 
-###Lapis
+### Lapis
 **Website**: [leafo.net/lapis](http://leafo.net/lapis/)
 
 **Source**: [github.com/leafo/lapis](https://github.com/leafo/lapis)
@@ -61,9 +61,9 @@ Lapis is a framework for OpenResty developed by the same creator of the MoonScri
  - Does not support a big variety of webservers and databases (OpenResty with Postgres and MySQL only, but that should be enough for most projects)
  - Does not support Lua >= 5.2 (As it supports LuaJIT it might support Lua5.1, though)
 
-##MVC frameworks
+## MVC frameworks
 Cousins in other languages: Zend (PHP), Yii (PHP), Rails (Ruby), Django (Python)
-###Sailor
+### Sailor
 **Website**: [sailorproject.org](http://sailorproject.org)
 
 **Source**: [github.com/Etiene/sailor](https://github.com/Etiene/sailor)
@@ -89,7 +89,7 @@ Sailor is a fairly new framework that began as an independent project by the sam
  - It's still in alpha version, things change fast, it's being used in production only by a small number of projects
  - Single person project with not many active contributors
 
-###Orbit
+### Orbit
 
 **Website**: [keplerproject.github.io/orbit](http://keplerproject.github.io/orbit/)
 
@@ -114,9 +114,9 @@ Orbit is maybe the oldest and most stable framework written for Lua developed by
  - The development seems fairly abandoned with no recent updates
  - Compatible with Lua 5.1 only
 
-##Event-driven frameworks
+## Event-driven frameworks
 Cousins in other languages: Node.js (Javascript)
-###Luvit
+### Luvit
 **Website**: [luvit.io](https://luvit.io/)
 
 **Source**:[github.com/luvit/luvit](https://github.com/luvit/luvit)
@@ -140,7 +140,7 @@ Luvit is a port of node.js to Lua that claims to be 2-4 times faster and save up
  - Awful documentation, a quick look can't tell how it really works, or which versions of Lua and which databases it supports
  - Not friendly to developers who aren't already familiarized with Node.js
 
-###TurboLua
+### TurboLua
 **Website**: [turbolua.org](http://turbolua.org)
 
 **Source**: [github.com/kernelsauce/turbo](https://github.com/kernelsauce/turbo)
@@ -164,8 +164,8 @@ Turbo is a framework for building event-driven, non-blocking RESTful web applica
  - I couldn't find information on community
  - I couldn't find information on databases supported
 
-##CMS, Wikis & others
-###Ophal
+## CMS, Wikis & others
+### Ophal
 **Website**: [ophal.org](http://ophal.org)
 
 **Source**: [github.com/ophal](https://github.com/ophal)
@@ -191,7 +191,7 @@ Ophal is a is a highly scalable web platform and content management system
  - No/small community
  - Single-person project with no other contributors
  
-###LuaPress
+### LuaPress
 **Website**:[luapress.org](http://luapress.org/)
 
 **Source**: [github.com/Fizzadar/Luapress](https://github.com/Fizzadar/Luapress)
@@ -215,7 +215,7 @@ LuaPress is a static blog generator
  - Single person project with no other contributors and little to no community
  - Could be better documented
 
-###Sputnik
+### Sputnik
 **Website**: [spu.tnik.org](http://spu.tnik.org/)
 
 **Source**: [github.com/yuri/sputnik/](https://github.com/yuri/sputnik/)
@@ -235,7 +235,7 @@ Sputnik is an extensible Wiki
  - Compatible only with Lua5.1
  - Very old abandoned project, it's no longer maintained
 
-###Others
+### Others
 
  - [**Tir**](https://github.com/mongrel2/Tir)
  - [**Lusty**](https://github.com/Olivine-Labs/lusty)
@@ -295,5 +295,5 @@ Sputnik is an extensible Wiki
 </table>
 </center>
 
-###Extra
+### Extra
 My talk on web development in Lua and a Sailor introduction during CodingSerbia 2015: [Link](https://www.youtube.com/watch?v=JGPvM-50bOk)

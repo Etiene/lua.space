@@ -1,6 +1,6 @@
 ## Meet-ups and conferences!
 
-###Next
+### Next
 
 * March 5th 2017 - Lua/LuaJIT conference, Moscow
      * [Annnouncement](http://lua-users.org/lists/lua-l/2017-02/msg00001.html)
@@ -11,7 +11,7 @@
      * [Call for sponsor](http://luaconf.com/en#partner)
      
 
-###Past
+### Past
 
 * February 4-5th 2017 - Lua Devroom @ FOSDEM 2017, Brussels
      * [Slides and videos](https://fosdem.org/2017/schedule/track/lua/)

@@ -324,10 +324,10 @@ This enables extremely rapid prototyping of the entirety of a model, from how in
 
 More significantly, what’s difficult to benchmark is the time it takes to specify a new model and debug it in either nn or autograd. In our hands, autograd has dramatically sped up our model building by making it extremely easy to try and test out new ideas, without worrying about correct gradients, twisting nn to support architectures it wasn’t originally designed for, or having to build new modules or loss functions. Autograd is now the first tool we reach for when building neural networks, and we hope that you enjoy it!
 
-##Acknowledgments
+## Acknowledgments
 The core work on autograd for Torch was done by [Alex Wiltschko](https://twitter.com/awiltsch), [Clement Farabet](https://twitter.com/clmt), and [Luke Alonso](https://twitter.com/lukedobl). A big thank you to [Kevin Swersky](https://twitter.com/kswersk), [Arjun Maheswaran](https://twitter.com/segmenta), and [Nicolas Koumchatzky](https://twitter.com/nkoumchatzky) for test-driving early beta versions. This project would not have been possible without the original version of autograd for Python, written by Dougal Maclaurin, [David Duvenaud](https://twitter.com/DavidDuvenaud) and Matt Johnson.
 
-##References
+## References
 [1] Dougal Maclaurin, David Duvenaud, Matt Johnson, “Autograd: Reverse-mode differentiation of native Python”
 
 [2] autograd for Python [https://github.com/HIPS/autograd](https://github.com/HIPS/autograd)

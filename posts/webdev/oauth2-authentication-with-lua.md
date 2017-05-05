@@ -39,7 +39,7 @@ We followed the concept behind [Kong](https://github.com/Mashape/kong), who use 
 Below is how [moltin](https://moltin.com)'s infrastructure currently looks:
 
 <center>
-<img class="img-responsive" src="https://moltin.com/files/large/67b084c60b6d0ff"/>
+<img class="img-responsive" src="http://moltin.com/img/blog/infrastructure.png"/>
 </center>
 
 * OpenResty (Nginx)
@@ -51,7 +51,7 @@ Below is how [moltin](https://moltin.com)'s infrastructure currently looks:
 This is the bit that rules them all.
 
 <center>
-<img class="img-responsive" src="https://moltin.com/files/large/8b359a7b2bad55a"/>
+<img class="img-responsive" src="http://moltin.com/img/blog/one-ring.gif"/>
 </center>
 
 We have routing in place to process each of the different user's requests as you can see below:

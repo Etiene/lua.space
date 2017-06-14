@@ -123,10 +123,28 @@ local authors = {
 		linkedin = 'https://linkedin.com/in/hishamhm',
 		facebook = nil,
 	},
+	lqr = {
+		name = 'Mitchell',
+		picture = nil,
+		description = nil,
+		website = 'https://foicica.com/lua',
+		twitter = nil,
+		github = nil,
+		linkedin = nil,
+		facebook = nil,
+	},
 }
 
 return {
 	-- Insert next post here
+	{
+		page_title = 'Lua Quick Reference Book Pre-orders', -- Post and page title
+		short_url = 'lua-quick-reference-pre-order', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Jun 07 2017 23:20', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.lqr
+	},
 	{
 		page_title = 'LuaRocks @ Google Summer of Code 2017', -- Post and page title
 		short_url = 'luarocks-at-gsoc-2017', -- Short url and same as md file name

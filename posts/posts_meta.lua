@@ -138,6 +138,14 @@ local authors = {
 return {
 	-- Insert next post here
 	{
+		page_title = 'Lua Quick Reference Book Now Available!', -- Post and page title
+		short_url = 'lua-quick-reference-now-available', -- Short url and same as md file name
+		category = 'general', -- folder of where it's in
+		date = 'Jul 10 2017 08:00', -- Just for printing, ordering is done by this table order
+		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
+		author = authors.lqr
+	},
+	{
 		page_title = 'Lua Quick Reference Book Pre-orders', -- Post and page title
 		short_url = 'lua-quick-reference-pre-order', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in

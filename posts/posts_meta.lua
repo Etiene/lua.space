@@ -133,6 +133,16 @@ local authors = {
 		linkedin = nil,
 		facebook = nil,
 	},
+	giann = {
+		name = 'Benoit Giannangeli',
+		picture = 'https://avatars2.githubusercontent.com/u/584398?v=4&s=460',
+		description = 'Front-End Web and iOS Developer, Game Developer, Musician, Lua enthusiast.',
+		website = nil,
+		twitter = 'http://twitter.com/giann',
+		github = 'http://github.com/giann',
+		linkedin = 'https://www.linkedin.com/in/benoit-giannangeli-7619238/',
+		facebook = nil,
+	},
 }
 
 return {
@@ -304,5 +314,13 @@ return {
 		date = 'Dec 11 2015 18:17', -- Just for printing, ordering is done by this table order
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
+	},
+	{
+		page_title = 'Why we rewrote Lua in JS', -- Post and page title
+		short_url = 'why-we-rewrote-lua-in-js', -- Short url and same as md file name
+		category = 'webdev', -- folder of where it's in
+		date = 'Jul 25 2017 08:00', -- Just for printing, ordering is done by this table order
+		reblogged_from = "https://medium.com/@giann/why-we-rewrote-lua-in-js-a66529a8278d", -- [string] URL if this was posted somewhere else first
+		author = authors.giann
 	}
 }

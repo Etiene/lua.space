@@ -72,6 +72,6 @@ You can also interact with the JS side directly from your Lua code effortlessly 
     document:getElementById("my-div").textContent = "Hi there !"
 
 
-The REPL you see on [fengari.io](http://fengari.io/) is itself written [in Lua](https://github.com/fengari-lua/fengari-web-cli/blob/master/src/web-cli.lua) and JS is only used to create the Lua state and run the main script.
+The REPL you see on [fengari.io](http://fengari.io/) is itself written [in Lua](https://github.com/fengari-lua/fengari.io/blob/master/static/lua/web-cli.lua) and JS is only used to create the Lua state and run the main script.
 
 Fengari is still in development and any [feedback](https://github.com/fengari-lua/fengari/issues) is welcome !

@@ -13,11 +13,22 @@ RewriteCond %{REQUEST_FILENAME} !-f
 #CATEGORY SORTING WITH PAGINATION
 RewriteRule ^([^/]+)/([0-9]+)/?$ /index.lua?r=main&c=$1&p=$2 [L]
 
+#Jobs
+RewriteRule ^jobs/add[/]?$ /index.lua?r=jobs/add [L]
+RewriteRule ^jobs/waiting[/]?$ /index.lua?r=jobs/waiting [L]
+RewriteRule ^jobs/admin/([^/]*)[/]?$ /index.lua?r=jobs/admin&pw=$1 [L]
+
 #INSIDE A POST
 RewriteRule ^([^/]+)/([^./]+)/?$ /index.lua?r=main/post&c=$1&t=$2 [L]
 
 #ABOUT PAGE
 RewriteRule ^about[/]?$ /index.lua?r=main/about [L]
+
+#JOBS PAGE
+RewriteRule ^jobs/([0-9]+)/[^/]*[/]?$ /index.lua?r=jobs/view&id=$1 [L]
+RewriteRule ^jobs[/]?$ /index.lua?r=jobs/index [L]
+
+
 
 #ARCHIVE PAGE
 RewriteRule ^archive[/]?$ /index.lua?r=main/archive [L]

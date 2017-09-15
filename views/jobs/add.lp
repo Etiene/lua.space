@@ -138,7 +138,7 @@
 	<input type="submit" class="btn btn-primary" value="Submit to approval"/>
 </form>
 <br/>
-<a href="<%= page:make_url('jobs/index') %>"><- Back Job Listing</a>
+<a href="<%= page:make_url('jobs') %>"><- Back Job Listing</a>
 
 
 <?lua page:to_browser{job_types = job.types} ?>
@@ -153,7 +153,7 @@ local rules = {
 	title = v:new().not_empty().len(10,100),
 	location = v:new().len(0,200),
 	employer = v:new().not_empty().len(5,100),
-	employers_website = v:new().not_empty().len(1,255).match('^https?://[%w]+%.[%w]+.*'),
+	employers_website = v:new().not_empty().len(1,2083).match('^https?://[%w]+%.[%w]+.*'),
 	description = v:new().not_empty().len(10,5000),
 	skills_required = v:new().len(0,5000),
 	skills_desired = v:new().len(0,5000),
@@ -178,7 +178,6 @@ local function validateInput(attr,input)
 			parent.classList:add('has-success')
 			error.innerHTML = ''
 		else
-			print(input.value,type(input.value))
 			parent.classList:remove('has-success')
 			parent.classList:add('has-error')
 			error.innerHTML = 'Value '..tostring(msg)

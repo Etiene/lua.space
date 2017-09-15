@@ -18,22 +18,23 @@ local conf = {
 	},
 
 	
+	admin_pass='mingau46',	
 
 	db = {
 		development = { -- current environment
 			driver = 'mysql',
-			host = '',
-			user = '',
-			pass = '',
-			dbname = ''
+			host = 'localhost',
+			user = 'thisistela',
+			pass = 'Tela@France',
+			dbname = 'luaspace'
 		}
 	},
 
 	smtp = {
-		server = '',
-		user = '',
-		pass = '',
-		from = ''
+		server = 'smtp.gmail.com',
+		user = 'lua.sailorproject@gmail.com',
+		pass = 	'etndlcl1688',
+		from = '<lua.sailorproject@gmail.com>'
 	},
 
 	lua_at_client = {

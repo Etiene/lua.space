@@ -35,7 +35,10 @@
 				<div class="row">
 					<div class="col-md-10">
 						<h3>
-							<a href="<%= page:make_url('jobs/view',{id = v.id}) %>"> 
+							<?lua
+								local employer = v.employer:lower():gsub(' ','-')
+							?>
+							<a href="/jobs/<%=v.id%>/<%=employer%>"> 
 								<%= v.title %> <small> ( <%= v.type %> )  </small> 
 							</a>
 						</h3>

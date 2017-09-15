@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+<title>Lua.Space</title>
+<link>http://http://lua.space/</link>
+<description>The unofficial Lua blog</description>
+	<item>
+		<title>Why we rewrote Lua in JS</title>
+		<link>http://lua.space/webdev/why-we-rewrote-lua-in-js</link>
+		<guid>http://lua.space/webdev/why-we-rewrote-lua-in-js</guid>
+		<pubDate>Tue, 25 Jul 2017 08:00:00 GMT</pubDate>
+		<description><![CDATA[
+
+<p>There is a latent desire out there to use something else than JS in the browser. Whether it is warranted or not is another topic in itself. But you don't have to search long to find <a href="https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS">all kinds of projects</a> aiming to bring another language in the browser.</p>
+
+<p>The arrival of Web Assembly reignited that desire for many of us. But wasm is a long way from being usable in production and still does not allow full interaction with all web apis.</p>
+
+<h2>Lua is a good fit for the browser</h2>
+
+<p>Lua is a simple language with very few concepts to understand and a clear and readable syntax. You can be proficient with it in a matter of hours. Yet it provides very useful features. To name a few:</p>
+
+<ul>
+    <li>First class functions and closures</li>
+    <li>A versatile data structure: <a href="http://www.lua.org/pil/2.5.html">the table</a></li>
+    <li>Vararg expression</li>
+    <li>Lexical scoping</li>
+    <li>Iterators</li>
+    <li>Coroutines (see below)</li>
+</ul>
+
+<p>It has a sane coercion system (I'm looking at you JS!). Nobody's adding X new concepts to it each version (still looking at you JS), which makes it a stable and reliable language.</p>
+
+<p>Lua is already successfully used server-side with the awesome <a href="https://openresty.org/en/">OpenResty</a> which powers sites like <a href="https://itch.io/">itch.io</a>. There's even some great web frameworks like <a href="http://leafo.net/lapis/">lapis</a>.</p>
+
+<p>Lua can be found in a number of widely different contexts because of how easy it is to embed it. You can write a whole program with it or simply use it as a <em>glue</em> language thanks to the Lua C api.</p>
+
+<h3>Coroutines</h3>
+
+<p>One of its main selling point for the browser are coroutines. Coroutines address the issue of writing asynchronous code beautifully. No more promises, generators, etc. You can just write asynchronous code as easily as regular code.</p>
+
+<p>Here's a simple example (fully functional version <a href="https://gist.github.com/giann/f231cce5f17bde18aceb8537855cd51c">here</a>):</p>
+
+<pre><code>local bird1 = fetch("http://some.api.com/raven") -- fetch being a random xhr call
+local bird2 = fetch("http://some.api.com/dove")
+
+print(bird1.name, bird2.name)
+</code></pre>
+
+
+<p>A similar version of that using async/await could be:</p>
+
+<pre><code>let asynchronousFn = async function() {
+    let bird1 = await fetch("http://some.api.com/raven");
+    let bird2 = await fetch("http://some.api.com/dove");
+
+    console.log(bird1.name, bird2.name);
+}
+</code></pre>
+
+<p>These are close, but notice how, in the Lua version, you don't need to be in a <code>async</code> function. In JS you would have to constantly make the conscious choice of tagging a function <code>async</code> or not. In Lua, <strong>any</strong> function can be interrupted as long as it's running in a coroutine. Bob Nystrom wrote a great post about it <a href="http://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/">here</a>.</p>
+
+<p>When you're writing asynchronous code in JS, you're in fact piling up function calls. Those callbacks all retain their upvalues which can lead to high memory usage. With coroutines your function can actually be suspended and resumed without having to descend from a pyramid of closures because they run in separate lua states.</p>
+
+<h2>Existing ways of using Lua in the browser</h2>
+
+<p>There's already a few projects out there to use Lua in the browser in some extent:</p>
+
+<ul>
+    <li><a href="http://moonshinejs.org/">Moonshine</a> is a reimplementation of Lua in JS. Sadly, it's not being actively developed anymore.</li>
+    <li><a href="http://starlight.paulcuth.me.uk/">Starlight</a> by the same author is a Lua to JS transpiler. Unfortunately coroutines can't be implemented effectively with this approach.</li>
+    <li><a href="https://daurnimator.github.io/lua.vm.js/lua.vm.js.html">lua.vm.js</a> a port of the original Lua implementation to JS using Emscripten. It's fast and works well but its interoperability with JS is compromised by the fact that we end up with two garbage collectors trying to manage the same memory.</li>
+</ul>
+
+<h2>Fengari</h2>
+
+<p><a href="http://fengari.io/"><strong>Fengari</strong></a> (moon in greek) is the Lua VM written in Javascript with the browser as its primary target.</p>
+
+<p>Fengari aims to be 100% compliant with the latest Lua semantics. It stays as close as possible to Lua's codebase and if you're familiar with it, you'll understand Fengari rather easily. <a href="https://github.com/fengari-lua/fengari#so-far">99%</a> of Lua's scope is currently covered so you should be able to run any Lua project with minor adjustments.</p>
+
+<p>With the C API (rather JS API), you can decide to write everything in Lua or to use it as a higher level language that calls your JS codebase to do the heavy lifting. This also means that you can segregate your code in separate insulated Lua states.</p>
+
+<p>You can also interact with the JS side directly from your Lua code effortlessly with the <a href="https://github.com/fengari-lua/fengari-interop">fengari-interop</a> module. It ensures that manipulating JS objects or functions always behave the way you would expect it to:</p>
+
+
+<pre><code>local global = js.global
+local document = global.document
+
+global:alert("Hello from Fengari")
+
+document:getElementById("my-div").textContent = "Hi there !"
+</code></pre>
+
+
+<p>The REPL you see on <a href="http://fengari.io/">fengari.io</a> is itself written <a href="https://github.com/fengari-lua/fengari-web-cli/blob/master/src/web-cli.lua">in Lua</a> and JS is only used to create the Lua state and run the main script.</p>
+
+<p>Fengari is still in development and any <a href="https://github.com/fengari-lua/fengari/issues">feedback</a> is welcome !</p>
+
+		]]></description>
+	</item>
+	<item>
+		<title>Lua Quick Reference Book Now Available!</title>
+		<link>http://lua.space/general/lua-quick-reference-now-available</link>
+		<guid>http://lua.space/general/lua-quick-reference-now-available</guid>
+		<pubDate>Mon, 10 Jul 2017 08:00:00 GMT</pubDate>
+		<description><![CDATA[
+<p><em>Lua Quick Reference</em> is a newly published book on Lua that is now available for order! Please visit <a href="https://foicica.com/lua">https://foicica.com/lua</a> for more information, including links for ordering the e-book and/or print book, as well as a free excerpt from the book. For convenience, the book's description is reproduced below.</p>
+
+<blockquote>
+    <p>Lua is a small, fast, powerful, and embeddable scripting language. It is well-suited for use in video games, application scripting, embedded devices, and nearly anywhere else a scripting language is needed. This quick reference contains a wealth of knowledge on how to program in and embed Lua, whether it is Lua 5.3, 5.2, or 5.1. This book can even be used with LuaJIT, a Just-In-Time compiler for Lua based on Lua 5.1. <em>Lua Quick Reference</em> groups the language's features and C API in a convenient and easy-to-use manner, while clearly marking the differences between Lua versions.</p>
+    
+    <p>This book covers:</p>
+    
+    <ul>
+        <li>Lua syntax, expressions, and statements</li>
+        <li>Metatables and metamethods</li>
+        <li>Object-oriented programming with Lua</li>
+        <li>Creating and working with Lua and C Modules</li>
+        <li>Lua's standard library and its C API</li>
+        <li>Collaborative multi-threading in Lua and C</li>
+        <li>How to embed and use Lua within a host</li>
+        <li>And much more</li>
+    </ul>
+</blockquote>
+
+		]]></description>
+	</item>
+	<item>
+		<title>Lua Quick Reference Book Pre-orders</title>
+		<link>http://lua.space/general/lua-quick-reference-pre-order</link>
+		<guid>http://lua.space/general/lua-quick-reference-pre-order</guid>
+		<pubDate>Wed, 07 Jun 2017 23:20:00 GMT</pubDate>
+		<description><![CDATA[
+<p><em>Lua Quick Reference</em> is a new book on Lua that is now available for pre-order at <a href="https://foicica.com/lua">https://foicica.com/lua</a>. It is slated for publication in early July, 2017. The linked website includes an excerpt from the book and has some additional information. For convenience, the book's description is reproduced below.</p>
+
+<blockquote>
+    <p>Lua is a small, fast, powerful, and embeddable scripting language. It is well-suited for use in video games, application scripting, embedded devices, and nearly anywhere else a scripting language is needed. This quick reference contains a wealth of knowledge on how to program and embed Lua, whether it is Lua 5.3, 5.2, or 5.1. It groups the language's features and C API in a convenient and easy-to-use manner, while clearly marking the differences between Lua versions.</p>
+    
+    <p>This book covers:</p>
+    
+    <ul>
+        <li>Lua syntax, expressions, and statements</li>
+        <li>Metatables and metamethods</li>
+        <li>Object-oriented programming with Lua</li>
+        <li>Creating and working with Lua and C Modules</li>
+        <li>Lua's standard library and its C API</li>
+        <li>Collaborative multi-threading in Lua and C</li>
+        <li>How to embed and use Lua within a host</li>
+        <li>And much more</li>
+    </ul>
+</blockquote>
+
+		]]></description>
+	</item>
+	<item>
+		<title>LuaRocks @ Google Summer of Code 2017</title>
+		<link>http://lua.space/general/luarocks-at-gsoc-2017</link>
+		<guid>http://lua.space/general/luarocks-at-gsoc-2017</guid>
+		<pubDate>Wed, 01 Mar 2017 21:50:00 GMT</pubDate>
+		<description><![CDATA[
+
+<p>LuaRocks was selected by Google to be one of the participating organizations
+in <a href="https://summerofcode.withgoogle.com/">Google Summer of Code 2017</a>!</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Google_Summer_of_Code">Google Summer of Code</a>
+is an international annual program, in which Google awards
+<a href="https://developers.google.com/open-source/gsoc/help/student-stipends">stipends</a>
+to students who successfully complete a free and open-source software coding
+project during the summer. The program is open to university students aged 18
+or over. The coding period goes from May 30 to August 29 (that is, the summer
+break in the Northern Hemisphere). </p>
+
+<p>LuaRocks, the package manager for Lua, has been part of GSoC in the past as part of
+the <a href="http://www.lua.inf.puc-rio.br">LabLua</a> organization (a research lab at
+PUC-Rio, the home of Lua). But this was the first time we applied as an 
+independent organization, and we are very happy and thankful to be accepted.</p>
+
+<p>Our global team of mentors (with people hailing from four continents!)
+has produced a nice list of <a href="http://luarocks.github.io/luarocks/gsoc/ideas2017.html">project ideas</a>,
+but students are free and encouraged to contact us with ideas of their own as well!</p>
+
+<h2>Applying to the program</h2>
+
+<p>If you are an eligible student and wish to apply, you should join the
+<a href="https://lists.sourceforge.net/lists/listinfo/luarocks-developers">luarocks-developers mailing
+list</a> and
+say hi at our <a href="http://gitter.im/luarocks/luarocks">Gitter group</a>.</p>
+
+<p>Once you <a href="http://luarocks.github.io/luarocks/gsoc/ideas2017.html">find a project</a>
+you are interested in, you should contact the mentor for that project by
+email, and this <a href="http://luarocks.github.io/luarocks/gsoc/apply2017.html">questionnaire</a>.
+If your application looks appropriate, the mentor may ask you to perform some
+small task related to the project to assess your abilities, and discuss with
+you how to best present your proposal. <a href="https://summerofcode.withgoogle.com/organizations/5122941307060224/">Proposals accepted from March 20 to
+April 3, 2017</a>!</p>
+
+<p>Join us and come hack LuaRocks this next summer! (...or winter if you're in the
+Southern Hemisphere! :) )</p>
+
+		]]></description>
+	</item>
+	<item>
+		<title>Community news #3</title>
+		<link>http://lua.space/general/community-news-3</link>
+		<guid>http://lua.space/general/community-news-3</guid>
+		<pubDate>Sat, 13 Feb 2016 23:04:00 GMT</pubDate>
+		<description><![CDATA[
+<h2>Meet-ups and conferences!</h2>
+
+<h3>Next</h3>
+
+<ul>
+    <li><p>March 5th 2017 - Lua/LuaJIT conference, Moscow</p>
+    <ul>
+        <li><a href="http://lua-users.org/lists/lua-l/2017-02/msg00001.html">Annnouncement</a></li>
+    </ul></li>
+    <li><p>June 3rd 2017 - LuaConf, Rio de Janeiro <a href="http://luaconf.com"><img src="http://luaconf.com/pub/luaconf.png" alt="luaconf logo" width="80px" style="float: right"/></a></p>
+    <ul>
+        <li><a href="http://luaconf.com/en">Website</a></li>
+        <li><a href="http://luaconf.com/en#talk-proposals">Call for presentations</a></li>
+        <li><a href="http://luaconf.com/en#partner">Call for sponsor</a></li>
+    </ul></li>
+</ul>
+
+
+<h3>Past</h3>
+
+<ul>
+    <li><p>February 4-5th 2017 - Lua Devroom @ FOSDEM 2017, Brussels</p>
+    <ul>
+        <li><a href="https://fosdem.org/2017/schedule/track/lua/">Slides and videos</a></li>
+        <li><a href="https://fosdem.org/2017/schedule/event/smalllanguagepanel/">Video of panel: The Future of Small Languages</a></li>
+        <li><a href="https://photos.google.com/share/AF1QipONA6E_T_g7eTw_kvAihDiruHXDJQfDN5YUgWA1hzQ2gdnvD2hV8ZVDczuKfLmKqg?key=dVBtaVczQW1DX1djdWZjcWRaZzhTaTJNeEV1VXRn">Pictures</a></li>
+    </ul></li>
+    <li><p>October 13-14th 2016 - Lua Workshop, California</p>
+    <ul>
+        <li><a href="https://www.lua.org/wshop16.html#abstracts">Slides and videos</a></li>
+    </ul></li>
+    <li><p>July 9th 2016 - Lua Conf, Rio de Janeiro</p>
+    <ul>
+        <li><a href="https://www.youtube.com/channel/UC8UnjF-8EPisllS_lHX0QMg/videos">Videos</a></li>
+    </ul></li>
+</ul>
+
+<h2>News</h2>
+
+<ul>
+    <li>Feb 7th - <a href="http://lua-users.org/lists/lua-l/2017-02/msg00071.html">Lua community events &amp; developer relations effort</a></li>
+    <li>Jan 30th - <a href="http://lua-users.org/lists/lua-l/2017-01/msg00315.html">Lua 5.3.4 now available</a></li>
+    <li>Jan 13th - <a href="https://www.reddit.com/r/lua/comments/5kxqk7/new_irc_support_channel_luafr_freenode/">New Lua IRC channel in French</a></li>
+</ul>
+
+<h2>Featured Releases</h2>
+
+<ul>
+    <li>Feb 6th - <a href="https://luarocks.org/modules/zer0main/luawt">LuaWt 0.0.1</a> (GPL-2.0)</li>
+    <li>Jan 30th - <a href="https://github.com/dibyendumajumdar/ravi/releases/tag/0.19">Ravi 0.19</a> (MIT / GPL)</li>
+    <li>Jan 24th - <a href="https://luarocks.org/modules/leo-ma/smithsnmp">SmithSNMP 0.8</a> (GPL-2.0)</li>
+    <li>Jan 22nd - <a href="https://github.com/gvvaughan/lyaml">Lyaml 6.1</a> (MIT)</li>
+    <li>Jan 13th - <a href="http://www.inf.puc-rio.br/~roberto/lpeg/">LPeg 1.0.1</a> (MIT)</li>
+    <li>Jan 13th - <a href="https://github.com/Nymphium/opeth">opeth</a> (MIT)</li>
+    <li>Jan 5th - <a href="https://github.com/leegao/see.lua">see.lua</a> (MIT)</li>
+</ul>
+
+<h2>Resources</h2>
+
+<ul>
+    <li><a href="https://github.com/oxford-cs-ml-2015">Oxford Machine Learning lectures</a></li>
+</ul>
+
+		]]></description>
+	</item>
+	<item>
+		<title>Call for Presentations to Lua Devroom at FOSDEM 2017</title>
+		<link>http://lua.space/general/cfp-lua-devroom-fosdem-2017</link>
+		<guid>http://lua.space/general/cfp-lua-devroom-fosdem-2017</guid>
+		<pubDate>Wed, 26 Oct 2016 10:36:00 GMT</pubDate>
+		<description><![CDATA[
+<p><a href="https://fosdem.org">FOSDEM</a> is the Free and Open source Software Developers' European Meeting, conference happening every year in Brussels, Belgium over a weekend. Next year it will be on February 4-5. It's the biggest FOSS event in Europe with +5000 participants, +400 talks. </p>
+
+<p><a href="http://fosdem.org"><center><img class="img-responsive" src="https://fosdem.org/2017/assets/style/logo-big-a5243e4d7e00f8bc6816e2b3f3804f505a17ae4832e6e52a24d183617e03a87c.png" alt="FOSDEM"/></center></a></p>
+
+
+<p>In 2015 we had a Birds of a Feather meeting and in 2016 we had a real developer room for half a day. Both meetings were a big success and next year we will have half a day of a developer room again. </p>
+
+<p>We are now accepting submissions of talk proposals. The format will be 30 minutes talks, including questions (so roughly 20-25 minute talks, 5-10 minutes for Q&amp;A). The talks will be filmed, possibly streamed live, and the videos will be made available publicly under a CC-BY license. Submitting a talk for the devroom implies that you agree to be filmed under such terms. </p>
+
+<p>All topics related to Lua are accepted. The deadline for submission is Thursday, 1st of December 2016.</p>
+
+<p>All submission should be made using the FOSDEM even planning tool <a href="https://fosdem.org/submit">Pentabarf</a>. When you create your event, make sure to select "Lua devroom" under "Track". If you already have a Pentabarf account from a previous year, please reuse it instead of creating a new one. </p>
+
+<p>There is a <a href="https://lists.fosdem.org/listinfo/lua-devroom">mailing-list</a> for the devroom, feel free to join and discuss talk ideas, recommend speakers, ask if anyone wants to talk about a topic you would like to know more about or discuss any other Lua devroom related topic.</p>
+
+<p><strong>If you have any questions, you can contact the devroom organizers by email:</strong> <br/>
+Etiene Dalcol : dalcol [at] etiene [dot] net <br/>
+Pierre Chapuis : catwell [at] archlinux [dot] us </p>
+
+<p><strong>Important dates summary:</strong> <br/>
+Submission deadline: 2016-12-01 <br/>
+Acceptance notifications: 2016-12-11 <br/>
+Final schedule announcement: 2016-12-18 <br/>
+Devroom: 4th February 2017 (morning)  </p>
+
+<p><strong>Please share this CFP with any person or group you know that could be interested!</strong>  </p>
+
+<p>See you at FOSDEM! </p>
+
+		]]></description>
+	</item>
+	<item>
+		<title>An Introduction to Metatables</title>
+		<link>http://lua.space/general/intro-to-metatables</link>
+		<guid>http://lua.space/general/intro-to-metatables</guid>
+		<pubDate>Sun, 12 Jun 2016 13:06:00 GMT</pubDate>
+		<description><![CDATA[
+<p>Hi folks, this post aims to offer a clear introduction to the topic of metatables in Lua for those who are not yet familiar with them. I originally wrote this for the forums of <a href="http://www.lexaloffle.com/pico-8.php">PICO-8</a>, a 'fantasy console' with limitations inspired by classic 8-bit computers, which uses a modified flavour of Lua 5.2.</p>
+
+<p>Without further ado, let's go!</p>
+
+<p>A <strong>table</strong> is a mapping of keys to values. They're explained quite well in the PICO-8 manual and the Lua reference manual so I won't go into more detail. In particular you should know that <code>t.foo</code> is just a nicer way of writing <code>t["foo"]</code> and also that <code>t:foo()</code> is a nicer way of calling the function <code>t.foo(t)</code></p>
+
+<p>A <strong>metatable</strong> is a table with some specially named properties defined inside. You apply a metatable to any other table to change the way that table behaves. This can be used to:</p>
+
+<ol>
+    <li>define custom operations for your table (+, -, etc.)</li>
+    <li>define what should happen when somebody tries to look up a key that doesn't exist</li>
+    <li>specify how your table should be converted to a string (e.g. for printing)</li>
+    <li>change the way the garbage collector treats your table (e.g. <a href="https://www.lua.org/pil/17.html">tables with weak keys</a>)</li>
+</ol>
+
+<p>Point #2 is especially powerful because it allows you to set default values for missing properties, or specify a <a href="https://en.wikipedia.org/wiki/Prototype-based_programming">prototype</a> object which contains methods shared by many tables.</p>
+
+<p>You can attach a metatable to any other table using the <a href="http://www.lua.org/manual/5.2/manual.html#pdf-setmetatable">setmetatable</a> function.</p>
+
+<p>All possible metatable events are explained on the lua-users wiki: <br/>
+ >>> <a href="http://lua-users.org/wiki/MetatableEvents">list of metatable events</a> &lt;<&lt;</p>
+
+<p>which is, as far as I'm aware, the best reference for everything that metatables can be used for.</p>
+
+<p>And that's really all you need to know!</p>
+
+
+<h3>Vectors Example</h3>
+
+<p>I'll now demonstrate how metatables could be used to make a "2D point/vector" type, with custom operators.</p>
+
+
+<pre><code>-- define a new metatable to be shared by all vectors
+local mt = {}
+
+-- function to create a new vector
+function makevec2d(x, y)
+    local t = {
+        x = x,
+        y = y
+    }
+    setmetatable(t, mt)
+    return t
+end
+
+-- define some vector operations such as addition, subtraction:
+function mt.__add(a, b)
+    return makevec2d(
+        a.x + b.x,
+        a.y + b.y
+    )
+end
+
+function mt.__sub(a, b)
+    return makevec2d(
+        a.x - b.x,
+        a.y - b.y
+    )
+end
+
+-- more fancy example, implement two different kinds of multiplication:
+-- number*vector -&gt; scalar product
+-- vector*vector -&gt; cross product
+-- don't worry if you're not a maths person, this isn't important :)
+
+function mt.__mul(a, b)
+    if type(a) == "number" then
+        return makevec2d(b.x * a, b.y * a)
+    elseif type(b) == "number" then
+        return makevec2d(a.x * b, a.y * b)
+    end
+    return a.x * b.x + a.y * b.y
+end
+
+-- check if two vectors with different addresses are equal to each other
+function mt.__eq(a, b)
+    return a.x == b.x and a.y == b.y
+end
+
+-- custom format when converting to a string:
+function mt.__tostring(a)
+    return "(" .. a.x .. ", " .. a.y .. ")"
+end
+</code></pre>
+
+
+<p>Now we can use our newly defined 'vector' type like this:</p>
+
+
+<pre><code>local a = makevec2d(3, 4)
+local b = 2 * a
+
+print(a)      -- calls __tostring internally, so this prints "(3, 4)"
+print(b)      -- (6, 8)
+print(a + b)  -- (9, 12)
+</code></pre>
+
+
+<p>Pretty neat right?</p>
+
+
+<h3>Object Orientation</h3>
+
+<p>I mentioned that metatables can be used to define what should happen when a key lookup fails, and that this can be used to create custom methods shared by many tables. For example we might want to be able to do this:</p>
+
+
+<pre><code>a = makevec2d(3, 4)
+a:magnitude()  -- calculate the length of the vector, returning 5
+</code></pre>
+
+
+<p>In Lua this is not always necessary, for example, we could define an ordinary function to do the job for us:</p>
+
+
+<pre><code>function magnitude(vec)
+    return sqrt(vec.x^2 + vec.y^2)
+end
+magnitude(a)  -- returns 5
+</code></pre>
+
+
+<p>In fact, for PICO-8 I would recommend that approach, because it's as efficient as you can get, and it uses the least number of tokens (PICO-8 cartridges are limited in code size).</p>
+
+<p>But I think it's educational to see how metatables can make it possible to use Lua in a more OOP style.</p>
+
+<p>First off, we define all our methods in a table somewhere. Note, you can define them in the metatable itself (this is a common convention), but I'll put them in a different table to prevent confusion.</p>
+
+
+<pre><code>local methods = {}
+function methods.magnitude(self)
+    return sqrt(self.x^2 + self.y^2)
+end
+</code></pre>
+
+
+<p>The <code>__index</code> property of a metatable is referred to when you try to look up a key 'k' which is not present in the original table 't'.</p>
+
+<p>If __index is a function, it is called like <code>mt.__index(t, k)</code> <br/>
+If __index is a table, a lookup is performed like <code>mt.__index[k]</code>  </p>
+
+<p>So we can add the magnitude function, along any other methods we may have defined, to all our existing vector objects by simply setting the __index property to our table of methods:</p>
+
+
+<pre><code>mt.__index = methods
+</code></pre>
+
+
+<p>And now, as we wanted, we can call <code>a:magnitude()</code> <br/>
+Which is a shortcut for <code>a.magnitude(a)</code> <br/>
+Which is a shortcut for <code>a["magnitude"](a)</code></p>
+
+<p>Hopefully given all this information, it's clear what's happening: We never defined a magnitude property in 'a', so when we try to lookup the string "magnitude", the lookup fails and Lua refers to the metatable's __index property instead.</p>
+
+<p>Since __index is a table, it looks in there for any property called "magnitude" and finds the magnitude function that we defined. This function is then called with the parameter 'a' which we implicitly passed when we used the : operator.</p>
+
+<p>Well, that's it from me! I hope somebody finds this post useful, and please let me know if there is something you don't understand, or something that I left out or could have explained better. If you'd like to see more examples of metatable usage and OOP, I recommend chapters 13, 16 and 17 of <a href="https://www.lua.org/pil/contents.html">Programming in Lua</a>.</p>
+
+		]]></description>
+	</item>
+	<item>
+		<title>Community news #2</title>
+		<link>http://lua.space/general/community-news-2</link>
+		<guid>http://lua.space/general/community-news-2</guid>
+		<pubDate>Wed, 04 May 2016 23:46:00 GMT</pubDate>
+		<description><![CDATA[
+<h2>Meet-ups and conferences!</h2>
+
+<h3>Next</h3>
+
+<p><a href="http://luaconf.com"><img src="http://luaconf.com/pub/luaconf.png" alt="luaconf logo" width="80px" style="float: right"/></a></p>
+
+<ul>
+    <li><p>July 9th 2016 - LuaConf, Rio de Janeiro</p>
+    <ul>
+        <li><a href="http://luaconf.com">Website</a></li>
+        <li><a href="http://bit.ly/1Q5pjXM">Call for presentations</a></li>
+    </ul></li>
+    <li><p>October 13th-14th 2016 - Lua Workshop, San Francisco</p>
+    <ul>
+        <li><a href="https://www.lua.org/wshop16.html">Website</a></li>
+    </ul></li>
+</ul>
+
+<h3>Past</h3>
+
+<ul>
+    <li><p>March 8th - 1st Bay Area OpenResty meetup, San Francisco</p>
+    <ul>
+        <li><a href="http://www.meetup.com/Bay-Area-OpenResty-Meetup/">Meetup page</a></li>
+        <li><a href="https://groups.google.com/d/msg/openresty-en/AoHxk8setFo/Ks0v4p-HEAAJ">Slides and Videos</a></li>
+    </ul></li>
+    <li><p>January 31st - Lua Devroom @ FOSDEM 2016, Brussels</p>
+    <ul>
+        <li><a href="https://goo.gl/photos/gSiwFvG9Xva8uEiJ9">Photos</a></li>
+        <li><a href="https://fosdem.org/2016/schedule/track/lua/">Slides and videos</a></li>
+        <li><a href="https://fosdem.org/2016/schedule/event/future_guile_lua/">Video of panel: The Future of Small Languages</a></li>
+    </ul></li>
+</ul>
+
+
+<h2>News</h2>
+
+<ul>
+    <li>May 4th - <a href=" http://www.lua.org/work/">Lua 5.3.3 now available for testing</a></li>
+    <li>May 2nd - <a href="https://github.com/spotify/annoy/blob/master/README_Lua.md">Annoy (Approximate Nearest Neighbors) now has Lua bindings</a></li>
+    <li>April 28th - <a href="http://haxe.org/blog/hello-lua">Haxe introduces Lua target</a></li>
+    <li>April 22nd - <a href="http://www.d-booker.fr/lua-complet/372-le-guide-de-lua-et-ses-applications.html">Book "Le guide et ses applications 2ed" published (French)</a></li>
+    <li>April 4th - <a href="https://github.com/hexchat/hexchat/">HexChat IRC client gets Lua scripting support</a></li>
+</ul>
+
+
+<h2>Featured Releases</h2>
+
+<ul>
+    <li>April 18th - <a href="https://github.com/keplerproject/luacov/">LuaCov 0.11.0</a> (MIT)</li>
+    <li>April 17th - <a href="https://github.com/mpeterv/luacheck">Luacheck 0.15.0</a> (MIT)</li>
+    <li>April 16th - <a href="http://bitbucket.org/wilhelmy/lua-bencode/">Bencoding 2.2.0</a> (MIT)</li>
+    <li>April 5th - <a href="https://github.com/tongson/omnia/">Omnia 0.3.0</a> (MIT)</li>
+    <li>Mar 20th - <a href="http://ravilang.org">Ravi 0.15</a> (MIT)</li>
+    <li>Mar 16th - <a href="https://openresty.org">OpenResty 1.9.7.4</a> (BSD)</li>
+    <li>Mar 2nd - <a href="https://github.com/ignacio/nozzle">Nozzle</a> (MIT)</li>
+    <li>Feb 27th - <a href="https://github.com/luaposix/luaposix/">Luaposix 33.4.0</a> (MIT)</li>
+    <li>Feb 13th - <a href="https://github.com/jcgoble3/lua-matchext">Lua Matchtext 0.3.0</a> (MIT)</li>
+    <li>Feb 13th - <a href="https://github.com/tbastos/lift/">Lift 0.1.0</a> (MIT)</li>
+    <li>Feb 12th - <a href="http://gvvaughan.github.io/specl/">Specl 14.1.6</a> (MIT)</li>
+    <li>Feb 12th - <a href="https://github.com/ignacio/wsapi-openresty">Wsapi-openresty 0.0.1</a> (MIT)</li>
+    <li>Feb 7th - <a href="https://github.com/lua-stdlib/prototype">std.prototype 1.0.1</a></li>
+    <li>Jan 28th - <a href="http://ladc.github.io/lgsl/">LGSL 0.1</a> (GPL-3)</li>
+    <li>Jan 24th - <a href="https://github.com/starius/lua-filesize">Lua filesize 0.1.1</a> (MIT)</li>
+    <li>Jan 22nd - <a href="https://studio.zerobrane.com/">ZeroBrane Studio 1.3.0</a> (MIT)</li>
+    <li>Jan 9th - <a href="http://luarocks.org">LuaRocks 2.3.0</a> (MIT)</li>
+</ul>
+
+
+		]]></description>
+	</item>
+	<item>
+		<title>Using Lua coroutines to create an RPG dialogue system</title>
+		<link>http://lua.space/gamedev/using-lua-coroutines-to-create-rpg</link>
+		<guid>http://lua.space/gamedev/using-lua-coroutines-to-create-rpg</guid>
+		<pubDate>Mon, 11 Apr 2016 07:31:00 GMT</pubDate>
+		<description><![CDATA[
+<p>Recently I've been working on an RPG with a friend, for whom coding is not their strong point. We're using the excellent <a href="https://love2d.org/">LÖVE</a> framework, so the whole game is written in Lua.</p>
+
+<p>Scripting of dialogues, animations and in-game events is a hugely important aspect for any RPG, and I wanted to build a scripting system that's easy to use and doesn't require any knowledge about the rest of the game's engine, but is also powerful enough for me to extend with new functionality as needed. This post aims to show how a few simple Lua features can be combined to create a scripting environment that's pleasant to use.</p>
+
+<p>First, let's take a look at the XSE language used in Pokémon modding, as this was probably my main point of inspiration. It has a very straightforward, imperative style, even though each instruction doesn't correspond to a single function in-game.</p>
+
+<p>By this I mean, the whole game engine doesn't freeze just because you are talking to an NPC, however there are points at which the dialogue script cannot progress until the text animations have finished and the player has pressed the [A] button.</p>
+
+<p><img alt="XSE Example" class="img-responsive" src="/pub/img/using-lua-coroutines-to-create-rpg/xse.png" /></p>
+
+<p>Another interesting tool is <a href="https://github.com/infiniteammoinc/Yarn">Yarn</a>, a dialogue editor in which you connect nodes of text together to form complete conversations. It has variables, conditionals and custom commands which you can hook up to different parts of your engine to trigger animations and such. I'd say it's definitely worth checking out especially if you're using Unity or similar.</p>
+
+<p>So how would we go about creating such a system in LÖVE without creating our own language or writing an interpreter for an existing language such as Yarn?</p>
+
+<h3>Part 1: Chaining Callbacks Together</h3>
+<p>The first thing we need is the ability to 'say' some text from inside a script, which boils down to setting a string and then waiting for the user to press a button before we resume execution of the script. The game should still be updating on every frame, even when text is being displayed.</p>
+
+<p>In true JavaScript fashion, we could create an asynchronous API that looks a bit like this:</p>
+
+<pre><code>text = nil
+callback = nil
+
+function say(str, cb)
+    text = str
+    callback = cb
+end
+</code></pre>
+
+<p>Our game logic &amp; rendering code could look something like this:</p>
+
+<pre><code>function love.update(dt)
+    if not text then
+        -- player movement code
+    end
+end
+
+function love.draw()
+    -- code to draw the world goes here
+
+    if text then
+        love.graphics.print(text, 10, 10)
+    end
+end
+
+function love.keypressed(key, isRepeat)
+    if text and key == "space" then
+        text = nil
+        if callback then
+            -- execute the next part of the script
+            callback()
+        end
+    end
+end
+</code></pre>
+
+<p>Then we could write a dialogue script that looks like this, potentially fetching it at runtime with a call to <code>dofile()</code> or something:</p>
+
+<pre><code>say("Hello there!", function ()
+    say("How's it going?", function ()
+        say("Well, nice talking to you!")
+    end)
+end)
+</code></pre>
+
+<p>This kind of code grows unwieldy very quickly. It's confusing for non-coders and also error prone (many places to miss out a comma or a closing bracket). You could try some variations such as giving a name to each function, but it still turns out quite unpleasant to work with because managing all those functions gets in the way of what matters: writing good dialogue and scenes. At this point we'd surely be better off writing a Yarn interpreter or using some other existing solution.</p>
+
+<p>But this is not JavaScript, and we can do better!</p>
+
+<h3>Part 2: Using Coroutines</h3>
+<p>For the uninitiated, coroutines are chunks of code that can be jumped to much like functions. A coroutine can suspend itself (<code>yield</code>) at will, returning to the point at which it was called. At a later stage, the program can jump back into the coroutine and <code>resume</code> where it left off.</p>
+
+<p>I suppose this puts them in a sort of middle ground between functions and threads. They are more powerful than functions, but you still have to manage them explicitly - you can't just leave them running in the background to do their own thing. Typically they are used to break up an intensive task into small bursts, so that the program can still function as normal (receive user input, print to console, etc.)</p>
+
+<p>Hang on a minute, doesn't this sound a lot like what we want from the dialogue scripting system? Executing a single line and then suspending the script while we give control back to the game loop?</p>
+
+<p>Let's see how we could achieve the same result as Part 1, only using a coroutine instead of a chain of callbacks.</p>
+
+<pre><code>text = nil
+routine = nil
+
+function say(str)
+    text = str
+    coroutine.yield()
+    text = nil
+end
+
+function run(script)
+    -- load the script and wrap it in a coroutine
+    local f = loadfile(script)
+    routine = coroutine.create(f)
+
+    -- begin execution of the script
+    coroutine.resume(routine)
+end
+</code></pre>
+
+<p>The important difference here is the implementation of the <code>say</code> function. Instead of setting a callback for later use, we tell the current coroutine to yield. This means we can't call say directly from the main program, only from inside a coroutine. Also there is now a loader function which creates a new coroutine and tells it to run the script.</p>
+
+<p>Next we need to rewrite <code>love.keypressed</code> to make it resume the coroutine on the press of the space bar.</p>
+
+<pre><code>function love.keypressed(key, isRepeat)
+    if text and key == "space" then
+        if routine and coroutine.status(routine) ~= "dead" then
+            -- execute the next part of the script
+            coroutine.resume(routine)
+        end
+    end
+end
+</code></pre>
+
+<p>And finally, we can write a script that looks like this:</p>
+
+<pre><code>say("Hello there!")                -- the script suspends once here
+say("How's it going?")             -- it suspends again here
+say("Well, nice talking to you!")  -- it suspends for the 3rd time here
+</code></pre>
+
+
+<h3>Part 3: Sandboxing and Advanced Usage</h3>
+<p>If we declare a global variable, 'n', we can create an NPC that remembers how many times the player has spoken to it.</p>
+
+<pre><code>say("Hey kid, I'm Mr. Red!")
+
+if n == 0 then
+    say("I don't believe we've met before!")
+else
+    say("You have spoken to me "..n.." times!")
+end
+
+n = n + 1
+</code></pre>
+
+<p>It's great that this works, because it does exactly what you would expect and it's super easy to use. However, there are some problems.</p>
+
+<p>If all the variables are stored in the global environment, we risk running into naming collisions which at best will cause scripts to behave incorrectly and at worst could replace key functionality and crash the game.</p>
+
+<p>Additionally, having our game's state scattered across a ton of globals makes things very difficult when we want to think about serialising the gamestate to produce a save file.</p>
+
+<p>Fortunately Lua makes it easy to swap out the environment of a function for any table, using <code>setfenv</code> in Lua 5.1 or <code>_ENV</code> in Lua 5.2 or greater. We don't need to change our scripts at all, we just need to make sure that they still have access to the <code>say</code> function, by placing it in their environment (the <code>game</code> table below).</p>
+
+<pre><code>game = {}
+
+function game.say(str)
+    text = str
+    coroutine.yield()
+    text = nil
+end
+
+function run(script)
+    local f = loadfile(script)
+    setfenv(f, game)
+    routine = coroutine.create(f)
+
+    -- begin execution of the script
+    coroutine.resume(routine)
+end
+</code></pre>
+
+<p>It also might be helpful to have a script that is called once at startup, to initialise all the game variables to default values, or load them from a save file.</p>
+
+<p>As far as animation goes, we can drop in a tweening solution like <a href="https://github.com/rxi/flux">flux</a>, along with a few helper functions which will allow us to pause the script until the animation completes.</p>
+
+<pre><code>game.flux = require "flux"
+
+game.pause = coroutine.yield
+
+function game.resume()
+    coroutine.resume(routine)
+end
+</code></pre>
+
+<p>and then we could tween a character to x = 800 with a script like this:</p>
+
+<pre><code>flux.to(myNpc, 2.0, { x = 800 }):ease("linear"):oncomplete(resume)
+pause()
+</code></pre>
+
+<p>which yes, is a mouthful for non-coders, and it introduces an asynchronous aspect back into the scripting API. We would probably benefit from a custom animation system that's more more tailored to our game, but this hopefully goes to show how easy it is to make scripts that can interact with any other part of the engine.</p>
+
+<h3>What Next?</h3>
+<p>I hope I was able to teach some interesting ideas here! I wanted to share this because coroutines are something I've known about for a while, but until now I've never had a good reason to use them. I would be interested to know which other languages can be used to create a system like this.</p>
+
+<p>Here are some things you might want to do next, to create a more full-featured RPG engine:</p>
+
+<ul>
+    <li>Add <code>lock()</code> and <code>release()</code>, so it's possible to display text while the player is moving, or stop the player from moving even when there is no text.</li>
+    <li>Add an <code>ask(str, ...)</code> function whereby the player can choose from a list of options (e.g. yes/no)</li>
+    <li>Download a level editor such as Tiled, or create your own. Try attaching some scripts to game objects such as buttons and NPCs. <a href="/gamedev/using-tiled-maps-in-love">Relevant tutorial on using Tiled with LÖVE</a></li>
+    <li>Create an easy-to-use animation system with commands such as 'face X direction' or 'move N steps'</li>
+    <li>Add character portraits so that the player knows who's speaking (this might require you to add an extra parameter to <code>say()</code> or some new functions)</li>
+    <li>Consider how you would go about handling save data. How to distinguish it from data which is part of the gamestate but does not need to be saved permanently?</li>
+</ul>
+
+		]]></description>
+	</item>
+	<item>
+		<title>Build a Standalone Executable</title>
+		<link>http://lua.space/tools/build-a-standalone-executable</link>
+		<guid>http://lua.space/tools/build-a-standalone-executable</guid>
+		<pubDate>Mon, 28 Mar 2016 12:15:00 GMT</pubDate>
+		<description><![CDATA[
+<p><code>luastatic</code> is a command line tool that builds a standalone executable from a Lua program. The executable runs on systems that do not have Lua installed because Lua is embedded alongside the program. Lua 5.1, 5.2, 5.3 and LuaJIT are supported. <code>luastatic</code> can be <a href="https://github.com/ers35/luastatic">downloaded from GitHub</a> or <a href="http://luarocks.org/modules/ers35/luastatic">LuaRocks</a>.</p>
+
+<p>Lua is commonly used as an embeddable scripting language as part of a larger program written in another language. However, Lua can also be the primary language used to implement a program. Programmers using C are accustomed to building an application to a single executable that is distributed to the end user. <code>luastatic</code> does the same for Lua programs.</p>
+
+<p>Below is a description of the arguments <code>luastatic</code> supports:</p>
+
+<pre><code>luastatic main.lua[1] require.lua[2] liblua.a[3] module.a[4] -Iinclude/lua[5] [6]
+[1]: The entry point to the Lua program
+[2]: One or more required Lua source files
+[3]: The Lua interpreter static library
+[4]: One or more static libraries for a required Lua binary module
+[5]: The path to the directory containing lua.h
+[6]: Additional arguments are passed to the C compiler
+</code></pre>
+
+<p>The shell script below shows how to use <code>luastatic</code> to build <a href="http://lua.sqlite.org/index.cgi/artifact/0c08de88e066ef2d">this program</a> for GNU/Linux and Windows. The program uses <a href="https://www.lua.org/">Lua</a>, <a href="http://lua.sqlite.org/index.cgi/home">LuaSQLite3</a>, and <a href="http://sqlite.org/">SQLite3</a>. I tested the script on Ubuntu 15.04.</p>
+
+<pre><code>#!/bin/sh
+
+# download build tools (if necessary)
+sudo apt-get install build-essential make mingw-w64 unzip libreadline-dev
+
+# download program dependencies
+wget https://www.lua.org/ftp/lua-5.2.4.tar.gz
+wget https://raw.githubusercontent.com/ers35/luastatic/c810584/luastatic.lua
+wget http://sqlite.org/2016/sqlite-amalgamation-3110100.zip
+wget http://lua.sqlite.org/index.cgi/zip/lsqlite3_fsl09w.zip
+wget http://lua.sqlite.org/index.cgi/raw/examples/simple.lua?name=0c08de88e066ef2d6cf59c4be3d7ce2aa7df32c9 -O simple.lua
+
+# extract dependencies
+tar -xf lua-5.2.4.tar.gz
+unzip sqlite-amalgamation-3110100.zip
+unzip lsqlite3_fsl09w.zip
+
+# create build directories
+mkdir linux windows
+cp simple.lua linux
+cp simple.lua windows
+
+# build Lua for GNU/Linux
+cd lua-5.2.4
+make linux
+mv src/lua ../
+mv src/liblua.a ../linux
+make clean
+# build Lua for Windows
+make mingw CC=x86_64-w64-mingw32-gcc
+mv src/liblua.a ../windows
+cd ../
+
+# build luastatic using itself
+./lua luastatic.lua luastatic.lua linux/liblua.a -Ilua-5.2.4/src
+cp ./luastatic linux
+cp ./luastatic windows
+
+# build SQLite3 for GNU/Linux
+cd sqlite-amalgamation-3110100
+cc -c -O2 sqlite3.c -o sqlite3.o
+ar rcs ../linux/sqlite3.a sqlite3.o
+# build SQLite3 for Windows
+x86_64-w64-mingw32-gcc -c -O2 sqlite3.c -o sqlite3.o
+x86_64-w64-mingw32-ar rcs ../windows/sqlite3.a sqlite3.o
+cd ../
+
+# build LuaSQLite3 for GNU/Linux
+cd lsqlite3_fsl09w
+cc -c -O2 lsqlite3.c -I../sqlite-amalgamation-3110100 -I../lua-5.2.4/src -o lsqlite3.o
+ar rcs ../linux/lsqlite3.a lsqlite3.o
+# build LuaSQLite3 for Windows
+x86_64-w64-mingw32-gcc -c -O2 lsqlite3.c -I../sqlite-amalgamation-3110100 -I../lua-5.2.4/src -o lsqlite3.o
+x86_64-w64-mingw32-ar rcs ../windows/lsqlite3.a lsqlite3.o
+cd ../
+
+# build simple.lua for GNU/Linux
+cd linux
+./luastatic simple.lua liblua.a lsqlite3.a sqlite3.a -I../lua-5.2.4/src -lpthread
+strip simple
+cd ../
+
+# build simple.lua for Windows
+cd windows
+CC=x86_64-w64-mingw32-gcc ./luastatic simple.lua liblua.a lsqlite3.a sqlite3.a -I../lua-5.2.4/src -lpthread
+strip simple.exe
+</code></pre>
+
+<p><code>luastatic</code> generates the C source file simple.lua.c containing the Lua program and runs the following command to build the executable:</p>
+
+<pre><code>cc -Os simple.lua.c lsqlite3.a liblua.a sqlite3.a -rdynamic -lm -ldl -I../lua-5.2.4/src -lpthread -o simple
+</code></pre>
+
+<p>If you are familiar with C you can read the file simple.lua.c to see the generated calls to the Lua C API.</p>
+
+<p>If you find a program that <code>luastatic</code> does not build or where the resulting executable does not behave the same as when run with Lua, please <a href="https://github.com/ers35/luastatic/issues">report the issue</a> or email eric@ers35.com with enough detail to reproduce the build.</p>
+
+		]]></description>
+	</item>
+</channel>
+</rss>

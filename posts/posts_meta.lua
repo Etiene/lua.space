@@ -148,6 +148,14 @@ local authors = {
 return {
 	-- Insert next post here
 	{
+                page_title = 'Why we rewrote Lua in JS', -- Post and page title
+                short_url = 'why-we-rewrote-lua-in-js', -- Short url and same as md file name
+                category = 'webdev', -- folder of where it's in
+                date = 'Jul 25 2017 08:00', -- Just for printing, ordering is done by this table order
+                reblogged_from = "https://medium.com/@giann/why-we-rewrote-lua-in-js-a66529a8278d", -- [string] URL if this was posted somewhere else first
+                author = authors.giann
+        },
+	{
 		page_title = 'Lua Quick Reference Book Now Available!', -- Post and page title
 		short_url = 'lua-quick-reference-now-available', -- Short url and same as md file name
 		category = 'general', -- folder of where it's in
@@ -315,12 +323,4 @@ return {
 		reblogged_from = nil, -- [string] URL if this was posted somewhere else first
 		author = authors.etiene
 	},
-	{
-		page_title = 'Why we rewrote Lua in JS', -- Post and page title
-		short_url = 'why-we-rewrote-lua-in-js', -- Short url and same as md file name
-		category = 'webdev', -- folder of where it's in
-		date = 'Jul 25 2017 08:00', -- Just for printing, ordering is done by this table order
-		reblogged_from = "https://medium.com/@giann/why-we-rewrote-lua-in-js-a66529a8278d", -- [string] URL if this was posted somewhere else first
-		author = authors.giann
-	}
 }

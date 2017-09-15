@@ -85,5 +85,5 @@ local date = require "date"
 		</div>
 </div>
 <br/>
-<a href="<%= page:make_url('jobs/index') %>" class="btn btn-primary"><-- Go back to all job listings</a>
+<a href="<%= page:make_url('jobs') %>" class="btn btn-primary"><-- Go back to all job listings</a>
 <br/>

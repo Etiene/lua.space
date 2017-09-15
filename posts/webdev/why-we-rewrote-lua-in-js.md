@@ -1,4 +1,3 @@
-# Why we rewrote Lua in JS
 
 There is a latent desire out there to use something else than JS in the browser. Whether it is warranted or not is another topic in itself. But you don't have to search long to find [all kinds of projects](https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS) aiming to bring another language in the browser.
 
@@ -7,6 +6,7 @@ The arrival of Web Assembly reignited that desire for many of us. But wasm is a 
 ## Lua is a good fit for the browser
 
 Lua is a simple language with very few concepts to understand and a clear and readable syntax. You can be proficient with it in a matter of hours. Yet it provides very useful features. To name a few:
+
 - First class functions and closures
 - A versatile data structure: [the table](http://www.lua.org/pil/2.5.html)
 - Vararg expression
@@ -25,22 +25,21 @@ Lua can be found in a number of widely different contexts because of how easy it
 One of its main selling point for the browser are coroutines. Coroutines address the issue of writing asynchronous code beautifully. No more promises, generators, etc. You can just write asynchronous code as easily as regular code.
 
 Here's a simple example (fully functional version [here](https://gist.github.com/giann/f231cce5f17bde18aceb8537855cd51c)):
-```lua
-local bird1 = fetch("http://some.api.com/raven") -- fetch being a random xhr call
-local bird2 = fetch("http://some.api.com/dove")
 
-print(bird1.name, bird2.name)
-```
+    local bird1 = fetch("http://some.api.com/raven") -- fetch being a random xhr call
+    local bird2 = fetch("http://some.api.com/dove")
+    
+    print(bird1.name, bird2.name)
+
 
 A similar version of that using async/await could be:
-```javascript
-let asynchronousFn = async function() {
-    let bird1 = await fetch("http://some.api.com/raven");
-    let bird2 = await fetch("http://some.api.com/dove");
-        
-    console.log(bird1.name, bird2.name);
-}
-```
+
+    let asynchronousFn = async function() {
+        let bird1 = await fetch("http://some.api.com/raven");
+        let bird2 = await fetch("http://some.api.com/dove");
+            
+        console.log(bird1.name, bird2.name);
+    }
 
 These are close, but notice how, in the Lua version, you don't need to be in a `async` function. In JS you would have to constantly make the conscious choice of tagging a function `async` or not. In Lua, **any** function can be interrupted as long as it's running in a coroutine. Bob Nystrom wrote a great post about it [here](http://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/).
 
@@ -49,6 +48,7 @@ When you're writing asynchronous code in JS, you're in fact piling up function c
 ## Existing ways of using Lua in the browser
 
 There's already a few projects out there to use Lua in the browser in some extent:
+
 - [Moonshine](http://moonshinejs.org/) is a reimplementation of Lua in JS. Sadly, it's not being actively developed anymore.
 - [Starlight](http://starlight.paulcuth.me.uk/) by the same author is a Lua to JS transpiler. Unfortunately coroutines can't be implemented effectively with this approach.
 - [lua.vm.js](https://daurnimator.github.io/lua.vm.js/lua.vm.js.html) a port of the original Lua implementation to JS using Emscripten. It's fast and works well but its interoperability with JS is compromised by the fact that we end up with two garbage collectors trying to manage the same memory.
@@ -63,14 +63,14 @@ With the C API (rather JS API), you can decide to write everything in Lua or to 
 
 You can also interact with the JS side directly from your Lua code effortlessly with the [fengari-interop](https://github.com/fengari-lua/fengari-interop) module. It ensures that manipulating JS objects or functions always behave the way you would expect it to:
 
-```lua
-local global = js.global
-local document = global.document
 
-global:alert("Hello from Fengari")
+    local global = js.global
+    local document = global.document
+    
+    global:alert("Hello from Fengari")
+    
+    document:getElementById("my-div").textContent = "Hi there !"
 
-document:getElementById("my-div").textContent = "Hi there !"
-```
 
 The REPL you see on [fengari.io](http://fengari.io/) is itself written [in Lua](https://github.com/fengari-lua/fengari-web-cli/blob/master/src/web-cli.lua) and JS is only used to create the Lua state and run the main script.
 

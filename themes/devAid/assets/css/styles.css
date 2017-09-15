@@ -178,7 +178,7 @@ pre code {
   -ms-transition: none;
   -o-transition: none;
   font-size: 14px;
-  padding: 15px 10px;
+  padding: 15px 1px;
 }
 .header .main-nav .nav .nav-item a:hover {
   color: #074f66;

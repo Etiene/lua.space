@@ -143,10 +143,25 @@ local authors = {
 		linkedin = 'https://www.linkedin.com/in/benoit-giannangeli-7619238/',
 		facebook = nil,
 	},
+	tarleb = {
+		name = 'Albert Krewinkel',
+		description = 'Albert is a Berlin-based developer. He enjoys to dabble '
+      .. 'with Lua and Haskell.',
+		twitter = 'http://twitter.com/kraut0xa',
+		github = 'http://github.com/tarleb',
+	},
 }
 
 return {
 	-- Insert next post here
+  {
+    page_title = 'Extending pandoc with Lua',
+    short_url = 'extending-pandoc-with-lua',
+    category = 'general',
+    date = 'Dec 23 2017 00:00',
+    reblogged_from = nil,
+    author = authors.tarleb
+  },
 	{
                 page_title = 'Why we rewrote Lua in JS', -- Post and page title
                 short_url = 'why-we-rewrote-lua-in-js', -- Short url and same as md file name

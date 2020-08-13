@@ -10,10 +10,8 @@ as part of the [arcapos](http://www.arcapos.ch) solution for applications like
 online ticket sales, backoffice, accounting, CRM etc, serving thousands of
 users.*)
 
-As we are currently in the process of open-sourcing Lua Templates, this first
-blog post should explain how Lua Templates work.  Once the code is published
-on [github.com/mbalmer/](https://github.com/mbalmer/), another blog post
-will explain (some) technical details of the implementation.
+The source code for the Lua template rendering module can be found at
+on [github.com/arcapos/luatemplate](https://github.com/arcapos/luatemplate).
 
 ## How Lua Templates work
 

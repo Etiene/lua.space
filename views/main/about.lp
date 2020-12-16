@@ -2,7 +2,7 @@
 
 <p>Lua Space is an initiative to serve as a community hub to distribute news, technical posts and general discussions on everything related to the Lua programming language. Or, as the name says, a Lua space that is written by the community. Subscribe to our <a href="http://feeds.feedburner.com/Luaspace">RSS feed</a> if you wish to be notified when there's new content.</p>
 
-<p>Alternatively, we also recommend the official <a hreaf="https://www.lua.org/lua-l.html">Lua mailing list</a> and the <a href="https://LuaForum.com/>Lua Forum</a> for community discussions.
+<p>Alternatively, we also recommend the official <a href="https://www.lua.org/lua-l.html">Lua mailing list</a> and the <a href="https://LuaForum.com/">Lua Forum</a> for community discussions.
 
 
 <h2>Posting at Lua.Space</h2>

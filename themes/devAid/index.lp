@@ -77,7 +77,6 @@
                                 </ul>
                               </li>
                             <li class="nav-item"><a href="/archive">Archive</a></li>
-                            <li class="nav-item"><a href="/jobs">Jobs</a></li>
                         </ul><!--//nav-->
                     </div><!--//navabr-collapse-->
                 </nav><!--//main-nav-->

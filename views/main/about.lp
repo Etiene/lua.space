@@ -1,8 +1,11 @@
 <h1>About Lua.Space</h1>
 
-<p>Lua Space is an initiative to serve as a community hub to distribute news, technical posts and general discussions on everything related to the Lua programming language. Or, as the name says, a Lua space. Subscribe to our <a href="http://feeds.feedburner.com/Luaspace">RSS feed</a> if you wish to be notified when there's new content.</p>
+<p>Lua Space is an initiative to serve as a community hub to distribute news, technical posts and general discussions on everything related to the Lua programming language. Or, as the name says, a Lua space that is written by the community. Subscribe to our <a href="http://feeds.feedburner.com/Luaspace">RSS feed</a> if you wish to be notified when there's new content.</p>
 
-<h2>Becoming a writer at Lua.Space</h2>
+<p>Alternatively, we also recommend the official <a hreaf="https://www.lua.org/lua-l.html">Lua mailing list</a> and the <a href="https://LuaForum.com/>Lua Forum</a> for community discussions.
+
+
+<h2>Posting at Lua.Space</h2>
 <ul>
     <li>Fork our <a href="https://github.com/Etiene/lua.space">git repository</a></li>
     <li>Write your post using the <a href="https://help.github.com/articles/markdown-basics/">markdown syntax</a></li>
@@ -19,7 +22,7 @@
 
 <h2>Maintainer</h2>
 <ul>
-	<li><a href="https://twitter.com/etiene_d">Etiene Dalcol</a> - <a href="http://sailorproject.org">Sailor Framework</a></li>
+	<li><a href="https://twitter.com/etiene_d">Etiene Dalcol</a>/li>
 </ul>
 
 <h2>Contributors</h2>
